@@ -19,8 +19,10 @@ if(isset($editscoutgroup)) {
   if  (isset($username) and isset($password) ){
  $hash = password_hash($password, PASSWORD_DEFAULT);
 
- $sql0="SELECT * FROM user WHERE id<>".$_SESSION['userid']." and username='".$username."'";
- $result = $conn->query($sql0);
+ $stmt = $conn->prepare("SELECT * FROM user WHERE id<>? and username=?");
+ $stmt->bind_param("is", $_SESSION['userid'], $username);
+ $stmt->execute();
+ $result = $stmt->get_result();
  $datensatz = $result->fetch_assoc();
  
 
@@ -40,18 +42,17 @@ if ($password!=$password2){
   }
 
   else {
-$sql="UPDATE user set username='".$username."',  password='".$hash."' where id=".$_SESSION['userid'];
-echo $sql;
-$_SESSION['userscoutgroup'] = $scoutgroup;
-$conn->query($sql);
+$stmt = $conn->prepare("UPDATE user set username=?,  password=? where id=?");
+$stmt->bind_param("ssi", $username, $hash, $_SESSION['userid']);
+$stmt->execute();
   }
 }
 
 if  (isset($username) and !isset($password)){
  
-        $sql="UPDATE user set username='".$username."' where id=".$_SESSION['userid']; 
-        $_SESSION['userscoutgroup'] = $scoutgroup;
-        $conn->query($sql);
+        $stmt = $conn->prepare("UPDATE user set username=? where id=?");
+        $stmt->bind_param("si", $username, $_SESSION['userid']);
+        $stmt->execute();
 }
 echo "<script>window.location.href='../menu/main.php';</script>";
 

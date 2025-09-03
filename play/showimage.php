@@ -11,8 +11,10 @@ if (isset($imageid)) {
     
     $_SESSION['imageid']=$imageid;
 
-    $sql="SELECT * FROM image WHERE id=".$imageid;
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $datensatz = $result->fetch_assoc();
     $filename=$datensatz['filename']; 
     $lat=$datensatz['lat'];

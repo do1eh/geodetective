@@ -3,8 +3,10 @@ session_start();
  
    include("../templateoben.php");  
   
-    $sql="SELECT * from scoutgroup WHERE id='".$_SESSION['userscoutgroup']."'";
-    $groupresult = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * from scoutgroup WHERE id=?");
+    $stmt->bind_param("i", $_SESSION['userscoutgroup']);
+    $stmt->execute();
+    $groupresult = $stmt->get_result();
     $groupdatensatz = $groupresult->fetch_assoc();
 ?>
 

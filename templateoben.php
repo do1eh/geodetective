@@ -22,8 +22,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
   
   //Alle GET Variablen einlesen
   
-  foreach($_GET as $key => $val){$$key=htmlspecialchars($val);}
-  foreach($_POST as $key => $val) {$$key=htmlspecialchars($val);}
+  
   
 //globale Variablen
 define("hival", "2035-12-31 00:00:00");

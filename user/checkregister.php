@@ -6,7 +6,10 @@ session_start();
   
   if  (isset($username) and isset($password)){
      
-$result = $conn->query("SELECT * FROM user WHERE username='".$username."'");
+$stmt = $conn->prepare("SELECT * FROM user WHERE username=?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $datensatz = $result->fetch_assoc();
 //$hash = password_hash($password, PASSWORD_DEFAULT);
@@ -31,7 +34,9 @@ if (strlen($password)<6){
 
 //Wenn alle OK ist, User anlegen
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$conn->query("INSERT INTO user (username, scoutgroup,password) VALUES ('".$username."', '".$scoutgroup."', '".$hash."')");
+$stmt = $conn->prepare("INSERT INTO user (username, scoutgroup,password) VALUES (?, ?, ?)");
+$stmt->bind_param("sis", $username, $scoutgroup, $hash);
+$stmt->execute();
 
 //und einloggen
  

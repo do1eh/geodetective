@@ -6,10 +6,12 @@ session_start();
     echo "<script>window.location.href='../menu/main.php';</script>";
     exit(1);
  } 
-   if (isset($edit)) {
+   if (isset($_POST['edit'])) {
     $editeventid=$_POST['edit'];
-    $sql="SELECT * from event WHERE id='".$editeventid."'";
-    $eventresult = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * from event WHERE id=?");
+    $stmt->bind_param("i", $editeventid);
+    $stmt->execute();
+    $eventresult = $stmt->get_result();
     $eventdatensatz = $eventresult->fetch_assoc();
     $_SESSION['editeventid']=$editeventid;
 
@@ -17,14 +19,15 @@ session_start();
 
     
 }else
-if (isset($delete)) {
+if (isset($_POST['delete'])) {
   $editeventid=$_POST['delete'];
     
     //Event löschen (wird nicht agezeigt, da es eimmer nur ein Event geben soll, rotzdem hier schon einmal vorbereitet fasl doch)
     
     
-    $sql="delete from event  WHERE id='".$editeventid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("delete from event  WHERE id=?");
+    $stmt->bind_param("i", $editeventid);
+    $stmt->execute();
 
     
     echo "<script>window.location.href='adminevent.php';</script>"; 
@@ -33,8 +36,10 @@ if (isset($delete)) {
 
     }else if (isset($_SESSION['editeventid'])) {
         $editeventid=$_SESSION['editeventid'];
-        $sql="SELECT * from event WHERE id='".$editeventid."'";
-        $eventresult = $conn->query($sql);
+        $stmt = $conn->prepare("SELECT * from event WHERE id=?");
+        $stmt->bind_param("i", $editeventid);
+        $stmt->execute();
+        $eventresult = $stmt->get_result();
         $eventdatensatz = $eventresult->fetch_assoc();
 
      

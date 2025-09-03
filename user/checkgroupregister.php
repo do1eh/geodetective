@@ -4,7 +4,10 @@ session_start();
    include("../templatelogin.php");  
 
        
-$result = $conn->query("SELECT * FROM scoutgroup WHERE name='".$name."'");
+$stmt = $conn->prepare("SELECT * FROM scoutgroup WHERE name=?");
+$stmt->bind_param("s", $name);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $datensatz = $result->fetch_assoc();
 
@@ -24,10 +27,15 @@ if (strlen($jid)>0 && strlen($jid)<>6)  {
 //Wenn alle OK ist, Gruppe anlegen
 
 
-$conn->query("INSERT INTO scoutgroup (name, country,city,contact,association,jid) VALUES ('".$name."', '".$country."', '".$city."', '".$contact."', '".$association."', '".$jid."')");
+$stmt = $conn->prepare("INSERT INTO scoutgroup (name, country,city,contact,association,jid) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssss", $name, $country, $city, $contact, $association, $jid);
+$stmt->execute();
 
 //id holen
-$result = $conn->query("SELECT * FROM scoutgroup WHERE name='".$name."'");
+$stmt = $conn->prepare("SELECT * FROM scoutgroup WHERE name=?");
+$stmt->bind_param("s", $name);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $datensatz = $result->fetch_assoc();
 

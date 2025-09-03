@@ -13,8 +13,10 @@
     exit(1);
  } 
 //Anzahl der freizugebenen Bilder 
-$sql="SELECT count(*) as imagetoaccept FROM image WHERE eventid='".$_SESSION['eventid']."' and acceptedby=0 order by submitted desc";   
-$result = $conn->query($sql);
+$stmt = $conn->prepare("SELECT count(*) as imagetoaccept FROM image WHERE eventid=? and acceptedby=0 order by submitted desc");   
+$stmt->bind_param("i", $_SESSION['eventid']);
+$stmt->execute();
+$result = $stmt->get_result();
 $datensatz = $result->fetch_assoc();
 $imagetoaccept=$datensatz['imagetoaccept'];
 $imagetoaccepttext=$imagetoaccept." ".menunewimages;
@@ -27,8 +29,10 @@ if ($imagetoaccept=="1") {
 } 
 
 //Anzahl der freizugebenen Kommentare 
-$sql="SELECT count(*) as commenttoaccept FROM comment join image on imageid=image.id WHERE eventid='".$_SESSION['eventid']."' and comment.acceptedby=0 order by comment.submitted desc";   
-$result = $conn->query($sql);
+$stmt = $conn->prepare("SELECT count(*) as commenttoaccept FROM comment join image on imageid=image.id WHERE eventid=? and comment.acceptedby=0 order by comment.submitted desc");   
+$stmt->bind_param("i", $_SESSION['eventid']);
+$stmt->execute();
+$result = $stmt->get_result();
 $datensatz = $result->fetch_assoc();
 $commenttoaccept=$datensatz['commenttoaccept'];
 $commenttoaccepttext=$commenttoaccept." ".menuacceptcomments;

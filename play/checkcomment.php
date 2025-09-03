@@ -5,8 +5,9 @@ session_start();
        
    //Kommentar speichern
    $commenttext = htmlspecialchars(trim($_POST['commenttext']));
-   $sql="insert into comment (imageid,userid,text) values (".$_POST['imageid'].",".$_SESSION['userid'].",'".$commenttext."')";
-   $conn->query($sql);
+   $stmt = $conn->prepare("insert into comment (imageid,userid,text) values (?, ?, ?)");
+   $stmt->bind_param("iis", $_POST['imageid'], $_SESSION['userid'], $commenttext);
+   $stmt->execute();
    echo "<script>window.location.href='choosesolutionimage.php?saved=1';</script>";
    exit(1);
    

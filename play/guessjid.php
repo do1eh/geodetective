@@ -3,8 +3,10 @@ session_start();
  
    include("../templateoben.php");  
   
-    $sql="SELECT * from guess WHERE imageid=".$_SESSION['imageid']." and userid=".$_SESSION['userid'];
-    $guessresult = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * from guess WHERE imageid=? and userid=?");
+    $stmt->bind_param("ii", $_SESSION['imageid'], $_SESSION['userid']);
+    $stmt->execute();
+    $guessresult = $stmt->get_result();
     
     $jid="";
     if ($guessresult->num_rows)  {

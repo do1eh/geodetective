@@ -6,7 +6,7 @@ include("../templateohne.php");
 
 $imageid=$_SESSION['imageid'];
 
-if (isset($chosenimage)) {
+if (isset($_POST['chosenimage'])) {
     
     if (isset($_POST['chosenimage'])){
     $imageid=$_POST['chosenimage'];
@@ -16,8 +16,10 @@ if (isset($chosenimage)) {
     }
     $_SESSION['imageid']=$imageid;
 
-    $sql="SELECT * FROM image WHERE id=".$imageid;
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $datensatz = $result->fetch_assoc();
     $filename=$datensatz['filename']; 
     $lat=$datensatz['lat'];

@@ -6,28 +6,33 @@ include("../templateohne.php");
 
 $imageid=$_SESSION['imageid'];
 
-if (isset($chosenimage)) {
+if (isset($_POST['chosenimage'])) {
     
     $imageid=$_POST['chosenimage'];
     $_SESSION['imageid']=$imageid;
     
 
-    $sql="SELECT * FROM image WHERE  id=".$imageid;
-    
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM image WHERE  id=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $datensatz = $result->fetch_assoc();
     $lat=$datensatz['lat'];
     $lon=$datensatz['lon'];
     
     //JID des Bildes
-    $jidsql="SELECT * FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE image.id=".$imageid;
-    $imagejid = $conn->query($jidsql);
+    $stmt = $conn->prepare("SELECT * FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE image.id=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $imagejid = $stmt->get_result();
     $imagejiddtaensatz = $imagejid->fetch_assoc();
     $jid= $imagejiddtaensatz['jid']; 
 
    
-    $sql="SELECT * FROM guess join user on guess.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE imageid=".$imageid;
-    $guesses = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM guess join user on guess.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE imageid=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $guesses = $stmt->get_result();
     $anzahlguesses = $guesses->num_rows;
     
    

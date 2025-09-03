@@ -23,8 +23,10 @@ if (!isset($_GET['imageid']) || !is_numeric($_GET['imageid'])) {
     echo "<script>window.location.href='../menu/main.php';</script>";
     exit(1);
 }
-   $imagesql="SELECT image.id,deadline,description,name,contact,filename,solutiontext FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE image.id=".$_GET['imageid'];
-   $imageresult = $conn->query($imagesql);
+   $stmt = $conn->prepare("SELECT image.id,deadline,description,name,contact,filename,solutiontext FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE image.id=?");
+   $stmt->bind_param("i", $_GET['imageid']);
+   $stmt->execute();
+   $imageresult = $stmt->get_result();
    $image=$imageresult->fetch_assoc();
    $filename=$image['filename'];
    //Bild
@@ -54,8 +56,10 @@ if (!isset($_GET['imageid']) || !is_numeric($_GET['imageid'])) {
    
   ';
   //Kommentare
-   $sql="SELECT * FROM comment join user on comment.userid=user.id WHERE imageid=".$_GET['imageid']." and accepted=1 order by submitted desc";
-   $result = $conn->query($sql);
+   $stmt = $conn->prepare("SELECT * FROM comment join user on comment.userid=user.id WHERE imageid=? and accepted=1 order by submitted desc");
+   $stmt->bind_param("i", $_GET['imageid']);
+   $stmt->execute();
+   $result = $stmt->get_result();
     
    if($result->num_rows>0)
    {

@@ -6,12 +6,10 @@ $lat=0;
 $lon=0;
 
 //one gess per user
-$sql="SELECT * FROM guess join user on guess.userid=user.id  WHERE imageid=".$_SESSION['imageid']." and userid=".$_SESSION['userid'];
-
-
-
-
-    $result = $conn->query($sql);
+$stmt = $conn->prepare("SELECT * FROM guess join user on guess.userid=user.id  WHERE imageid=? and userid=?");
+$stmt->bind_param("ii", $_SESSION['imageid'], $_SESSION['userid']);
+$stmt->execute();
+$result = $stmt->get_result();
     $ds=$result->num_rows;
     if ($ds>0)  {
     $datensatz = $result->fetch_assoc();

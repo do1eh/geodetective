@@ -9,8 +9,10 @@ if ($_SESSION['role']!='admin' && $_SESSION['role']!='moderator') {
 
 <form action="savesortimages.php" method="post">
 <?php   
-$sql = "SELECT * FROM image WHERE eventid='" . $_SESSION['eventid'] . "' and deadline > CURRENT_TIMESTAMP() ORDER BY ordernumber, submitted";
-$result = $conn->query($sql);
+$stmt = $conn->prepare("SELECT * FROM image WHERE eventid=? and deadline > CURRENT_TIMESTAMP() ORDER BY ordernumber, submitted");
+$stmt->bind_param("i", $_SESSION['eventid']);
+$stmt->execute();
+$result = $stmt->get_result();
 $datensaetze = $result->fetch_all(MYSQLI_ASSOC);
 
 if ($result->num_rows > 0) {
@@ -38,8 +40,9 @@ if ($result->num_rows > 0) {
         $images[] = $gdImage;
 
         // Wegspeichern der Ordnung
-        $sql = "UPDATE image SET ordernumber='" . $order . "' WHERE id='" . $datensatz['id'] . "'";
-        $conn->query($sql);
+        $stmt = $conn->prepare("UPDATE image SET ordernumber=? WHERE id=?");
+        $stmt->bind_param("ii", $order, $datensatz['id']);
+        $stmt->execute();
 
         $order++;
     }

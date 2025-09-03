@@ -20,8 +20,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
   
   //Alle GET Variablen einlesen
   
-  foreach($_GET as $key => $val){$$key=htmlspecialchars($val);}
-  foreach($_POST as $key => $val) {$$key=htmlspecialchars($val);}
+  
   
   if (!isset($_SESSION['language'])) {
     $_SESSION['language']='de';

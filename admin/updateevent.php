@@ -16,15 +16,9 @@ session_start();
  $submituntil=str_replace("T"," ",$submituntil).":00";
 
 
-$sql="update event set name='".$name."',";
-$sql=$sql."starttimestamp='".$starttimestamp."', endtimestamp='".$endtimestamp."', ";
-$sql=$sql."startnightsrest='".$startnightsrest."', endnightsrest='".$endnightsrest."', ";
-$sql=$sql."submitfrom='".$submitfrom."', submituntil='".$submituntil."', ";
-$sql=$sql."publishinterval='".$interval."',imagesperinterval='".$imagesperinterval."' ";
-$sql=$sql." where id=".$editeventid;
-
-//echo $sql;
-$conn->query($sql);
+$stmt = $conn->prepare("update event set name=?, starttimestamp=?, endtimestamp=?, startnightsrest=?, endnightsrest=?, submitfrom=?, submituntil=?, publishinterval=?,imagesperinterval=? where id=?");
+$stmt->bind_param("sssssssiii", $name, $starttimestamp, $endtimestamp, $startnightsrest, $endnightsrest, $submitfrom, $submituntil, $interval, $imagesperinterval, $editeventid);
+$stmt->execute();
 
  
 $_SESSION['starttimestamp'] = $starttimestamp;

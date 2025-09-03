@@ -7,14 +7,20 @@
    if (isset($allimages)&& $allimages==1) {
     echo' Angezeigt werden alle Bilder.<br><br>';  
     echo'<button  onclick="window.location.href=\'editmyimages.php?mode=admin\'">Nur nicht freigegebe Bilder anzeigen</button>'; 
-    $sql="SELECT image.id id, user.id userid, image.filename,accepted,acceptedby,username,deadline,description FROM image join user on acceptedby=user.id WHERE  eventid='".$_SESSION['eventid']."'   order by ordernumber,submitted"; 
+    $stmt = $conn->prepare("SELECT image.id id, user.id userid, image.filename,accepted,acceptedby,username,deadline,description FROM image join user on acceptedby=user.id WHERE  eventid=?   order by ordernumber,submitted");
+    $stmt->bind_param("i", $_SESSION['eventid']);
+    $stmt->execute();
+    $result = $stmt->get_result(); 
     $_SESSION['allimages']=1;
   }
     else {
       
       echo' Angezeigt werden nur neue Bilder, die noch nicht freigegeben wurden!<br><br>';  
       echo'<button  onclick="window.location.href=\'editmyimages.php?mode=admin&allimages=1\'">Alle Bilder anzeigen</button>';    
-      $sql="SELECT image.id id, user.id userid, image.filename,accepted,acceptedby,username,deadline,description FROM image left join user on acceptedby=user.id WHERE  eventid='".$_SESSION['eventid']."' and accepted=0 and acceptedby=0 order by ordernumber,submitted"; 
+      $stmt = $conn->prepare("SELECT image.id id, user.id userid, image.filename,accepted,acceptedby,username,deadline,description FROM image left join user on acceptedby=user.id WHERE  eventid=? and accepted=0 and acceptedby=0 order by ordernumber,submitted");
+      $stmt->bind_param("i", $_SESSION['eventid']);
+      $stmt->execute();
+      $result = $stmt->get_result(); 
       $_SESSION['allimages']=0;
     
     }
@@ -47,9 +53,11 @@ function wirklichloeschen() {
   }
   else {
    
-   $sql="SELECT * FROM image WHERE userid='".$_SESSION['userid']."' and eventid='".$_SESSION['eventid']."' and deadline='".hival."' order by ordernumber,submitted";
-  }
-   $result = $conn->query($sql);
+   $stmt = $conn->prepare("SELECT * FROM image WHERE userid=? and eventid=? and deadline=? order by ordernumber,submitted");
+   $hival = hival;
+   $stmt->bind_param("iis", $_SESSION['userid'], $_SESSION['eventid'], $hival);
+   $stmt->execute();
+   $result = $stmt->get_result();
 
    $datensaetze = $result->fetch_all(MYSQLI_ASSOC);
    

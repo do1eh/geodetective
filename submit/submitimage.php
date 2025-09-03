@@ -3,7 +3,10 @@ session_start();
  
    include("../templateoben.php");  
    
-   $result = $conn->query("SELECT * FROM user WHERE id='".$_SESSION['userid']."'");
+   $stmt = $conn->prepare("SELECT * FROM user WHERE id=?");
+   $stmt->bind_param("i", $_SESSION['userid']);
+   $stmt->execute();
+   $result = $stmt->get_result();
    $datensatz = $result->fetch_assoc();
 
    

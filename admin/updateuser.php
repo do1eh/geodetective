@@ -8,8 +8,10 @@ session_start();
  } 
  $edituserid=$_SESSION['edituserid'];      
 
-$sql0="SELECT * FROM user WHERE id<>".$edituserid." and username='".$username."'";
-$result = $conn->query($sql0);
+$stmt = $conn->prepare("SELECT * FROM user WHERE id<>? and username=?");
+$stmt->bind_param("is", $edituserid, $username);
+$stmt->execute();
+$result = $stmt->get_result();
 $datensatz = $result->fetch_assoc();
 
 if ($result->num_rows)  {
@@ -19,15 +21,17 @@ if ($result->num_rows)  {
 }
 
 
-$sql="update user set username='".$username."', scoutgroup='".$scoutgroup."',role='".$role."' ";
-
 if ($password<>"*****") {
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql=$sql.",password='".$hash."'";
-    
+    $stmt = $conn->prepare("update user set username=?, scoutgroup=?,role=?, password=? where id=?");
+    $stmt->bind_param("ssssi", $username, $scoutgroup, $role, $hash, $edituserid);
+    $stmt->execute();
 }
-$sql=$sql." where id=".$edituserid;
-$conn->query($sql);
+else {
+    $stmt = $conn->prepare("update user set username=?, scoutgroup=?,role=? where id=?");
+    $stmt->bind_param("sssi", $username, $scoutgroup, $role, $edituserid);
+    $stmt->execute();
+}
 
 echo "<script>window.location.href='adminuser.php';</script>";
 //header("location: adminuser.php");
