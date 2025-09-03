@@ -6,7 +6,7 @@ session_start();
     echo "<script>window.location.href='../menu/main.php';</script>";
     exit(1);
  } 
-   if (isset($edit)) {
+   if (isset($_POST['edit'])) {
     $groupid=$_POST['edit'];
     $stmt = $conn->prepare("SELECT * from scoutgroup WHERE id=?");
     $stmt->bind_param("i", $groupid);
@@ -16,7 +16,7 @@ session_start();
     $_SESSION['groupid']=$groupid;
     
 }else
-if (isset($delete)) {
+if (isset($_POST['delete'])) {
   $groupid=$_POST['delete'];
     
     //Gruppe löschen

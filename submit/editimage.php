@@ -3,7 +3,7 @@ include("../templateohne.php");
  
 $imageid=$_SESSION['imageid'];
 
-if (isset($accept)) {
+if (isset($_POST['accept'])) {
     $imageid=$_POST['accept'];
     $stmt = $conn->prepare("update image set accepted= NOT accepted,acceptedby=?,deadline='2035-12-31 00:00:00' WHERE id=?");
     $stmt->bind_param("ii", $_SESSION['userid'], $imageid);
@@ -17,7 +17,7 @@ if (isset($accept)) {
     }
     
 }else
-if (isset($delete)) {
+if (isset($_POST['delete'])) {
     $imageid=$_POST['delete'];
     
     //Datei löschen
@@ -54,7 +54,7 @@ if (isset($delete)) {
     
     } else
 
-    if(isset($turn)) {
+    if(isset($_POST['turn'])) {
         $imageid=$_POST['turn'];
         $_SESSION['imageid']=$imageid;
          $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
@@ -144,7 +144,7 @@ if ($_SESSION['mode']=='admin' && $_SESSION['role']=='admin' && $_SESSION['allim
     }
     } else
 
-if (isset($chosenimage)) {
+if (isset($_POST['chosenimage'])) {
     
     $imageid=$_POST['chosenimage'];
     $_SESSION['imageid']=$imageid;

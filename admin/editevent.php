@@ -6,7 +6,7 @@ session_start();
     echo "<script>window.location.href='../menu/main.php';</script>";
     exit(1);
  } 
-   if (isset($edit)) {
+   if (isset($_POST['edit'])) {
     $editeventid=$_POST['edit'];
     $stmt = $conn->prepare("SELECT * from event WHERE id=?");
     $stmt->bind_param("i", $editeventid);
@@ -19,7 +19,7 @@ session_start();
 
     
 }else
-if (isset($delete)) {
+if (isset($_POST['delete'])) {
   $editeventid=$_POST['delete'];
     
     //Event löschen (wird nicht agezeigt, da es eimmer nur ein Event geben soll, rotzdem hier schon einmal vorbereitet fasl doch)

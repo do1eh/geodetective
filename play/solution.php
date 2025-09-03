@@ -6,7 +6,7 @@ include("../templateohne.php");
 
 $imageid=$_SESSION['imageid'];
 
-if (isset($chosenimage)) {
+if (isset($_POST['chosenimage'])) {
     
     $imageid=$_POST['chosenimage'];
     $_SESSION['imageid']=$imageid;

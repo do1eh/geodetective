@@ -7,13 +7,13 @@ if ($_SESSION['role']!='admin' && $_SESSION['role']!='moderator') {
 
 
 
-if (isset($accept)) {
+if (isset($_POST['accept'])) {
     $commentid=$_POST['accept'];
     $stmt = $conn->prepare("update comment set accepted= NOT accepted, acceptedby=? WHERE id=?");
     $stmt->bind_param("ii", $_SESSION['userid'], $commentid);
     $stmt->execute();
 }else
-if (isset($delete)) {
+if (isset($_POST['delete'])) {
     $commentid=$_POST['delete'];
     $stmt = $conn->prepare("delete from comment  WHERE id=?");
     $stmt->bind_param("i", $commentid);

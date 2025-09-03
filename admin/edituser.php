@@ -6,7 +6,7 @@ session_start();
     echo "<script>window.location.href='../menu/main.php';</script>";
     exit(1);
  } 
-   if (isset($edit)) {
+   if (isset($_POST['edit'])) {
     $edituserid=$_POST['edit'];
     $stmt = $conn->prepare("SELECT * from user WHERE id=?");
     $stmt->bind_param("i", $edituserid);
@@ -19,7 +19,7 @@ session_start();
 
     
 }else
-if (isset($delete)) {
+if (isset($_POST['delete'])) {
   $edituserid=$_POST['delete'];
     
     //user löschen
