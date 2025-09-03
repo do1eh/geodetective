@@ -15,9 +15,9 @@ if (strlen($jid)>0 && strlen($jid)<>6)  {
 
 //Wenn alle OK ist, Gruppe ändern
 
-$sql="update scoutgroup set country='".$country."',city='".$city."',contact='".$contact."',association='".$association."',jid='".$jid."' where id=".$_SESSION['userscoutgroup'];
-
-$conn->query($sql);
+$stmt = $conn->prepare("update scoutgroup set country=?,city=?,contact=?,association=?,jid=? where id=?");
+$stmt->bind_param("sssssi", $country, $city, $contact, $association, $jid, $_SESSION['userscoutgroup']);
+$stmt->execute();
 
 echo "<script>window.location.href='configure.php';</script>"; 
 

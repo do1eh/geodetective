@@ -8,8 +8,10 @@ session_start();
  } 
    if (isset($edit)) {
     $groupid=$_POST['edit'];
-    $sql="SELECT * from scoutgroup WHERE id='".$groupid."'";
-    $groupresult = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * from scoutgroup WHERE id=?");
+    $stmt->bind_param("i", $groupid);
+    $stmt->execute();
+    $groupresult = $stmt->get_result();
     $groupdatensatz = $groupresult->fetch_assoc();
     $_SESSION['groupid']=$groupid;
     
@@ -20,8 +22,9 @@ if (isset($delete)) {
     //Gruppe löschen
     
     
-    $sql="delete from scoutgroup  WHERE id='".$groupid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("delete from scoutgroup  WHERE id=?");
+    $stmt->bind_param("i", $groupid);
+    $stmt->execute();
 
     
     echo "<script>window.location.href='adminscoutgroup.php';</script>"; 

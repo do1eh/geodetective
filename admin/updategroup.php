@@ -8,11 +8,15 @@ session_start();
  } 
  $groupid=$_SESSION['groupid'];      
 
-$sql0="SELECT * FROM scoutgroup WHERE id<>".$groupid." and name='".$name."'";
+$stmt = $conn->prepare("SELECT * FROM scoutgroup WHERE id<>? and name=?");
 
 
 
-$result = $conn->query($sql0);
+$stmt->bind_param("is", $groupid, $name);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 $datensatz = $result->fetch_assoc();
 
@@ -31,9 +35,11 @@ if (strlen($jid)>0 && strlen($jid)<>6)  {
 
 //Wenn alle OK ist, Gruppe anlegen
 
-$sql="update scoutgroup set name='".$name."', country='".$country."',city='".$city."',contact='".$contact."',association='".$association."',jid='".$jid."' where id=".$groupid;
+$stmt = $conn->prepare("update scoutgroup set name=?, country=?,city=?,contact=?,association=?,jid=? where id=?");
 
-$conn->query($sql);
+$stmt->bind_param("ssssssi", $name, $country, $city, $contact, $association, $jid, $groupid);
+
+$stmt->execute();
 
 echo "<script>window.location.href='adminscoutgroup.php';</script>"; 
 //header("location: adminscoutgroup.php");

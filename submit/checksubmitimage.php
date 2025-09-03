@@ -222,7 +222,9 @@ session_start();
           //if (move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $target_file)) {
             if ($fname = removeExifData($_FILES["uploadedimage"])){
 
-               $conn->query("INSERT INTO image (eventid,filename,userid,lat,lon) VALUES ('".$_SESSION['eventid']."', '".$fname."', '".$_SESSION['userid']."', '".$lat."', '".$lon."')");
+               $stmt = $conn->prepare("INSERT INTO image (eventid,filename,userid,lat,lon) VALUES (?, ?, ?, ?, ?)");
+               $stmt->bind_param("isidd", $_SESSION['eventid'], $fname, $_SESSION['userid'], $lat, $lon);
+               $stmt->execute();
           } else {
             echo'Fehler';
           }

@@ -10,24 +10,25 @@ session_start();
 }
        
    //1. prüfen ob für dieses Bild schon ein Tipp abgegeben wurde:
-   $sql="select * from guess where userid=".$_SESSION['userid']." and imageid=".$_SESSION['imageid'];
-   
-   $result = $conn->query($sql);
+   $stmt = $conn->prepare("select * from guess where userid=? and imageid=?");
+   $stmt->bind_param("ii", $_SESSION['userid'], $_SESSION['imageid']);
+   $stmt->execute();
+   $result = $stmt->get_result();
    if ($result->num_rows)
    {
    $guessresult = $result->fetch_assoc();
    $guessid=$guessresult['id']; 
     
-   $sql="update  guess set guessedjid='".$jid."' where id=".$guessid;
-   
-   $conn->query($sql);
+   $stmt = $conn->prepare("update  guess set guessedjid=? where id=?");
+   $stmt->bind_param("si", $jid, $guessid);
+   $stmt->execute();
 
    }
    else { 
 
-    $sql="insert into guess (imageid,userid,guessedjid) values (".$_SESSION['imageid'].",".$_SESSION['userid'].",'".$jid."')";
-   
-    $conn->query($sql);   
+    $stmt = $conn->prepare("insert into guess (imageid,userid,guessedjid) values (?, ?, ?)");
+    $stmt->bind_param("iis", $_SESSION['imageid'], $_SESSION['userid'], $jid);
+    $stmt->execute();   
    
    }
    

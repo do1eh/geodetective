@@ -12,8 +12,9 @@ session_start();
        //Koordinaten des Pickers in Bild schreiben
    
 
-   $sql="update  image set lat=".$Location_Latitude.",lon=".$Location_Longitude." where id=".$_SESSION['imageid'];
-   $conn->query($sql);
+   $stmt = $conn->prepare("update  image set lat=?,lon=? where id=?");
+   $stmt->bind_param("ddi", $Location_Latitude, $Location_Longitude, $_SESSION['imageid']);
+   $stmt->execute();
    }
    echo "<script>window.location.href='editimage.php';</script>";
    //header("location: editimage.php");

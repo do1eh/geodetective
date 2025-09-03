@@ -9,13 +9,15 @@ if ($_SESSION['role']!='admin' && $_SESSION['role']!='moderator') {
 
 if (isset($accept)) {
     $commentid=$_POST['accept'];
-    $sql="update comment set accepted= NOT accepted, acceptedby=".$_SESSION['userid']." WHERE id='".$commentid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("update comment set accepted= NOT accepted, acceptedby=? WHERE id=?");
+    $stmt->bind_param("ii", $_SESSION['userid'], $commentid);
+    $stmt->execute();
 }else
 if (isset($delete)) {
     $commentid=$_POST['delete'];
-    $sql="delete from comment  WHERE id='".$commentid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("delete from comment  WHERE id=?");
+    $stmt->bind_param("i", $commentid);
+    $stmt->execute();
     
 }
 

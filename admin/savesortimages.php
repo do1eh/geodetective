@@ -21,10 +21,11 @@ function movedown($array, $fromIndex) {
 }
 
  
-   $sql="SELECT * FROM image WHERE  eventid='".$_SESSION['eventid']."' and deadline> CURRENT_TIMESTAMP() order by ordernumber,submitted";
+   $stmt = $conn->prepare("SELECT * FROM image WHERE  eventid=? and deadline> CURRENT_TIMESTAMP() order by ordernumber,submitted");
   
-  
-   $result = $conn->query($sql);
+  $stmt->bind_param("i", $_SESSION['eventid']);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
    $datensaetze = $result->fetch_all(MYSQLI_ASSOC);
    if($result->num_rows==0)
@@ -82,8 +83,9 @@ function movedown($array, $fromIndex) {
     foreach($images as $gdImage) {
       
      
-      $sql="UPDATE image SET ordernumber='".$index."' WHERE id='".$gdImage->getId()."'";
-      $conn->query($sql);
+      $stmt = $conn->prepare("UPDATE image SET ordernumber=? WHERE id=?");
+      $stmt->bind_param("ii", $index, $gdImage->getId());
+      $stmt->execute();
       $index++;
       //echo $sql.'<br>';
     }

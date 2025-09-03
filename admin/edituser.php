@@ -8,8 +8,10 @@ session_start();
  } 
    if (isset($edit)) {
     $edituserid=$_POST['edit'];
-    $sql="SELECT * from user WHERE id='".$edituserid."'";
-    $userresult = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * from user WHERE id=?");
+    $stmt->bind_param("i", $edituserid);
+    $stmt->execute();
+    $userresult = $stmt->get_result();
     $userdatensatz = $userresult->fetch_assoc();
     $_SESSION['edituserid']=$edituserid;
 
@@ -23,8 +25,9 @@ if (isset($delete)) {
     //user löschen
     
     
-    $sql="delete from user  WHERE id='".$edituserid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("delete from user  WHERE id=?");
+    $stmt->bind_param("i", $edituserid);
+    $stmt->execute();
 
     
     echo "<script>window.location.href='adminuser.php';</script>"; 
@@ -33,8 +36,10 @@ if (isset($delete)) {
 
     }else if (isset($_SESSION['edituserid'])) {
         $edituserid=$_SESSION['edituserid'];
-        $sql="SELECT * from user WHERE id='".$edituserid."'";
-        $userresult = $conn->query($sql);
+        $stmt = $conn->prepare("SELECT * from user WHERE id=?");
+        $stmt->bind_param("i", $edituserid);
+        $stmt->execute();
+        $userresult = $stmt->get_result();
         $userdatensatz = $userresult->fetch_assoc();
     }
 

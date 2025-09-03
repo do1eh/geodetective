@@ -55,8 +55,10 @@ Die Ergebnisse bleiben bis zum Eventende abrufbar.
      
    //$sql="SELECT * FROM image WHERE eventid='".$_SESSION['eventid']."' and accepted=1  order by submitted limit ".$bildanzahldeadline ;
    //$sql="SELECT * FROM image WHERE eventid='".$_SESSION['eventid']."' and accepted=1  and deadline <'".$aktuellezeitstring."' order by submitted";
-   $sql="SELECT image.id,deadline,description,name,contact,filename,solutiontext FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE eventid='".$_SESSION['eventid']."' and accepted=1  and deadline <'".$aktuellezeitstring."' order by submitted desc";
-   $result = $conn->query($sql);
+   $stmt = $conn->prepare("SELECT image.id,deadline,description,name,contact,filename,solutiontext FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id WHERE eventid=? and accepted=1  and deadline <? order by submitted desc");
+   $stmt->bind_param("is", $_SESSION['eventid'], $aktuellezeitstring);
+   $stmt->execute();
+   $result = $stmt->get_result();
     
    if($result->num_rows==0)
    {
@@ -101,9 +103,10 @@ Die Ergebnisse bleiben bis zum Eventende abrufbar.
       </button>';
   
    //Kommentare
-  $commentsql="SELECT * FROM comment join user on comment.userid=user.id WHERE imageid=".$imageid." and accepted=1 order by submitted desc limit 2" ;
- 
-  $commentresult = $conn->query($commentsql);
+  $stmt = $conn->prepare("SELECT * FROM comment join user on comment.userid=user.id WHERE imageid=? and accepted=1 order by submitted desc limit 2");
+  $stmt->bind_param("i", $imageid);
+  $stmt->execute();
+  $commentresult = $stmt->get_result();
    
   if($commentresult->num_rows>0)
   {

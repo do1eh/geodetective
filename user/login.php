@@ -8,7 +8,10 @@ session_start();
   
    if  (isset($username) and isset($password)){
       
-$result = $conn->query("SELECT * FROM user WHERE username='".$username."'");
+$stmt = $conn->prepare("SELECT * FROM user WHERE username=?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 $datensatz = $result->fetch_assoc();
 
 if(isset($register)) {

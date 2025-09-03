@@ -92,10 +92,10 @@ if ($startzeit<=$aktuellezeit )
   
 //$sql="SELECT * FROM image WHERE eventid='".$_SESSION['eventid']."' and accepted=1  order by submitted limit ".$bildanzahlpublished." offset ".$bildanzahldeadline ;
 //$sql="SELECT * FROM image WHERE eventid='".$_SESSION['eventid']."' and accepted=1 ";
-$sql="SELECT image.id,deadline,description,name,contact,filename,guess.userid guessed FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id left join guess on image.id=guess.imageid and guess.userid =".$_SESSION['userid']." WHERE eventid='".$_SESSION['eventid']."' and accepted=1  and deadline> CURRENT_TIMESTAMP()  and guess.userid is null order by ordernumber,image.submitted limit ".$_SESSION['imagesperinterval'];   
-
-
-$result = $conn->query($sql);
+$stmt = $conn->prepare("SELECT image.id,deadline,description,name,contact,filename,guess.userid guessed FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id left join guess on image.id=guess.imageid and guess.userid =? WHERE eventid=? and accepted=1  and deadline> CURRENT_TIMESTAMP()  and guess.userid is null order by ordernumber,image.submitted limit ?");
+$stmt->bind_param("iii", $_SESSION['userid'], $_SESSION['eventid'], $_SESSION['imagesperinterval']);
+$stmt->execute();
+$result = $stmt->get_result();
 
    $datensaetze = $result->fetch_all(MYSQLI_ASSOC);
    
@@ -110,8 +110,9 @@ echo guessexplain; echo'<br>';
    foreach($datensaetze as $datensatz) {
     //Deadline neu setzen
     if ($night || $datensatz['deadline']=='2035-12-31 00:00:00'){
-    $updatesql="update image set deadline='".$deadlinestring."' where id=".$datensatz['id'];
-    $conn->query($updatesql);
+    $stmt = $conn->prepare("update image set deadline=? where id=?");
+    $stmt->bind_param("si", $deadlinestring, $datensatz['id']);
+    $stmt->execute();
     $datensatz['deadline']=$deadlinestring;
     }
     

@@ -5,8 +5,9 @@ $imageid=$_SESSION['imageid'];
 
 if (isset($accept)) {
     $imageid=$_POST['accept'];
-    $sql="update image set accepted= NOT accepted,acceptedby=".$_SESSION['userid'].",deadline='2035-12-31 00:00:00' WHERE id='".$imageid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("update image set accepted= NOT accepted,acceptedby=?,deadline='2035-12-31 00:00:00' WHERE id=?");
+    $stmt->bind_param("ii", $_SESSION['userid'], $imageid);
+    $stmt->execute();
     //echo $sql; 
     if ($_SESSION['allimages']==1) {
        echo "<script>window.location.href='editmyimages.php?mode=admin&allimages=1';</script>";
@@ -20,19 +21,24 @@ if (isset($delete)) {
     $imageid=$_POST['delete'];
     
     //Datei löschen
-    $sql="SELECT * FROM image WHERE id='".$imageid."'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $datensatz = $result->fetch_assoc();
     $filename=$datensatz['filename'];
     unlink("../uploads/".$filename); 
     
-    $sql="delete from image  WHERE id='".$imageid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("delete from image  WHERE id=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
 
-    $sql="delete from guess  WHERE imageid='".$imageid."'";
-    $conn->query($sql);
-    $sql="delete from comment  WHERE imageid='".$imageid."'";
-    $conn->query($sql);
+    $stmt = $conn->prepare("delete from guess  WHERE imageid=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
+    $stmt = $conn->prepare("delete from comment  WHERE imageid=?");
+    $stmt->bind_param("i", $imageid);
+    $stmt->execute();
     
 
     if ($_SESSION['allimages']==1) {
@@ -51,9 +57,10 @@ if (isset($delete)) {
     if(isset($turn)) {
         $imageid=$_POST['turn'];
         $_SESSION['imageid']=$imageid;
-         $sql="SELECT * FROM image WHERE id='".$imageid."'";
-         
-         $result = $conn->query($sql);
+         $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
+         $stmt->bind_param("i", $imageid);
+         $stmt->execute();
+         $result = $stmt->get_result();
          $datensatz = $result->fetch_assoc();
          $filename=$datensatz['filename'];
       $filenameneu=time().substr($filename, -4);
@@ -117,9 +124,9 @@ if (isset($delete)) {
         }
 
 
-     $sql="update image set filename='".$filenameneu."'WHERE id='".$imageid."'";
-    
-     $conn->query($sql);
+     $stmt = $conn->prepare("update image set filename=? WHERE id=?");
+     $stmt->bind_param("si", $filenameneu, $imageid);
+     $stmt->execute();
      unlink($imagePath);
 
 
@@ -141,8 +148,10 @@ if (isset($chosenimage)) {
     
     $imageid=$_POST['chosenimage'];
     $_SESSION['imageid']=$imageid;
-    $sql="SELECT * FROM image WHERE id='".$imageid."'";
-   $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
+   $stmt->bind_param("i", $imageid);
+   $stmt->execute();
+   $result = $stmt->get_result();
    $datensatz = $result->fetch_assoc();
    $filename=$datensatz['filename'];
 
@@ -151,8 +160,10 @@ if (isset($chosenimage)) {
 }
 
 
-   $sql="SELECT * FROM image WHERE id='".$imageid."'";
-   $result = $conn->query($sql);
+   $stmt = $conn->prepare("SELECT * FROM image WHERE id=?");
+   $stmt->bind_param("i", $imageid);
+   $stmt->execute();
+   $result = $stmt->get_result();
    $datensatz = $result->fetch_assoc();
    $filename=$datensatz['filename'];
    $lat=$datensatz['lat'];

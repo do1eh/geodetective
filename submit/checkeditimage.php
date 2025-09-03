@@ -21,11 +21,10 @@ if(isset($save)) {
     }else {
         
    //Bildbeschreibung speichern und zum Hauptmenü
-   $imagedescription=addslashes($imagedescription);
-   $imagesolutiontext=addslashes($imagesolutiontext);
-   $sql="update  image set description='".$imagedescription."',solutiontext='".$imagesolutiontext."',acceptedby=0,accepted=0,deadline='".hival."' where id=".$_SESSION['imageid'];
-   //echo $sql;
-   $conn->query($sql);
+   $stmt = $conn->prepare("update  image set description=?,solutiontext=?,acceptedby=0,accepted=0,deadline=? where id=?");
+   $hival = hival;
+   $stmt->bind_param("sssi", $imagedescription, $imagesolutiontext, $hival, $_SESSION['imageid']);
+   $stmt->execute();
    echo "<script>window.location.href='../menu/main.php';</script>"; 
    //header("location: ../menu/main.php");
    exit(1);
