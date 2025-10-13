@@ -21,7 +21,7 @@ function movedown($array, $fromIndex) {
 }
 
  
-   $sql="SELECT * FROM image WHERE  eventid='".$_SESSION['eventid']."' and deadline> CURRENT_TIMESTAMP() order by ordernumber,submitted";
+   $sql="SELECT * FROM image WHERE  eventid='".$_SESSION['eventid']."' and accepted=1 and deadline> CURRENT_TIMESTAMP() order by ordernumber,submitted";
   
   
    $result = $conn->query($sql);

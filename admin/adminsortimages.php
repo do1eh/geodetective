@@ -9,7 +9,7 @@ if ($_SESSION['role']!='admin' && $_SESSION['role']!='moderator') {
 
 <form action="savesortimages.php" method="post">
 <?php   
-$sql = "SELECT * FROM image WHERE eventid='" . $_SESSION['eventid'] . "' and deadline > CURRENT_TIMESTAMP() ORDER BY ordernumber, submitted";
+$sql = "SELECT * FROM image WHERE eventid='" . $_SESSION['eventid'] . "' and accepted=1 and deadline > CURRENT_TIMESTAMP() ORDER BY ordernumber, submitted";
 $result = $conn->query($sql);
 $datensaetze = $result->fetch_all(MYSQLI_ASSOC);
 

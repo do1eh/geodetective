@@ -18,6 +18,9 @@
    $result = $conn->query($sql);
    $datensatz = $result->fetch_assoc();
    $openguesses=$datensatz['openguesses'];
+   if ($openguesses>$_SESSION['imagesperinterval']) {
+      $openguesses=$_SESSION['imagesperinterval'];
+   }
    $openguessestext=$openguesses." ".menunewimages;
    
    if ($openguesses=="0") {
@@ -26,6 +29,7 @@
    if ($openguesses=="1") {
       $openguessestext=menunewimage;
    } 
+
    
 
   ?>

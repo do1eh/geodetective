@@ -104,7 +104,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
             background-color: #dcdcdc;
         }
         .link-preview img {
-            max-width: 100px;
+            max-width: 200px;
             float: left;
             margin-right: 15px;
             border-radius: 4px;
@@ -137,7 +137,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
     <div class="link-preview">
         <h2>GeoDetective</h2>
         <a href="splashscreen.php" class="link-preview clearfix">
-            <img src="images/GeoDetective-JOTA-JOTI.png" alt="GeoDetective Vorschaubild">
+            <img src="images/GeoDetective-JOTA-JOTI.png" width="100px" alt="GeoDetective Vorschaubild">
             <div>
                 <h3><?=geotitle?></h3>
                 <p><?=geotext?></p> 
@@ -208,7 +208,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         "><?=geobutton?></a>
         </center>
     </div> 
-<!--
+
     <div class="link-preview">
         <h2>Discord</h2>
 
@@ -231,14 +231,16 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         "><?=discordbutton?></a>
         </center>
     </div> 
--->
+
 
 
 <div class="link-preview">
         <h2>Deutschsprachiger DMR Sked</h2>
-
-            <div>
+        <p><img src="images/dmrspur.jpeg" width="400px"></p>
+        <br><br><br><br><br><br>
+                    <div>
                 <h3>TG 90710 um 16 Uhr Küchenzeit</h3>
+                
                 <p>Am Samstag den 18.Oktober findet der deutschsprachige DMR Sked statt.  
                     Wir werden ein interaktives Spiel spielen alles was ihr braucht ist 
                     ein Stift und den Spielplan.
