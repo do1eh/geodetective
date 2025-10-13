@@ -116,7 +116,7 @@ var greenmarker = new L.Icon({
                 
                 //jid korrekt
                 $jidcorrect="";
-                if ($guess['guessedjid']==$jid)
+                if ($guess['guessedjid']==$jid && $jid!="")
                 {
                     $jidcorrect=solutionjidcorrect; 
                 }
