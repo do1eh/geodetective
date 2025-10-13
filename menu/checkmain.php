@@ -35,7 +35,7 @@ if(isset($einstellungen)) {
 }
 if(isset($abmelden)) {
     session_destroy();
-    echo "<script>window.location.href='../landing.php';</script>";
+    echo "<script>window.location.href='../index.php';</script>";
     //header('location: ../splashscreen.php');
      exit(1);
 }
