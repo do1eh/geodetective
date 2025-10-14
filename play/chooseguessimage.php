@@ -92,7 +92,7 @@ if ($startzeit<=$aktuellezeit )
   
 //$sql="SELECT * FROM image WHERE eventid='".$_SESSION['eventid']."' and accepted=1  order by submitted limit ".$bildanzahlpublished." offset ".$bildanzahldeadline ;
 //$sql="SELECT * FROM image WHERE eventid='".$_SESSION['eventid']."' and accepted=1 ";
-$sql="SELECT image.id,deadline,description,name,contact,filename,guess.userid guessed FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id left join guess on image.id=guess.imageid and guess.userid =".$_SESSION['userid']." WHERE eventid='".$_SESSION['eventid']."' and accepted=1  and deadline> CURRENT_TIMESTAMP()  and guess.userid is null order by ordernumber,image.submitted limit ".$_SESSION['imagesperinterval'];   
+$sql="SELECT image.id,deadline,description,name,contact,filename,guess.userid guessed FROM image join user on image.userid=user.id join scoutgroup on user.scoutgroup=scoutgroup.id left join guess on image.id=guess.imageid and guess.userid =".$_SESSION['userid']." WHERE eventid='".$_SESSION['eventid']."' and accepted=1  and deadline> CURRENT_TIMESTAMP()   order by ordernumber,image.submitted limit ".$_SESSION['imagesperinterval'];   
 
 
 $result = $conn->query($sql);
@@ -127,7 +127,7 @@ echo guessexplain; echo'<br>';
     <br><br>';  
     
      if (null!=$datensatz['guessed']){
-      echo'Bereits geraten!<br><br>';
+      echo'<h2><font color="green">Bereits geraten!</font></h2><br><br>';
      }
     echo' '.$datensatz['description'].'
     <br><br>

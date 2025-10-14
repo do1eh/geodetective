@@ -13,14 +13,23 @@
 
    //var openguesses= $result->num_rows
    //Anzahl der Aktiven Bilder für die der USer noch keinen Tipp abgegeben hat
-   $sql="SELECT count(*) as openguesses FROM image left join guess on image.id=guess.imageid and guess.userid =".$_SESSION['userid']." WHERE image.eventid='".$_SESSION['eventid']."' and accepted=1  and deadline > CURRENT_TIMESTAMP() and guess.userid is null order by ordernumber,image.submitted limit ".$_SESSION['imagesperinterval'];   
+   $sql="SELECT image.id, guess.userid as guessed  FROM image left join guess on image.id=guess.imageid and guess.userid =".$_SESSION['userid']." WHERE image.eventid='".$_SESSION['eventid']."' and accepted=1  and deadline > CURRENT_TIMESTAMP() order by ordernumber,image.submitted limit ".$_SESSION['imagesperinterval'];   
    
    $result = $conn->query($sql);
-   $datensatz = $result->fetch_assoc();
-   $openguesses=$datensatz['openguesses'];
-   if ($openguesses>$_SESSION['imagesperinterval']) {
-      $openguesses=$_SESSION['imagesperinterval'];
-   }
+   $openguesses= 0;
+  $datensaetze = $result->fetch_all(MYSQLI_ASSOC);
+
+foreach($datensaetze as $datensatz) {
+    if (null==$datensatz['guessed']){
+      $openguesses++;
+      
+     }
+   }     
+
+   //$openguesses=$datensatz['openguesses'];
+   //if ($openguesses>$_SESSION['imagesperinterval']) {
+   //   $openguesses=$_SESSION['imagesperinterval'];
+   //}
    $openguessestext=$openguesses." ".menunewimages;
    
    if ($openguesses=="0") {
@@ -31,6 +40,7 @@
    } 
 
    
+   //$openguessestext=$sql;
 
   ?>
 
