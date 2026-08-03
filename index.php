@@ -57,6 +57,18 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         p {
             text-align: justify;
         }
+        /* Standard für kleine Bildschirme (Handy) */
+.responsive-img {
+  width: 300px;
+  height: auto; /* Behält das Seitenverhältnis bei */
+}
+
+/* Für Bildschirme ab 768px Breite (PC/Tablet) */
+@media (min-width: 768px) {
+  .responsive-img {
+    width: 800px;
+  }
+}
         .media-container {
             margin-bottom: 30px;
             text-align: center;
@@ -129,10 +141,41 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
 <body>
 
 <div class="container">
-    <h1>JOTA /JOTI - Biggest Scout Event</h1>
+    <h1>JOTA-JOTI - Biggest Scout Event</h1>
+    <center>
+    <img src="images/biggestscoutevent.png" width="800px" alt="Biggestscoutevent.com" class="responsive-img">
+    </center>
     <p><?=landingtitle?></p>
 
     <hr>
+
+<div class="link-preview">
+        <h2><?=generalinfo?></h2>
+        <p><?=generalinfotext?></p> 
+            
+</div>
+
+<div class="link-preview">
+        <h2>Nethunt</h2>
+        <img src="nethunt/protocols.png" width="200px" alt="Nethunt Vorschaubild">
+        <h3><?=nethunttitle?></h3>
+        <p><?=nethunttext?></p>
+        <br>
+        <p>
+        <center>
+              <a href="#" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a6f44;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        "><?=nethuntbutton?></a>
+        </center> 
+</p>    
+</div>
+
 
     <div class="link-preview">
         <h2>GeoDetective</h2>

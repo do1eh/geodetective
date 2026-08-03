@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deine Reise</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+    }
+
+    /* Container für die Reise-Abschnitte */
+    .story-container {
+      padding-bottom: 40vh;
+    }
+
+    .story-section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .card-wrapper {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Bild: Baut sich von RECHTS nach LINKS auf */
+    .story-image {
+      position: absolute;
+      width: 70%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      will-change: transform, opacity;
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+
+    /* Text: Baut sich von LINKS nach RECHTS auf */
+    .story-text {
+      position: absolute;
+      left: 5%;
+      width: 50%;
+      padding: 30px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      z-index: 2;
+      will-change: transform, opacity;
+      transform: translateX(-100vw);
+      opacity: 0;
+    }
+
+    .story-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #f43f5e;
+    }
+
+    .story-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    footer {
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Herzlichen Glückwunsch! Du bist am Ziel.</h1>
+    <p>Hier noch ein Blick hinter die Kulissen um zu verstehen mit was für Maschinen du im laufe deiner Reise durch das Netz verbunden warst.</p>
+    <p>Scrolle nach unten, um die einzenen Stationen der Schnitzeljagt zu sehen.<br><br></p>
+    <p> Am Ende kannst du dich dann in die Bestenliste eintragen.</p>
+  </header>
+
+  <main class="story-container">
+
+    <!-- Station 1 -->
+    <section class="story-section">
+      <div class="card-wrapper">
+        <img class="story-image" src="strato.webp" alt="Station 1">
+        <div class="story-text">
+          <h2>1. HTTP </h2>
+          <p>www.biggestscoutevent.com ist bei Strato gehostet. Ein großer Webspaceanbieter mit über 100.000 Servern in zwei Standorten in Berlin und Karlsruhe </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Station 2 -->
+    <section class="story-section">
+      <div class="card-wrapper">
+        <img class="story-image" src="drivehq.png" alt="Station 2">
+        <div class="story-text">
+          <h2>2. FTP</h2>
+          <p>In Level 1 warst du auf einem FTP Server in San Ramon bei San Francisco
+                in Kalifornien. Es handelt sich um das Rechenzentrum von DriveHQ. Ein
+                Anbieter Cloud services. die genaue größe ist nicht bekannt, es können aber tausende Kunden gleichzeitig performant bedinet werden.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Station 3 -->
+    <section class="story-section">
+      <div class="card-wrapper">
+        <img class="story-image" src="sdf.jpg" alt="Station 3">
+        <div class="story-text">
+          <h2>3. Gopher</h2>
+          <p>SDF (Super Dimension Fortress) ist eine gemeinnützige Organisation, die freien Zugang zu UNIX Maschinen anbietet. Auf einem dieser Server im Bild läuft die JOTAJOTI-Nethunt Gopherseite.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Station 4 -->
+    <section class="story-section">
+      <div class="card-wrapper">
+        <img class="story-image" src="freeshell.png" alt="Station 4">
+        <div class="story-text">
+          <h2>4. SSH</h2>
+          <p>Freeshell.de ist ein privates nicht kommerzielles Linux Projekt aus Esslingen. Um einen Account zu bekommen muss man eine Papierpostkarte an den Betreiber schicken.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Station 5 -->
+    <section class="story-section">
+      <div class="card-wrapper">
+        <img class="story-image" src="rzkhserv.jpg" alt="Station 5">
+        <div class="story-text">
+          <h2>5. IBM 5250</h2>
+          <p>Seit vielen Jahren bietet der unterirdische "Powerbunker" in Bad Kreuznach kostenlos für jedermann Zugriff auf IBM i Maschinen (früher AS/400 genannt) </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© Ende der Reise</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.story-section');
+
+    function updateScrollAnimations() {
+      const viewportHeight = window.innerHeight;
+
+      sections.forEach(section => {
+        const image = section.querySelector('.story-image');
+        const text = section.querySelector('.story-text');
+        const rect = section.getBoundingClientRect();
+
+        // Fortschritt der Sektion im Viewport (-1 bis 1)
+        // 0 bedeutet: Sektion ist perfekt zentriert im Bildschirm
+        const progress = (rect.top + rect.height / 2 - viewportHeight / 2) / viewportHeight;
+
+        // Verschiebung berechnen
+        // Bilder wandern von Rechts (100vw) nach Links (-100vw)
+        const imgX = progress * 120; // in vvw/Prozent
+        // Texte wandern von Links (-100vw) nach Rechts (100vw)
+        const textX = -progress * 120;
+
+        // Sichtbarkeit (Deckkraft) nahe der Mitte erhöhen
+        const opacity = 1 - Math.min(Math.abs(progress) * 1.8, 1);
+
+        // Transformationen anwenden
+        image.style.transform = `translateX(${imgX}vw)`;
+        image.style.opacity = opacity;
+
+        text.style.transform = `translateX(${textX}vw)`;
+        text.style.opacity = opacity;
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(updateScrollAnimations);
+    });
+
+    // Initialer Aufruf beim Laden
+    updateScrollAnimations();
+  </script>
+</body>
+</html>

@@ -1,11 +1,47 @@
 <?php
 declare(strict_types=1);
 #landing page
-define("landingtitle", "Alle informatie over JOTA / JOTI - het grootste scoutingevenement ter wereld!");
+define("landingtitle", "Alle informatie over JOTA-JOTI - het grootste scoutingevenement ter wereld!");
+
+
+#Allgemein
+define("generalinfo", "Wat is JOTA-JOTI?");
+define("generalinfotext", "Het Jamboree on the air respectievelijk het Jamboree on the internet is een
+virtueel padvinderssamenzijn dat jaarlijks op het derde oktoberweekendeplaatsvindt.
+Je probeert ofwel via amateurradio ofwel via het internet met andere padvinders 
+wereldwijd in contact te treden. Daarvoor zijn veel verschillende mogelijkheden, zoals het chatten 
+via Messenger, het spelen van onlinegames of het spreken via amateurradiofrequenties.
+<br>
+Wat moet je doen om mee te doen?
+<ul>
+<li>Elke groep organiseert ter plaatse zijn eigen JOTA-JOTI evenement.</li>
+<li>Je hebt internetverbinding nodig en zo veel mogelijk apparaten zodat meerdere scouts tegelijk kunnen deelnemen</li> 
+<li>Als je amateurradio wilt gebruiken, heb je een gelicentieerde radioamateur en een radiostation nodig. 
+    Vraag het beste bij je lokale radioclub of ze interesse hebben om je te ondersteunen.</li>
+<li>Je zou ook een paar offline activiteiten moeten voorbereiden, zodat de scouts ook een keer pauze 
+    van het scherm kunnen nemen.</li>
+</ul>
+Wat kan ik doen bij JOTA-JOTI?
+<ul>
+<li> Kijk op de <a href='https://www.jotajoti.info/' target='_blank'>JOTA-JOTI Website</a></li>
+<li> Chat op <a href='https://www.scoutlink.net/' target='_blank'> Scoutlink</a></li>
+<li> Bedank een ambachtelijk project</li>
+<li> Luister naar de DMR Sked (zie hieronder)</li>
+<li> Speel onze onlinespelletjes zoals GeoDetective en Nethunt (zie hieronder)</li>
+<li> Speel Minecraft op minecraft.scoutwired.org</li>
+</ul>  ");  
+#nethunt
+define("nethuntbutton", "Naar het Nethunt spel (vanaf 16.10.2026)");
+define("nethunttitle", "Scouting the internet");
+define("nethunttext", "Nieuw dit jaar is het Nethunt spel. Het gaat om een speurtocht 
+die via het internet wordt gespeeld. De spelers moeten verschillende opdrachten oplossen en aanwijzingen vinden 
+om bij het doel te komen. Je leert de diepten van het internet kennen, ver weg van www en sociale media. 
+Het spel start tijdens JOTA-JOTI.");
+
 define("geotitle", "GeoDetective Spel");
 define("geotext","Doe mee aan het GeoDetective-spel en vind de locaties van de foto's van andere scouts. 
         Test je kennis van aardrijkskunde en scoutingvaardigheden! Gebruik het internet en je combinatievermogen om de oplossingen te vinden.
-        Het eigenlijke spel begint tijdens JOTA/JOTI, maar je kunt je nu al registreren
+        Het eigenlijke spel begint tijdens JOTA-JOTI, maar je kunt je nu al registreren
         en eigen foto's uploaden. Zie ook de video's hieronder.");
 define("geobutton", "Speel GeoDetective nu");
 
@@ -28,7 +64,7 @@ define("discordbutton", "Word lid van de Discord-server");
 define("georulestitle", "GeoDetective Spelregels");
 define("georulestext", "De regels voor het GeoDetective-spel zijn eenvoudig: Vind de locatie van de foto en geef je gok door!<br><br>
 <ul>
-<li>Het spel begint tijdens JOTA/JOTI op 17 oktober 2025 om 18:00 uur en eindigt op zondag.</li>
+<li>Het spel begint tijdens JOTA-JOTI op 16 oktober 2026 om 21:00 uur en eindigt op zondag.</li>
 <li>Tussen 23:00 uur en 09:00 uur is het nachtrust en kan er geen gok worden gedaan.</li>
 <li>Elke 4 uur worden er nieuwe foto's vrijgegeven.</li>
 <li>Elke speler kan per foto slechts één gok doen. Deze kan worden aangepast zolang de huidige speelronde loopt en er nog geen nieuwe foto's zijn vrijgegeven.</li>
@@ -183,7 +219,7 @@ define("registergroupassociation", "Naam van je padvindersvereniging");
 define("registergroupcity", "Uit welke plaats kom je?");
 define("registergroupcountry", "Land");
 define("registergroupjid", "Wat is jullie JID-code?");
-define("registergroupcontact", "Hoe is je groep tijdens JOTA/JOTI bereikbaar?");
+define("registergroupcontact", "Hoe is je groep tijdens JOTA-JOTI bereikbaar?");
 define("registergroupbutton", "Registreer nieuwe padvindersgroep");
 define("changegroup", "Groep wijzigen");
 

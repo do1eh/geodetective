@@ -2,12 +2,42 @@
 declare(strict_types=1);
 
 #landing page
-define("landingtitle", "Toutes les informations sur JOTA / JOTI - le plus grand événement scout du monde !");
+define("landingtitle", "Toutes les informations sur JOTA-JOTI - le plus grand événement scout du monde !");
+
+#Allgemein
+define("generalinfo", "Qu'est-ce que JOTA-JOTI ?");
+define("generalinfotext", "Le Jamboree on the air ou le Jamboree on the internet est une rencontre scout virtuelle qui a lieu chaque année le troisième week-end d'octobre.
+On essaie de prendre contact avec d'autres scouts dans le monde entier, soit par radio amateur, soit par Internet. Il existe de nombreuses possibilités, comme discuter via des messageries, jouer à des jeux en ligne ou parler sur les fréquences radioamateur.
+<br>
+Que dois-tu faire pour participer ?
+<ul>
+<li>Chaque groupe organise sur place son propre événement JOTA-JOTI.</li>
+<li>Vous avez besoin d'un accès Internet et idéalement de plusieurs appareils pour que plusieurs scouts puissent participer en même temps.</li> 
+<li>Si vous souhaitez utiliser la radio amateur, vous avez besoin d'un radioamateur licencié et d'une station radio.
+    Demandez de préférence à votre club local de radio amateur s'il peut vous aider.</li>
+<li>Vous devriez aussi prévoir quelques activités hors ligne, afin que les scouts puissent faire une pause de l'écran.</li>
+</ul>
+Que puis-je faire pendant JOTA-JOTI ?
+<ul>
+<li>Consultez le <a href='https://www.jotajoti.info/' target='_blank'>site JOTA-JOTI</a></li>
+<li>Discutez sur <a href='https://www.scoutlink.net/' target='_blank'>Scoutlink</a></li>
+<li>Pensez à un projet de bricolage</li>
+<li>Écoutez le Sked DMR (voir ci-dessous)</li>
+<li>Jouez à nos jeux en ligne comme GeoDetective et Nethunt (voir ci-dessous)</li>
+<li>Jouez à Minecraft sur minecraft.scoutwired.org</li>
+</ul>  ");
+#nethunt
+define("nethuntbutton", "Vers le jeu Nethunt (à partir du 16.10.2026)");
+define("nethunttitle", "Explorer Internet");
+define("nethunttext", "Nouveau cette année : le jeu Nethunt. Il s'agit d'une chasse au trésor jouée sur Internet.
+Les joueurs doivent résoudre différentes tâches et trouver des indices pour atteindre l'objectif.
+Cela permet de découvrir les profondeurs d'Internet, loin du web classique et des réseaux sociaux.
+Le jeu commence pendant JOTA-JOTI.");
 define("geotitle", "Jeu GeoDetective");
 define("geotext","Participe au jeu GeoDetective et trouve les emplacements des photos d'autres scouts.
         Tu pourras tester tes connaissances en géographie et tes compétences scoutes ! Utilise
         Internet et ta logique pour trouver les solutions.
-        Le vrai jeu commence lors du JOTA/JOTI, mais tu peux déjà t'inscrire
+        Le vrai jeu commence lors du JOTA-JOTI, mais tu peux déjà t'inscrire
         et télécharger tes propres photos. Voir aussi les vidéos plus bas.");
 define("geobutton", "Jouer à GeoDetective maintenant");
 
@@ -30,7 +60,7 @@ define("discordbutton", "Rejoindre le serveur Discord");
 define("georulestitle", "Règles du jeu GeoDetective");
 define("georulestext", "Les règles du jeu GeoDetective sont simples : trouve l'emplacement de la photo et soumets ta proposition !<br><br>
 <ul>
-<li>Le jeu commence lors du JOTA/JOTI le 17 octobre 2025 à 18h00 et se termine le dimanche.</li>
+<li>Le jeu commence lors du JOTA-JOTI le 16 octobre 2026 à 21h00 et se termine le dimanche.</li>
 <li>De 23h00 à 09h00, c'est la nuit, il n'est pas possible de soumettre de proposition.</li>
 <li>Toutes les 4 heures, de nouvelles images sont débloquées.</li>
 <li>Chaque joueur peut faire une seule proposition par image. Celle-ci peut être modifiée tant que la manche en cours n'est pas terminée et que de nouvelles images ne sont pas encore débloquées.</li>

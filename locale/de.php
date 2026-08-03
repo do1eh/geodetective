@@ -2,13 +2,51 @@
 declare(strict_types=1);
 
 #landing page
-define("landingtitle", "Alle Informationen zu JOTA / JOTI - dem größten Pfadfinder-Event der Welt!");
+define("landingtitle", "Alle Informationen zu JOTA-JOTI - dem größten Pfadfinder-Event der Welt!");
+
+#Allgemein
+
+define("generalinfo", "Was ist JOTA-JOTI?");
+define("generalinfotext", "Das Jamboree on the air bzw. das Jamboree on the internet ist ein
+virtuelles Pfadfindertreffen das jährlich am 3. Oktoberwochenende stattdindet.
+Man versucht entweder per Amateurfunk oder über das Internet mit anderen Pfadfindern 
+weltweit in Kontakt zu treten. Dazu gibt es viele verschiedene Möglichkeiten, wie z.B. das Chatten 
+über Messenger, das Spielen von Online-Spielen oder das Sprechen über die Amateurfunkfrequenzen.
+<br>
+Was musst du tun um mitzumachen?
+<ul>
+<li>Jede Gruppe organisiert für sich vor Ort ein eigenes JOTA-JOTI Event.</li>
+<li>Ihr benötigt einen Internetzugang und möglichst viele Geräte so dass mehre Pfadis gleichzeitig daran arbeiten können</li> 
+<li>Falls ihr Amateurfunk nutzen wollt, braucht ihr einen lizensierten Funkamateur und eine Funkstation. 
+    Fragt dazu am Besten bei eurem lokalen Amateufunkclub ob interesse besteht euch zu Unterstützen.</li>
+<li>Ihr solltet auch ein paar Offline Aktivitäten vorbereiten, damit die Pfadis auch mal eine Pause 
+    vom Bildschirm machen können.</li>
+</ul>
+Was kann ich beim JOTA-JOTI machen?
+<ul>
+<li> Schaut auf die <a href='https://www.jotajoti.info/' target='_blank'>JOTA-JOTI Website</a></li>
+<li> Schaut auf die <a href='https://jota-joti.de/' target='_blank'> deutsche JOTA-JOTI Website</a></li>
+<li> Chattet auf <a href='https://www.scoutlink.net/' target='_blank'> Scoutlink</a></li>
+<li> Überlegt euch ein Bastelprojekt</li>
+<li> Hört euch den DMR Sked an (siehe unten)</li>
+<li> Spielt unserere onlinespiele wie GeoDetective und Nethunt (siehe unten)</li>
+<li> Spielt Minecraft auf minecraft.scoutwired.org</li>
+</ul>  ");  
+#nethunt
+define("nethuntbutton", "Zum Nethunt Spiel (ab 16.10.2026)");
+define("nethunttitle", "Scouting the internet");
+define("nethunttext", "Neu in diesem Jahr ist das Nethunt Spiel. Es handelt sich dabei um eine Schnitzeljagd 
+die über das Internet gespielt wird. Dabei müssen die Spieler verschiedene Aufgaben lösen und Hinweise finden 
+um zum Ziel zu gelangen. Dabei lernt ihr die tiefen des Internets kennen, fern abseits von www und sozialen Medien. 
+Das Spiel startet zum JOTA-JOTI.");
+
+
 #geodetective
 define ("geotitle", "GeoDetective Spiel");
 define("geotext","Nimm am GeoDetective-Spiel teil und finde die Standorte der Fotos anderer Pfadfinder. 
         Dabei kannst du dein Wissen über Geografie und Pfadfinderfähigkeiten testen! Nutze dabei
         das Internet und deine Kombinationsgabe zum Finden der Lösungen.
-        Das eigentliche Spiel startet zum JOTA/JOTI, aber du kannst dich schon jetzt registrieren
+        Das eigentliche Spiel startet zum JOTA-JOTI, aber du kannst dich schon jetzt registrieren
         und eigene Fotos hoch laden. Siehe auch die Videos weiter unten.");
 
 define("geobutton", "Jetzt GeoDetective spielen");        
@@ -32,7 +70,7 @@ define("discordbutton", "Discord Server beitreten");
 define("georulestitle", "GeoDetective Spielregeln");
 define("georulestext", "Die Regeln für das GeoDetective Spiel sind einfach: Finde den Standort des Bildes und gib deinen Tipp ab!<br><br>
 <ul>
-<li>Das Spiel beginnt zum JOTA/JOTI am 17. Oktober 2025 um 18:00 Uhr und endet am Sonntag.</li>
+<li>Das Spiel beginnt zum JOTA-JOTI am 16. Oktober 2026 um 21:00 Uhr und endet am Sonntag.</li>
 <li>Von 23:00 Uhr bis 09:00 Uhr herrscht Nachtruhe, es ist keine Tippabgabe möglich.</li>
 <li>Alle 4 Stunden werden neue Bilder freigeschaltet.</li>
 <li>Jeder Spieler kann pro Bild nur einen Tipp abgeben. Dieser kann so lange geändert werden, bis die aktuelle Spielrunde endet und neue Bilder freigeschaltet werden.</li>
@@ -191,7 +229,7 @@ define("registergroupassociation", "Name deines Pfadfinderverbands");
 define("registergroupcity", "Aus welchem Ort kommt ihr?");
 define("registergroupcountry", "Land");
 define("registergroupjid", "Wie lautet euer JID-Code?");
-define("registergroupcontact", "Wie seid Ihr beim JOTA/JOTI erreichbar?");
+define("registergroupcontact", "Wie seid Ihr beim JOTA-JOTI erreichbar?");
 define("registergroupbutton", "Neue Pfadfindergruppe registrieren");
 define("changegroup", "Gruppe ändern");
 

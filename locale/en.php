@@ -1,11 +1,38 @@
 <?php
 declare(strict_types=1);
 #landing page
-define("landingtitle", "All information about JOTA / JOTI - the world's biggest scout event!");
+define("landingtitle", "All information about JOTA-JOTI - the world's biggest scout event!");
+
+#Allgemein
+define("generalinfo", "What is JOTA-JOTI?");
+define("generalinfotext", "Jamboree on the Air, or Jamboree on the Internet, is a virtual scouting meeting that takes place annually on the third weekend in October.
+Scouts try to contact other scouts worldwide either via amateur radio or over the internet. There are many different ways to do this, such as chatting via messenger, playing online games, or talking over amateur radio frequencies.
+<br>
+What do you have to do to participate?
+<ul>
+<li>Each group organizes its own JOTA-JOTI event on site.</li>
+<li>You need internet access and preferably as many devices as possible so that several scouts can work on it at the same time.</li> 
+<li>If you want to use amateur radio, you need a licensed radio amateur and a radio station. It's best to ask your local amateur radio club if they are interested in supporting you.</li>
+<li>You should also prepare a few offline activities so the scouts can take a break from the screen.</li>
+</ul>
+What can I do at JOTA-JOTI?
+<ul>
+<li>Visit the <a href='https://www.jotajoti.info/' target='_blank'>JOTA-JOTI website</a></li>
+<li>Chat on <a href='https://www.scoutlink.net/' target='_blank'>Scoutlink</a></li>
+<li>Think of a craft project</li>
+<li>Listen to the DMR sked (see below)</li>
+<li>Play our online games like GeoDetective and Nethunt (see below)</li>
+<li>Play Minecraft on minecraft.scoutwired.org</li>
+</ul>  ");  
+#nethunt
+define("nethuntbutton", "To the Nethunt game (from 16.10.2026)");
+define("nethunttitle", "Scouting the internet");
+define("nethunttext", "New this year is the Nethunt game. It is a scavenger hunt played over the internet. Players must solve various tasks and find clues to reach the goal. In the process, you will get to know the depths of the internet, far from the WWW and social media. The game starts at JOTA-JOTI.");
+
 define("geotitle", "GeoDetective Game");
 define("geotext", "Take part in the GeoDetective game and find the locations of photos submitted by other scouts.
         Test your knowledge of geography and scouting skills! Use the internet and your deduction skills to find the solutions.
-        The actual game starts at JOTA/JOTI, but you can already register and upload your own photos now. See the videos below for more information.");
+        The actual game starts at JOTA-JOTI, but you can already register and upload your own photos now. See the videos below for more information.");
 
 define("geobutton", "Play GeoDetective now");
 
@@ -28,7 +55,7 @@ define("discordbutton", "Join Discord Server");
 define("georulestitle", "GeoDetective Game Rules");
 define("georulestext", "The rules for the GeoDetective game are simple: Find the location of the image and submit your guess!<br><br>
 <ul>
-<li>The game starts at JOTA/JOTI on October 17, 2025 at 6:00 pm and ends on Sunday.</li>
+<li>The game starts at JOTA-JOTI on October 16, 2026 at 8:00 pm and ends on Sunday.</li>
 <li>From 11:00 pm to 09:00 am is quiet time, no guesses can be submitted.</li>
 <li>Every 4 hours new images are unlocked.</li>
 <li>Each player can submit only one guess per image. This can be changed as long as the current game round is active and new images have not yet been unlocked.</li>
@@ -181,7 +208,7 @@ define("registergroupassociation", "Name of your scoutassociation");
 define("registergroupcity", "City of your scoutgroup:");
 define("registergroupcountry", "Country");
 define("registergroupjid", "What's your JID-Code?");
-define("registergroupcontact", "How can your group be contacted during JOTA/JOTI?");
+define("registergroupcontact", "How can your group be contacted during JOTA-JOTI?");
 define("registergroupbutton", "Register new scoutgroup");
 define("changegroup", "Change scoutgroup");
 

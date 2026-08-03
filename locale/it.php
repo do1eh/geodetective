@@ -2,13 +2,47 @@
 declare(strict_types=1);
 # Traduzioni italiane
 #landing page
-define("landingtitle", "Tutte le informazioni su JOTA / JOTI - il più grande evento scout del mondo!");
+define("landingtitle", "Tutte le informazioni su JOTA-JOTI - il più grande evento scout del mondo!");
+
+#Generale
+define("generalinfo", "Cos'è JOTA-JOTI?");
+define("generalinfotext", "Jamboree on the air e Jamboree on the internet sono un incontro scout virtuale
+che si tiene ogni anno nel terzo fine settimana di ottobre. I partecipanti cercano di mettersi in contatto
+con altri scout nel mondo sia tramite radioamatoriale che via internet. Ci sono molte possibilità diverse,
+come chattare tramite messenger, giocare a giochi online o comunicare sulle frequenze radioamatoriali.
+<br>
+Cosa devi fare per partecipare?
+<ul>
+<li>Ogni gruppo organizza un proprio evento JOTA-JOTI sul posto.</li>
+<li>Hai bisogno di una connessione internet e il maggior numero possibile di dispositivi per permettere a più scout di partecipare contemporaneamente.</li> 
+<li>Se vuoi usare la radioamatoriale, hai bisogno di un radioamatore con licenza e di una stazione radio.
+    Chiedi al tuo club radioamatoriale locale se sono interessati a supportarvi.</li>
+<li>Dovresti anche preparare alcune attività offline in modo che gli scout possano fare una pausa
+    dallo schermo.</li>
+</ul>
+Cosa posso fare durante JOTA-JOTI?
+<ul>
+<li> Dai un'occhiata al <a href='https://www.jotajoti.info/' target='_blank'>sito JOTA-JOTI</a></li>
+<li> Chatta su <a href='https://www.scoutlink.net/' target='_blank'> Scoutlink</a></li>
+<li> Pensa a un progetto creativo</li>
+<li> Ascolta il DMR Sked (vedi sotto)</li>
+<li> Gioca ai nostri giochi online come GeoDetective e Nethunt (vedi sotto)</li>
+<li> Gioca a Minecraft su minecraft.scoutwired.org</li>
+</ul>  ");  
+#nethunt
+define("nethuntbutton", "Gioca a Nethunt (dal 16.10.2026)");
+define("nethunttitle", "Caccia su Internet");
+define("nethunttext", "Novità di quest'anno è il gioco Nethunt. Si tratta di una caccia al tesoro che si gioca su internet.
+I giocatori devono risolvere vari compiti e trovare indizi per raggiungere l'obiettivo. In questo modo scoprirai
+le profondità di internet, lontano dai siti web e dai social media. Il gioco inizia durante JOTA-JOTI.");
+
+
 #geodetective
 define("geotitle", "Gioco GeoDetective");
 define("geotext", "Partecipa al gioco GeoDetective e trova le posizioni delle foto di altri scout.
     Potrai mettere alla prova le tue conoscenze geografiche e le tue abilità scout! Usa
     Internet e il tuo intuito per trovare le soluzioni.
-    Il gioco vero e proprio inizia durante JOTA/JOTI, ma puoi già registrarti
+    Il gioco vero e proprio inizia durante JOTA-JOTI, ma puoi già registrarti
     e caricare le tue foto. Guarda anche i video qui sotto.");
 
 define("geobutton", "Gioca ora a GeoDetective");
@@ -32,7 +66,7 @@ define("discordbutton", "Unisciti al server Discord");
 define("georulestitle", "Regole del gioco GeoDetective");
 define("georulestext", "Le regole del gioco GeoDetective sono semplici: trova la posizione della foto e inserisci il tuo suggerimento!<br><br>
 <ul>
-<li>Il gioco inizia durante JOTA/JOTI il 17 ottobre 2025 alle 18:00 e termina domenica.</li>
+<li>Il gioco inizia durante JOTA-JOTI il 16 ottobre 2026 alle 21:00 e termina domenica.</li>
 <li>Dalle 23:00 alle 09:00 c'è il silenzio notturno, non è possibile inviare suggerimenti.</li>
 <li>Ogni 4 ore vengono sbloccate nuove foto.</li>
 <li>Ogni giocatore può dare solo un suggerimento per foto. Può essere modificato fino alla fine del turno e al rilascio delle nuove foto.</li>
@@ -186,7 +220,7 @@ define("registergroupassociation", "Nome della tua associazione scout");
 define("registergroupcity", "Da quale città venite?");
 define("registergroupcountry", "Paese");
 define("registergroupjid", "Qual è il vostro codice JID?");
-define("registergroupcontact", "Come siete raggiungibili durante JOTA/JOTI?");
+define("registergroupcontact", "Come siete raggiungibili durante JOTA-JOTI?");
 define("registergroupbutton", "Registra nuovo gruppo scout");
 define("changegroup", "Cambia gruppo");
 
@@ -200,205 +234,3 @@ define("acceptedby", "Approvato da:");
 define("declinedby", "Bloccato da:");
 define("pleaseaccept", "Nuovo! Approva o blocca!");
 define("alreadyingame", "Già nel gioco, la modifica comporta il reset della scadenza");
-#landing page
-define("landingtitle", "Alle Informationen zu JOTA / JOTI - dem größten Pfadfinder-Event der Welt!");
-#geodetective
-define ("geotitle", "GeoDetective Spiel");
-define("geotext","Nimm am GeoDetective-Spiel teil und finde die Standorte der Fotos anderer Pfadfinder. 
-        Dabei kannst du dein Wissen über Geografie und Pfadfinderfähigkeiten testen! Nutze dabei
-        das Internet und deine Kombinationsgabe zum Finden der Lösungen.
-        Das eigentliche Spiel startet zum JOTA/JOTI, aber du kannst dich schon jetzt registrieren
-        und eigene Fotos hoch laden. Siehe auch die Videos weiter unten.");
-
-define("geobutton", "Jetzt GeoDetective spielen");        
-#Hoseline
-define("liveradiotitle", "Höre den Radioscouts Live zu");
-define("liveradiotext", "Hier kannst du die Live-Übertragung der Radioscouts im digitalen Amateurfunk DMR hören.
-        Klicke auf PLAYER um den DMR Live-Stream zu starten.
-        Sehe im Kalender nach wann Aktivitäten stattfinden.");
-define("liveradiobutton","Zum DMR Livestream");
-#Kalender        
-define("calendartitle","Kalender der Aktivitäten der Radioscouts:");
-
-#Discord
-define("discordtitle", "Discord Server");
-define("discordtext", "Tritt unserem Discord Server bei, um mit anderen Pfadfindern zu chatten und Informationen wie z.B JIDs auszutauschen.<br>
-Es gibt einen Sprachchat sowie einen  Textchat in deutsch und englisch.");
-
-define("discordbutton", "Discord Server beitreten");
-
-#GeoDetective Spielregeln
-define("georulestitle", "GeoDetective Spielregeln");
-define("georulestext", "Die Regeln für das GeoDetective Spiel sind einfach: Finde den Standort des Bildes und gib deinen Tipp ab!<br><br>
-<ul>
-<li>Das Spiel beginnt zum JOTA/JOTI am 17. Oktober 2025 um 18:00 Uhr und endet am Sonntag.</li>
-<li>Von 23:00 Uhr bis 09:00 Uhr herrscht Nachtruhe, es ist keine Tippabgabe möglich.</li>
-<li>Alle 4 Stunden werden neue Bilder freigeschaltet.</li>
-<li>Jeder Spieler kann pro Bild nur einen Tipp abgeben. Dieser kann so lange geändert werden, bis die aktuelle Spielrunde endet und neue Bilder freigeschaltet werden.</li>
-<li>Nach Ablauf der Deadline wird die Lösung und die Highscoreliste für dieses Bildveröffentlicht.<br>
-Es gewinnt der Spieler, der mit seinem Tipp am nächsten am tatsächlichen Aufnahmeort liegt.</li>
-<li>Bei richtig geratenem JID-Code gibt es einen Extrapunkt!</li>
-<li>Unter der Highscorliste können Spieler Kommentare zum Bild und den Lösungen hinterlassen.<br>
-Die Kommentare werden von Moderatoren geprüft und freigegeben.</li>");        
-
-#Videos
-define("videotitle", "Videos");
-
-
-#Buttons
-define("buttonok", "OK");
-define("buttoncancel", "Abbrechen");
-define("buttonsave", "Speichern");
-define("buttonback", "zurück");
-define("buttondelete", "löschen");
-define("buttonupload", "Upload");
-define("buttoneditdata", "Änderungen speichern");
-define("buttoneditscoutgroup", "Pfadfindergruppe ändern");
-define("buttonguesslocation", "Standort raten");
-define("buttonguessjid", "Jid raten");
-define("buttonreset", "Bild zentrieren");
-
-#common
-define("reallydelete", "Soll der Datensatz wirklich unwiderruflich gelöscht werden?");
-define("username", "Benutzername");
-define("password", "Passwort");
-define("repeatpassword", "Passwort wiederholen");
-define("next", "weiter");
-
-
-#errormessages
-define("errorgroupname", "Der Gruppenname ist bereits angelegt, bitte aus der Liste auswählen.");
-define("errorjid", "Der JID-Code muss sechstellig sein.");
-define("errorusername", "Der Nutzername ist bereits vergeben");
-define("errorpasswordidentity", "Die Passwörter stimmen nicht überein");
-define("errorwrongpassword", "Das Passwort ist falsch");
-define("errorpasswordlength", "Das Passwort muss mindestens 6 Zeichen lang sein");
-define("errormissingdescription", "Bitte eine Bildbeschreibung eingeben");
-
-#Mainmenu
-define("menutitle", "Hauptmenü");
-define("menuadmin", "Admin");
-define("menuplay", "Spielen");
-define("menumyimages", "Meine Bilder");
-define("menusolution", "Auflösung");
-define("menuoptions", "Einstellungen");
-define("menulogout", "Abmelden");
-define("menunewimages", "neue Bilder!");
-define("menunewimage", "Ein neues Bild!");
-define("menunonewimages", "Keine neuen Bilder!");
-#Adminmenu
-define("adminmenuuser", "Userverwaltung");
-define("adminmenugroup", "Gruppenverwaltung");
-define("adminmenuevent", "Eventverwaltung");
-define("adminmenuimages", "Bilderverwaltung");
-define("adminmenuback", "Hauptmenü");
-define("menuacceptcomments", "neue Kommentare!");
-define("menuacceptcomment", "Ein neuer Kommentar!");
-define("menunoacceptcomments", "Keine neuen Kommentare!");
-
-
-
-#chooseguessimage
-define("guessmaintitle", "Tippabgabe");
-define("guesscontact", "Kontakt:");
-define("guesssubmittedby", "Eingereicht von:");
-define("guessnoimages", "Im Moment gibt es keine Bilder");
-define("guessexplain", "Bei Geodetectives  geht es darum möglichst genau den Standort des Fotografen von Bildern zu
-   bestimmen. Suche dir zuerst ein Bild aus für das du den Standort erraten möchtest:
-   Klicke auf ein Bild um einen Tipp abzugeben.");
-define("guessuntil", "Raten möglich bis:");
-define("gamestart", "Das Spiel beginnt: ");
-define("uploaduntilstart", "Bis dahin kannst du Bilder hochladen, die dann im Spiel verwendet werden.");
-define("buttonuploaduntilstart", "Bilder einreichen");
-define("buttoneditimages", "Meine Tipps ändern");
-
-#choosesolutionimage
-define("solutionimagdescription", "Bildbeschreibung");
-define("solutiontitle", "Auflösung"); 
-define("solutionnoresults", "Es gibt noch keine Ergebnisse");
-define("solutionresults", "Für folgende Bilder ist keine Tippabgabe mehr möglich.<br>
-   Klicke auf den Button unter dem Bild um die Ergebnisliste anzusehen.<br>
-   Klicke auf ein Bild um es zu vergößern:<br><br>");
-
-#guess
-define("guesstitle", "Untersuche das Bild genau nach Hinweisen");
-
-#guessmap
-define("guessmaptitle", "Geodetective Location Picker");
-
-#solution
-define("solutionmarkertitle", "Kartenmarker mit Entfernungen");
-define("solutionheadline", "Auflösung");
-define("solutionlist", "Liste der Einsendungen");
-define("solutionjidcorrect", "Jid richtig geraten!!");
-define("solution", "Lösung");
-define("solutionguesses", "Tipps");
-define("solutionmyguess", "mein Tipp");
-
-#editimage
-
-define("editimageeditcoord", "Koordinaten anpassen");
-define("editimageedescrition", "<br>Allgemeine Bildbeschreibung und evt. Tipps:<br>
-        (kann bei der Tippabgabe von Spielern gelesen werden)<br>");
-define("editimagesolutiontext", "<br>Auflösung:<br>
-        Kurze Beschreibung was hier wo zu sehen ist.<br>
-        (Wird nach Ablauf der Deadline angezeigt)<br>");
-define("editimagesavebutton", "Bildbeschreibung speichern");
-
-#editmyimages
-define("editmyimagesnomimages", "Du hast bisher keine Bilder eingereicht.");
-define("editmyimagesclickimage", "Klicke auf ein Bild um es zu bearbeiten<br>");
-define("editmyimagesaccept", "freigeben");
-define("editmyimagesdecline", "sperren");
-define("editmyimagesturn", " Bild drehen");
-define("editmyimage", "bearbeiten");
-
-#map
-define("mapcoordtitle", "Klicke auf die Karte um die Koordinaten festzulegen.");
-
-#mypictures
-define("mypicturestitle", "Meine Bilder");
-define("mypicturesnew", "Neues Bild einreichen");
-define("mypicturesedit", "Meine Bilder bearbeiten");
-
-#submitimage
-define("submitimagetitle", "Bild einreichen");
-define("submitimageexplain", "Klicke auf den Button um ein Bild hochzuladen.
-Beachte dass auf dem Bild etwas Pfadfinderisches zu sehen sein muss und auch genug
-Hinweise enthalten muss um den Aufnahmeort erraten zu können.");
-define("submitdiabled", "Zur Zeit können keine neuen Bilder eingereicht werden");
-
-#configure
-
-define("configuretitle", "Account ändern");
-define("configureexplain", "Bitte fülle das Formular aus um deine Daten zu Ändern:");
-
-#register
-define("registertitle", "Neuer Benutzer");
-define("registerexplain", "Du bist noch nicht registriert. Bitte fülle das Formular aus um dich zu registrieren");
-define("registerbutton", "Neuen Benutzer registrieren");
-
-#registerscoutgroup
-
-define("registergroupchoose", "Wähle bitte dein Pfadigruppe sie hier aus:");
-define("registergroupor", "oder");
-define("registergroupnew", "Sollte deine Gruppe nicht aufgeführt sein, fülle bitte folgende Felder aus:");
-define("registergroupname", "Name deiner Pfadigruppe");
-define("registergroupassociation", "Name deines Pfadfinderverbands");
-define("registergroupcity", "Aus welchem Ort kommt ihr?");
-define("registergroupcountry", "Land");
-define("registergroupjid", "Wie lautet euer JID-Code?");
-define("registergroupcontact", "Wie seid Ihr beim JOTA/JOTI erreichbar?");
-define("registergroupbutton", "Neue Pfadfindergruppe registrieren");
-define("changegroup", "Gruppe ändern");
-
-#comments
-define("commenttitle", "Kommentare");
-define("comment", "Kommentieren");
-define("commentbutton", "Kommentar absenden");  
-define("commentplaceholder", "Schreibe hier deinen Kommentar:");
-define("commentsaved", "Dein Kommentar wurde gespeichert, muss aber noch von einem Moderator freigegeben werden.");      
-define("acceptedby", "Freigegeben von:");
-define("declinedby", "Gesperrt von:");
-define("pleaseaccept", "Neu! Bitte freigeben oder Sperren!");
-define("alreadyingame", "Bereits im Spiel, Änderung führt zu reset der Deadline");

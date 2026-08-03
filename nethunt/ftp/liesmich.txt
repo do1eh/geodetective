@@ -1,0 +1,14 @@
+Herzlichen Glückwunsch das erste Level ist geschafft.
+
+FTP steht für File Transfer Protokoll. Hier geht es einfach darum, wie der Name schon sagt Dateien von einem Computer auf einen anderen zu Transferieren.
+FTP gibt es schon seit 1971!!! 
+
+In führeren Zeiten war das ganze Internet unverschlüsselt, jeder konnte alles lesen was es gab. Das lockte kriminelle auf den Plan, die  das für sich ausnutzen.
+
+Deswegen wird heutzutage wird kaum noch das originale FTP genutzt, sondern verschlüsselte Variante SFTP.
+
+Auf diesem FTP Server findet ihr eine MP3 Datei.
+Diese enthält die nächste URL. Findet heraus was das für ein Datenformat ist und dekodiert die Datei um sie zu sehen.
+
+Tipp: Ihr braucht dafür ein Dekodierprogramm. Das gibt es als Anwendung für den PC, aber auch als Android App (iPhones sind da leider raus, außer ihr gebt Geld aus)
+
