@@ -217,6 +217,34 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         </center>
     </div> 
 
+    <div class="link-preview">
+        <h2>Workshop 226</h2>
+        <img src="workshop/midi.jpg" width="200px" alt="MIDI Controller">
+        dddd
+        <h3><?=midititle?></h3>
+        <p><?=miditext?></p>
+        <br>
+        <p>
+        <center>
+              <a href="midi/scoutball.html" target="_blank"><Scoutball></a><br>
+              <a href="midi/boom.html" target="_blank">Space Tunnel defender</a><br>
+              <a href="midi/platform.html" target="_blank"><Platform></a><br>
+              <a href="midi/farbmischer.html" target="_blank"><Color mixer></a><br>
+              <a href="https://errozero.co.uk/acid-machine/" target="_blank"><Acid Machine 2></a><br>
+        </center> 
+</p>
+<center>
+              <a href="<?midilink?>" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a6f44;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        "><?=midibutton?></a>   
+</div>
+
 
  <div class="link-preview">
         <h2><?=liveradiotitle?></h2>
@@ -302,8 +330,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
                 <h3>TG 90710 um 16 Uhr Küchenzeit</h3>
                 
                 <p>Am Samstag den 18.Oktober findet der deutschsprachige DMR Sked statt.  
-                    Wir werden ein interaktives Spiel spielen alles was ihr braucht ist 
-                    ein Stift und den Spielplan.
+                    
 Bitte  bereitet eine kleine Vorstellung eurer Gruppe vor:
 <ul>
 <li>Wie heißt eure Gruppe?</li>
@@ -317,30 +344,12 @@ Bitte  bereitet eine kleine Vorstellung eurer Gruppe vor:
             </p>
             </div>
         </a>
-        <center>
-              <a href="./images/spielplan.pdf" style="
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2a6f44;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        ">Spielplan anzeigen</a>
-        </center>
-    </div> 
+        
             </div>
     </div>
     <hr>
 
-    <div class="media-container">
-        <h2><?=videotitle?></h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/ZCxqxfypKNc" allowfullscreen></iframe>
-        </div>
-        <div class="video-wrapper">
-            <iframe src="https://youtube.com/embed/rN9LwCKpZzo" allowfullscreen></iframe>
-        </div>
+    
 
    </div>
 

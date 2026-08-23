@@ -38,6 +38,19 @@ die via het internet wordt gespeeld. De spelers moeten verschillende opdrachten 
 om bij het doel te komen. Je leert de diepten van het internet kennen, ver weg van www en sociale media. 
 Het spel start tijdens JOTA-JOTI.");
 
+#midi
+
+define("midititle", "Workshop 2026: MIDI-Controller");
+define("miditext", "Dit jaar bouwen we een MIDI-Controller. De meeste mensen denken dat MIDI alleen voor muzikanten is, maar dat is niet het geval. Met een MIDI-Controller kun je ook spellen, verlichting of robots besturen. Er zijn veel mogelijkheden.
+Hier zijn een paar voorbeelden van wat je kunt doen met de zelfgebouwde MIDI-Controller:");
+define("miditext2", "Je kunt ook je eigen kleine spellen programmeren die je kunt besturen met je MIDI-Controller.
+Gebruik gewoon AI hiervoor. Bijvoorbeeld: 'Maak een klein browserspel in HTML en Javascript dat kan worden bestuurd met een MIDI-Controller. 
+Formuleer vervolgens je spelidee en probeer het uit.'");
+define("midianleitung", "Building Instructions:");
+define("midibutton", "https://biggestscoutevent.com/workshop/midi26EN.html");
+
+
+#geodetective
 define("geotitle", "GeoDetective Spel");
 define("geotext","Doe mee aan het GeoDetective-spel en vind de locaties van de foto's van andere scouts. 
         Test je kennis van aardrijkskunde en scoutingvaardigheden! Gebruik het internet en je combinatievermogen om de oplossingen te vinden.

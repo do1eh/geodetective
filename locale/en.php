@@ -29,6 +29,19 @@ define("nethuntbutton", "To the Nethunt game (from 16.10.2026)");
 define("nethunttitle", "Scouting the internet");
 define("nethunttext", "New this year is the Nethunt game. It is a scavenger hunt played over the internet. Players must solve various tasks and find clues to reach the goal. In the process, you will get to know the depths of the internet, far from the WWW and social media. The game starts at JOTA-JOTI.");
 
+#midi
+
+define("midititle", "Workshop 2026: MIDI-Controller");
+define("miditext", "This year we will build a MIDI-Controller. Most people think 
+that MIDI is only for musicians, but that is not the case. With a MIDI-Controller you can also
+control games, lights or robots. There are many possibilities.
+Here are a few examples of what you can do with the self-built MIDI-Controller:");
+define("miditext2", "You can also program your own small games that you can control with your MIDI-Controller.
+Just use AI for this. For example: 'Create a small browser game in HTML and Javascript that can be controlled with a MIDI-Controller.'
+Then formulate your game idea and try it out.");
+define("midianleitung", "Building Instructions:");
+define("midibutton", "https://biggestscoutevent.com/workshop/midi26EN.html");
+
 define("geotitle", "GeoDetective Game");
 define("geotext", "Take part in the GeoDetective game and find the locations of photos submitted by other scouts.
         Test your knowledge of geography and scouting skills! Use the internet and your deduction skills to find the solutions.

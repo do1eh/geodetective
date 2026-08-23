@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI-Controller</title>
+    <style>
+        /* Basic style adjustments for desktop and mobile devices */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #2a6f44;
+            /* Scout green */
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .media-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .media-container h2 {
+            margin-top: 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 Seitenverhältnis */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            height: 100%;
+            border: 0;
+        }
+
+        .audio-wrapper {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .audio-wrapper h2 {
+            margin-bottom: 10px;
+        }
+
+        .link-preview {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            background-color: #e9e9e9;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .link-preview:hover {
+            background-color: #dcdcdc;
+        }
+
+        .link-preview img {
+            max-width: 200px;
+            float: left;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .link-preview h3 {
+            margin: 0 0 5px 0;
+            color: #2a6f44;
+        }
+
+        .link-preview p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+            text-align: left;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .code-container {
+      position: relative;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: monospace;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .copy-btn:hover {
+      background: #444;
+    }
+
+    pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>JOTAJOTI Workshop: MIDI Controller</h1>
+
+        <p>
+
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/CHrvWiUOHPQ?si=j6aGX2q8tC_gMigr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+           <br><br>
+            Materials list:<br>
+            <ul>
+                <li><a href="https://de.aliexpress.com/item/1005004833458201.html" target="_blank">1x Arduino Micro</a></li>
+                <li><a href="https://de.aliexpress.com/item/32584992035.html" target="_blank">4x Rotary encoders KY-040</a></li>
+                <li>4x thumbtacks (bare)</li>
+                <li>bell wire</li>
+                <li><a href="https://www.amazon.de/dp/B0GY44M8BY" target="_blank">adhesive pads</a></li>
+                <li><a href="https://www.amazon.de/dp/B0CH7RKVFW" target="_blank">USB cable USB-A to USB-C</a></li>
+                <li><a href="https://www.amazon.de/dp/B07QX51F3B" target="_blank">Dupont connectors</a></li>
+                <li>small board either laser-cut or</li>
+                <li>glued on printed circuit diagram</li>
+            </ul>
+
+            Tools:<br>
+            <ul>
+                <li>Soldering iron</li>
+                <li>Solder</li>
+                <li>Diagonal cutters</li>
+                <li>Wire stripper</li>
+                <li>Crimping tool for Dupont pins</li>
+                <li>Ruler</li>
+            </ul>
+
+<H2>Quick Guide for Pros</H2>
+<ul>
+    <li>Prepare the wooden board using a laser cutter or a printed circuit diagram.
+    <li>Flash the sketch to the Arduino</li>
+    <li>Attach cables with Dupont connectors</li>
+    <li>Mount thumbtacks and connect them with soldered wires</li>
+    <li>Place components on the board using adhesive pads</li>
+    <li>Shorten cables and fit Dupont connectors</li>
+    <li>Connect everything according to the circuit diagram</li>
+</ul>
+
+<h2>Detailed Instructions</h2>
+<H3>Step 1: The "Circuit board"</H3>
+<img src="MIDIController.png" alt="Board" style="width:400px;max-width:600px"><br>
+Since this is a DIY project meant to be built with minimal effort and low material cost,
+the circuit board is not professionally manufactured. Instead, a small wooden board is used where components
+are attached with adhesive pads. Components are connected using bell wire with crimped Dupont connectors.
+
+The board can either be laser-cut or you can print the circuit diagram at full size
+and glue it onto the board.
+<br>
+<a href="MIDIController.pdf" target="_blank">Circuit diagram as PDF</a><br>
+<a href="MIDIcontroller.lbrn2" download>Circuit diagram as LightBurn template</a><br>
+<a href="MIDIController.svg" download>Circuit diagram as SVG</a><br>
+</p>
+
+<H3>Step 2: Programming the Arduino</H3>
+This step is only necessary if the Arduino has not yet been flashed with the MIDI controller program.
+At the JOTAJOTI workshop the Arduinos are usually already flashed, so you can skip this step.<br>
+<ul>
+<ul>
+<li>Install the Arduino IDE if you don't have it yet. <a href="https://www.arduino.cc/en/software" target="_blank">Download here</a>.</li>
+<li>Install the MIDIUSB library:</li>
+<ul>
+<li>Open the Arduino IDE and go to Tools -> Manage Libraries... (or Ctrl + Shift + I).</li>
+<li>Search for MIDIUSB (by Arduino).</li>
+<li>Click Install.</li>
+</ul>
+<li>Update the AVR board core:</li>
+<ul>
+<li>Go to Tools -> Board -> Board Manager...</li>
+<li>Search for Arduino AVR Boards.</li>
+<li>Click Update (or choose the latest version).</li>
+</ul>
+<li>Copy the code into the Arduino IDE and select the correct board (Arduino Micro)
+and the correct port.</li>
+<li>Click Upload</li>
+</ul>
+Code:<br>
+
+<div class="code-container">
+    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+  <pre><code>#include <Control_Surface.h>
+
+USBMIDI_Interface midi;
+
+// CCAbsoluteEncoder führt die Werte von 0 bis 127 intern nach und sendet absolute MIDI-Werte.
+// Syntax: {{Pin_A, Pin_B}, CC_Nummer, Pulse_Pro_Schritt}
+
+CCAbsoluteEncoder encoders[] = {
+  {{2, 3},   10, 4}, // Encoder 1 -> CC 10
+  {{4, 5},   11, 4}, // Encoder 2 -> CC 11
+  {{6, 7},   12, 4}, // Encoder 3 -> CC 12
+  {{8, 9},   13, 4}, // Encoder 4 -> CC 13
+  {{10, 16}, 14, 4}, // Encoder 5 -> CC 14
+  {{14, 15}, 15, 4}, // Encoder 6 -> CC 15
+  {{A0, A1}, 16, 4}, // Encoder 7 -> CC 16
+  {{A2, A3}, 17, 4}, // Encoder 8 -> CC 17
+};
+
+void setup() {
+  Control_Surface.begin();
+}
+
+void loop() {
+  Control_Surface.loop();
+}
+}</code></pre>
+</div>
+<H3>Step 3: Thumbtacks</H3>
+Press the four thumbtacks into the designated positions on the board.
+If the board is too thin, cut off the protruding tips on the backside
+with diagonal cutters so the thumbtacks do not stick through.<br><br>
+
+Then tin all thumbtacks with solder. Hold the soldering iron on the thumbtack for a few
+seconds so it heats up. Feed solder to the thumbtack until it is tinned.
+Then connect the thumbtacks with short black wires.
+
+<h3>Step 4: Prepare the cables</h3>
+Take the bell wire and cut the following lengths and strip both ends with the wire stripper:<br>
+<ul>
+    <li>2x 9cm, green</li>
+    <li>2x 9cm, blue</li>
+    <li>2x 8cm, green</li>
+    <li>2x 8cm, blue</li>
+    <li>4x 4.5cm, black</li>
+    <li>1x 9cm, black</li>
+</ul>
+<img src="kabel.jpg" alt="Kabel" style="width:400px;max-width:600px"><br>
+Crimp Dupont connectors onto both ends of the green and blue cables.
+All black cables get only one connector; the other end is soldered directly
+to the thumbtacks.
+To crimp, place the metal sleeve into the crimping tool so it rests on the small step.
+Close the crimping tool gently until the sleeve is slightly compressed. Insert the cable end
+so the wire is inside the sleeve, then fully close the crimping tool.<br><br>
+Now build four cable assemblies, each consisting of a green, a blue and a black cable.
+<img src="kabelbaum.png" alt="Cable assembly" style="width:200px;max-width:600px"><br>
+
+<h3>Assemble everything</h3>
+
+Use the adhesive pads to stick the four rotary encoders and the Arduino to the correct
+positions on the board.<br>
+Solder the four exposed black wires from the cable assemblies to the thumbtacks.<br>
+Then connect the cable assemblies to the corresponding pins:<br>
+<table border="1">
+    <tr>
+        <td>Arduino Pin</td>
+        <td>Drehimpulsgeber Pin</td> 
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>DT 1</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>CLK 1</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>DT 2</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>CLK 2</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>DT 3</td>
+    </tr> 
+    <tr>
+        <td>16</td>
+        <td>CLK 3</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>DT 4</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>CLK 4</td>
+    </tr>
+    <tr>
+        <td>GND</td>
+        <td>Reiszwecken</td>
+    </tr>     
+</table>
+<h3>Testing and Troubleshooting</h3>
+<h4>Connecting</h4>
+If you have connected everything correctly, plug the Arduino into the computer using the USB cable.
+The two red LEDs on the Arduino should light up.
+<h4>Function test</h4>
+Go to <a href="https://www.midimonitor.com/" target="_blank">https://www.midimonitor.com/</a>
+and click "Start Monitoring".
+Now turn the rotary encoders. If everything is connected correctly, the values should appear on the website.
+If not, check the cable connections.<br><br> Check that:
+<ul>
+    <li>The cables are in the correct sockets</li>
+    <li>The ground (GND) cable is connected</li>
+    <li>Use a continuity tester to verify all thumbtack connections</li>
+</ul>
+<h4>Troubleshooting</h4>
+<table border="1">
+    <tr>
+        <td>Problem</td>
+        <td>Solution</td>
+    </tr>
+    <tr>
+        <td>The values only switch between 0 and 1</td>
+        <td>Check the cable connections. One cable must go to CLK and one to DT.</td>
+    </tr>
+    <tr>
+        <td>Turning clockwise decreases the values</td>
+        <td>The CLK and DT cables are swapped.</td>
+    </tr>
+    <tr>
+        <td>Nothing happens</td>
+        <td>The GND cable is not connected correctly.</td>
+    </tr>
+</table>
+
+<h2>What can you do with it now?</h2>
+ Any software that supports MIDI can now be controlled with the controller.
+ Originally, MIDI was designed for controlling musical instruments.
+ Nowadays, there are also many other applications that support MIDI.
+ For example, you can use the controller to play games or operate radio equipment.<br><br>
+ Here are a few examples:<br><br>
+ Games:<br>
+<a href="https://www.biggestscoutevent.com/midi/scoutball.html" target="_blank">Scoutball</a><br>
+<a href="https://www.biggestscoutevent.com/midi/boom.html" target="_blank">Space Tunnel defender</a><br>
+<a href="https://www.biggestscoutevent.com/midi/farbmischer.html" target="_blank">color-mixer</a><br>
+<a href="https://www.biggestscoutevent.com/midi/platform.html" target="_blank">Platformer</a><br>
+<br>
+Music:<br>
+<a href="https://errozero.co.uk/acid-machine/" target="_blank">Acid Maschine 2</a><br>
+<a href="https://www.audiotool.com/" target="_blank">AudioTool</a><br>
+<br>
+Ham-Radio:<br>
+<a href="https://ubersdr.org/" target="_blank">Uber SDR</a><br>
+
+
+</div>
+</body>
+
+</html>

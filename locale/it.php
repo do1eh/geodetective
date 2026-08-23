@@ -36,6 +36,16 @@ define("nethunttext", "Novità di quest'anno è il gioco Nethunt. Si tratta di u
 I giocatori devono risolvere vari compiti e trovare indizi per raggiungere l'obiettivo. In questo modo scoprirai
 le profondità di internet, lontano dai siti web e dai social media. Il gioco inizia durante JOTA-JOTI.");
 
+#midi
+
+define("midititle", "Workshop 2026: MIDI-Controller");
+define("miditext", "Quest'anno costruiremo un MIDI-Controller. La maggior parte delle persone pensa che il MIDI sia solo per i musicisti, ma non è così. Con un MIDI-Controller puoi anche controllare giochi, luci o robot. Ci sono molte possibilità.
+Ecco alcuni esempi di ciò che puoi fare con il MIDI-Controller costruito da te:");
+define("miditext2", "Puoi anche programmare i tuoi stessi piccoli giochi che puoi controllare con il tuo MIDI-Controller.
+Usa semplicemente l'IA per questo. Per esempio: 'Crea un piccolo gioco browser in HTML e Javascript che può essere controllato con un MIDI-Controller.'
+Formula poi la tua idea di gioco e provala.");
+define("midianleitung", "Istruzioni di costruzione:");
+define("midibutton", "https://biggestscoutevent.com/workshop/midi26EN.html");
 
 #geodetective
 define("geotitle", "Gioco GeoDetective");

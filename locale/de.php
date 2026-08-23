@@ -53,6 +53,7 @@ define("miditext2", "Ihr könnt auch selbst kleine Spiele programmieren, die ihr
 Nutzt dafür z.B. KI und den Prompt: 'Erstelle ein kleines Browserpiel in HTML und Javascript, das mit einem MIDI-Controller gesteuert werden kann.'
 Dann formuliert eure Spielidee und probiert es aus.");
 define("midianleitung", "Baunleitung:");
+define("midibutton", "https://biggestscoutevent.com/workshop/midi26.html");
 
 #geodetective
 define ("geotitle", "GeoDetective Spiel");
