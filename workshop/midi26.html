@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI-Controller</title>
+    <style>
+        /* Grundlegende Stil-Anpassungen für Desktop und Mobilgeräte */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #2a6f44;
+            /* Pfadfinder-grün */
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .media-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .media-container h2 {
+            margin-top: 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 Seitenverhältnis */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            height: 100%;
+            border: 0;
+        }
+
+        .audio-wrapper {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .audio-wrapper h2 {
+            margin-bottom: 10px;
+        }
+
+        .link-preview {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            background-color: #e9e9e9;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .link-preview:hover {
+            background-color: #dcdcdc;
+        }
+
+        .link-preview img {
+            max-width: 200px;
+            float: left;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .link-preview h3 {
+            margin: 0 0 5px 0;
+            color: #2a6f44;
+        }
+
+        .link-preview p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+            text-align: left;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .code-container {
+      position: relative;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: monospace;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .copy-btn:hover {
+      background: #444;
+    }
+
+    pre {
+      margin: 0;
+      overflow-x: auto;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>JOTAJOTI Workshop: MIDI Controller</h1>
+
+        <p>
+
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/CHrvWiUOHPQ?si=j6aGX2q8tC_gMigr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+           <br><br> 
+            Materialliste:<br>
+            <ul>
+                <li><a href="https://de.aliexpress.com/item/1005004833458201.html" target="_blank">1x Arduino micro</a></li>
+                <li><a href="https://de.aliexpress.com/item/32584992035.html" target="_blank">4x Drehimpulsgeber KY-040</a></li>
+                <li>4x Reiszweckem, blank</li>
+                <li>Klingeldraht</li>
+                <li><a href="https://www.amazon.de/dp/B0GY44M8BY" target="_blank">Klebepads</a></li>
+                <li><a href="https://www.amazon.de/dp/B0CH7RKVFW" target="_blank">USB Kabel USB-A auf USB-C</a></li>
+                <li><a href="https://www.amazon.de/dp/B07QX51F3B" target="_blank">Dupont Stecker</a></li>
+                <li>Brettchen entweder gelasert oder</li>
+                <li>ausgedruckter Schaltplan</li>
+            </ul>
+
+            Werkzeug:<br>
+            <ul>
+                <li>Lötkolben</li>
+                <li>Lötzinn</li>
+                <li>Seitenschneider</li>
+                <li>Abisolierzange</li>
+                <li>Crimpzange für Dupont Stecker</li>
+                <li>Lineal</li>
+            </ul>
+
+<H2>Kurzanleitung für Profis</H2>
+<ul>
+    <li>Holzbrettchen per Lasercutter oder ausgedrucktem Schaltplan vorbereiten.
+    <li>Sketch auf Arduino flashen</li>
+    <li>Kabel mit Dupont Steckern versehen</li>
+    <li>Reiszwecken anbringen und per angelöteten Kabeln verbinden</li>
+    <li>Bauteile mit Klebepads auf dem Brettchen platzieren</li>
+    <li>Kabel anlängen und mit Dupont Steckern versehen</li>
+    <li>Alles nach Schaltplan verbinden</li>
+</ul>
+
+<h2>Ausfühliche Anleitung</h2>
+<H3>Schritt 1: Die "Platine" </H3> 
+<img src="MIDIController.png" alt="Platine" style="width:400px;max-width:600px"><br>
+Da dies ein Bastelprojekt ist, dass mit minimalem aufwand und Materialkosten umgesetzt werden kann, 
+ist die Platine nicht professionell hergestellt. Stattdessen wird ein Brettchen verwendet, 
+auf dem die Bauteile mit Klebepads befestigt werden. 
+Die Bauteile werden mit Klingeldraht mit angecrimpten Dupont Steckern verbunden.
+
+Das Brettchen kann entweder gelasert werden, oder man druckt sich den Schaltplan in Originalgröße
+aus, und klebt ihn auf.
+<br>
+<a href="MIDIController.pdf" target="_blank">Schaltplan als PDF</a></href><br> 
+<a href="MIDIcontroller.lbrn2" download>Schaltplan als Laservorlage Lightburn</a></href><br>
+<a href="MIDIController.svg" download>Schaltplan als SVG</a></href><br>
+</p>
+
+<H3>Schritte 2: Arduino Programmieren</H3>
+Dieser Schritt ist nur notwendig, wenn der Arduino noch nicht mit dem MIDI Controller Programm geflasht 
+wurde. Beim JOTAJOTI Workshop werden die Arduinos bereits mit dem Programm geflasht, 
+so das dieser Schritt übersprungen werden kann.<br>
+<ul>
+<li>Installiere die Arduino IDE, falls noch nicht geschehen. <a href="https://www.arduino.cc/en/software" target="_blank">Hier</a> gehts zum Download.</li>
+<li>MIDIUSB-Bibliothek installieren:</li>
+<ul>    
+<li>Gehe in der Arduino IDE auf Werkzeuge -> Bibliotheken verwalten... (oder Strg + Umschalt + I).</li>
+<li>Suche nach MIDIUSB (von Arduino)</li>
+<li>Klicke auf Installieren.</li>
+</ul>
+<li>AVR-Boardcore aktualisieren:</li>
+<ul>
+<li>Gehe auf Werkzeuge -> Board -> Boardverwalter...</li>
+<li>Suche nach Arduino AVR Boards.</li>
+<li>Klicke bei diesem Eintrag auf Aktualisieren (oder wähle die neueste Version aus).</li>
+</ul>
+<li>
+Kopiere den Code in die Arduino IDE und wähle das richtige Board (Arduino Micro) 
+und den richtigen Port aus.</li>
+<li>Klicke auf Hochladen</li>
+</ul>    
+Code:<br>
+
+<div class="code-container">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieren</button>
+  <pre><code>#include <Control_Surface.h>
+
+USBMIDI_Interface midi;
+
+// CCAbsoluteEncoder führt die Werte von 0 bis 127 intern nach und sendet absolute MIDI-Werte.
+// Syntax: {{Pin_A, Pin_B}, CC_Nummer, Pulse_Pro_Schritt}
+
+CCAbsoluteEncoder encoders[] = {
+  {{2, 3},   10, 4}, // Encoder 1 -> CC 10
+  {{4, 5},   11, 4}, // Encoder 2 -> CC 11
+  {{6, 7},   12, 4}, // Encoder 3 -> CC 12
+  {{8, 9},   13, 4}, // Encoder 4 -> CC 13
+  {{10, 16}, 14, 4}, // Encoder 5 -> CC 14
+  {{14, 15}, 15, 4}, // Encoder 6 -> CC 15
+  {{A0, A1}, 16, 4}, // Encoder 7 -> CC 16
+  {{A2, A3}, 17, 4}, // Encoder 8 -> CC 17
+};
+
+void setup() {
+  Control_Surface.begin();
+}
+
+void loop() {
+  Control_Surface.loop();
+}
+}</code></pre>
+</div>
+<H3>Schritt 3: Reiszwecken</H3>
+Drücke nun die vier Reiszwecken an an die vorgesehenen Stellen auf der Platine.
+Sollte das Brettchen zu dünn sein, schneide die heruasstehenden Spitzen auf der Rückseite
+mit dem Seitenschneider ab, sodass die Reiszwecken nicht mehr herausstehen.<br><br>
+
+Verzinne dann alle viel Reiszwecken mit Lötzinn. Halte dazu den Lötkolben einige 
+Sekunden auf die Reiszwecke, sodass diese heiß wird.
+Führe dann das Lötzinn an die Reiszwecke, sodass diese verzinnt wird.
+Verbinde dann die Reiszwecken mit keinem kurzen schwarzen Kabel.
+
+<h3>Schritt 4: Kabel vorbereiten</h3>
+Nehme den Klingeldraht und schneide folgende Längen und isoliere jeweils 
+beide Ende mit der Abisolierzange ab:<br>
+<ul>
+    <li>2x 9cm,grün</li>
+    <li>2x 9cm,blau</li>
+    <li>2x 8cm,grün</li>
+    <li>2x 8cm,blau</li>
+    <li>4x 4,5cm,schwarz</li>
+    <li>1x 9cm,schwarz</li>
+</ul>
+<img src="kabel.jpg" alt="Kabel" style="width:400px;max-width:600px"><br>
+Crimpe nun die Dupont Stecker an beide Kabelenden der grünen und blauen Kabel.
+Die alle schwarzen Kabel bekommen nur einen Stecker. Die andere Seite wird direkt 
+an die Reiszwecken gelötet. 
+Nimm hierzu die Metallhülse und stecke sie in die Crimpzange, so dass sie direkt
+an der kleinen Stufe in der Zange anliegt. Schieße dann die Crimpzange vorsichtig, so dass
+die Metallhülse leicht zusammengedrückt wird. Stecke dann das Kabelende in die Metallhülse,
+so dass der Draht in der Metallhülse liegt. Schieße dann die Crimpzange 
+vollständig.<br><br>
+Baue nun vier Kabelbäume zusammen, die jeweils aus einem grünen, einem blauen und einem schwarzen Kabel bestehen.
+<img src="kabelbaum.png" alt="Kabelbaum" style="width:200px;max-width:600px"><br>
+
+<h3>Alles zusammenbauen</h3>
+
+Klebe nun mit Hilfe der Klebepads die vier Drehimpulsgeber und den Arduino an die richtigen
+Stellen direkt auf die Platine.<br>
+Löte dann die vier offen schwarzen Kabel der KAbelbäume an die Reiszwecken.<br>
+Verbinde dann die Kabelbäume mit den entsprechenden Anschlüssen:<br>
+<table border="1">
+    <tr>
+        <td>Arduino Pin</td>
+        <td>Drehimpulsgeber Pin</td> 
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>DT 1</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>CLK 1</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>DT 2</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>CLK 2</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>DT 3</td>
+    </tr> 
+    <tr>
+        <td>16</td>
+        <td>CLK 3</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>DT 4</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>CLK 4</td>
+    </tr>
+    <tr>
+        <td>GND</td>
+        <td>Reiszwecken</td>
+    </tr>     
+</table>
+<h3>Testen und Fehler beheben</h3>
+<h4>Anschließen</h4>
+Wenn du alles richtig verbunden hast, kannst du den Arduino über das USB Kabel an den Computer 
+anschließen. Die beiden roten LEDs auf dem Arduino sollten nun leuchten. 
+<h4>Funktionstest</h4>
+Gehe auf <a href="https://www.midimonitor.com/" target="_blank">https://www.midimonitor.com/</a> 
+und klicke auf "Start Monitoring".
+Drehe nun die Drehimpulsgeber. Wenn alles richtig verbunden ist, sollten nun die Werte auf der Webseite angezeigt werden.
+Wenn nicht, überprüfe die die Kabelverbindungen.<br><br> Kontrolliere ob:
+<ul>
+    <li>Die Kabel in den richtigen Anschlüssen stecken</li>
+    <li>Das Kabel an GND angeschlossen ist</li>
+    <li>Prüfe mit einem Durchgangsprüfer ob alle Reiszwecken korrekt verbunden sind.</li>
+</ul>
+<h4>Fehlerbehebung</h4>
+<table border="1">
+    <tr>
+        <td>Problem</td>
+        <td>Lösung</td> 
+    </tr>
+    <tr>
+        <td>Di Werte wechseln nur zwischen 0 und 1</td>
+        <td>Überprüfe die Kabelverbindungen Ein Kabel muss in CLK und eins in DT stecken</td>
+    </tr>
+    <tr>
+        <td>Wenn man nach Rechts dreht werden die Werte kleiner</td>
+        <td>Die CLK und DT Kabel sind vertauscht</td>
+    </tr>
+    <tr>
+        <td>Es passiert gar nichts</td>
+        <td>Das GND Kabel ist nicht korrekt angeschlossen</td>
+    </tr>
+</div>
+</body>
+
+</html>

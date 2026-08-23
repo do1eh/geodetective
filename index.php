@@ -176,6 +176,23 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
 </p>    
 </div>
 
+<div class="link-preview">
+        <h2>MIDI</h2>
+        <img src="midi/midi.png" width="200px" alt="MIDI Controller">
+        <h3><?=midititle?></h3>
+        <p><?=miditext?></p>
+        <br>
+        <p>
+        <center>
+              <a href="midi/scoutball.html"><Scoutball></a><br>
+              <a href="midi/platform.html"><Platform></a><br>
+              <a href="midi/farbmischer.html"><Color mixer></a><br>
+              <a href="https://errozero.co.uk/acid-machine/"><Acid Machine 2></a><br>
+        </center> 
+</p>
+<p><?=midianleitung?></p>    
+</div>
+
 
     <div class="link-preview">
         <h2>GeoDetective</h2>

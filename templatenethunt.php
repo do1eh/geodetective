@@ -51,7 +51,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
   <META NAME="Description" CONTENT="Jamboree in the Air and Internet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="SHORTCUT ICON" href="favicon.ico">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="../main.css">
   
   </head>
   <body> 

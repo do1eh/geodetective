@@ -123,3 +123,32 @@ body {
   font-family: monospace;
   width: 400px;
 }
+
+    .star-rating {
+      display: inline-flex;
+      flex-direction: row-reverse; /* Dreht die Anzeige um, damit der CSS-Sibling-Selektor funktioniert */
+      font-size: 2rem;
+    }
+
+    /* Radio-Buttons unsichtbar machen */
+    .star-rating input {
+      display: none;
+    }
+
+    /* Standard-Farbe der Sterne (grau) */
+    .star-rating label {
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+
+    /* Hover-Effekt: Stern und alle vorherigen Sterne gelb färben */
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: #f5b301;
+    }
+
+    /* Ausgewählte Sterne gelb einfärben */
+    .star-rating input:checked ~ label {
+      color: #f5b301;
+    }

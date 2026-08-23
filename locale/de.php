@@ -39,7 +39,20 @@ define("nethunttext", "Neu in diesem Jahr ist das Nethunt Spiel. Es handelt sich
 die über das Internet gespielt wird. Dabei müssen die Spieler verschiedene Aufgaben lösen und Hinweise finden 
 um zum Ziel zu gelangen. Dabei lernt ihr die tiefen des Internets kennen, fern abseits von www und sozialen Medien. 
 Das Spiel startet zum JOTA-JOTI.");
+define("halloffameexplain", "Trage dich in die Hall of Fame ein und bewerte das Spiel:");
+define("rating", "Deine Bewertung:");
 
+#midi
+
+define("midititle", "Bastelprojekt 2026: MIDI-Controller");
+define("miditext", "Diese Jahr basteln wir einen MIDI-Controller. Die meisten Leute denken, 
+dass MIDI nur etwas für Musiker ist, aber das stimmt nicht. Mit einem MIDI-Controller kann man auch
+Spiele steuern, Lichter ansteuern oder Roboter bewegen. Es gibt viele Möglichkeiten.
+Hier ein paar Beispiele was man mit dem selbst gebauten MIDI-Controller machen kann:");
+define("miditext2", "Ihr könnt auch selbst kleine Spiele programmieren, die ihr mit eurem MIDI-Controller steuern könnt.
+Nutzt dafür z.B. KI und den Prompt: 'Erstelle ein kleines Browserpiel in HTML und Javascript, das mit einem MIDI-Controller gesteuert werden kann.'
+Dann formuliert eure Spielidee und probiert es aus.");
+define("midianleitung", "Baunleitung:");
 
 #geodetective
 define ("geotitle", "GeoDetective Spiel");
