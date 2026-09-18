@@ -176,23 +176,6 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
 </p>    
 </div>
 
-<div class="link-preview">
-        <h2>MIDI</h2>
-        <img src="midi/midi.png" width="200px" alt="MIDI Controller">
-        <h3><?=midititle?></h3>
-        <p><?=miditext?></p>
-        <br>
-        <p>
-        <center>
-              <a href="midi/scoutball.html"><Scoutball></a><br>
-              <a href="midi/platform.html"><Platform></a><br>
-              <a href="midi/farbmischer.html"><Color mixer></a><br>
-              <a href="https://errozero.co.uk/acid-machine/"><Acid Machine 2></a><br>
-        </center> 
-</p>
-<p><?=midianleitung?></p>    
-</div>
-
 
     <div class="link-preview">
         <h2>GeoDetective</h2>
@@ -218,23 +201,27 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
     </div> 
 
     <div class="link-preview">
-        <h2>Workshop 226</h2>
+        <h2>Workshop 2026</h2>
         <img src="workshop/midi.jpg" width="200px" alt="MIDI Controller">
-        dddd
+        
         <h3><?=midititle?></h3>
         <p><?=miditext?></p>
         <br>
         <p>
         <center>
-              <a href="midi/scoutball.html" target="_blank"><Scoutball></a><br>
+              <a href="midi/scoutball.html" target="_blank">Scoutball</a><br>
               <a href="midi/boom.html" target="_blank">Space Tunnel defender</a><br>
-              <a href="midi/platform.html" target="_blank"><Platform></a><br>
-              <a href="midi/farbmischer.html" target="_blank"><Color mixer></a><br>
-              <a href="https://errozero.co.uk/acid-machine/" target="_blank"><Acid Machine 2></a><br>
+              <a href="midi/platform.html" target="_blank">Platform</a><br>
+              <a href="midi/farbmischer.html" target="_blank">Color mixer</a><br>
+              <a href="https://errozero.co.uk/acid-machine/" target="_blank">Acid Machine 2</a><br>
         </center> 
 </p>
+<br>
+<p><?=miditext2?></p>
+<br>
+<p>
 <center>
-              <a href="<?midilink?>" style="
+              <a href="<?=midilink?>" style="
             display: inline-block;
             padding: 10px 20px;
             background-color: #2a6f44;
@@ -242,7 +229,9 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-        "><?=midibutton?></a>   
+        "><?=midibutton?></a>  
+        </center>
+</p> 
 </div>
 
 
@@ -296,7 +285,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         "><?=geobutton?></a>
         </center>
     </div> 
-
+<!--
     <div class="link-preview">
         <h2>Discord</h2>
 
@@ -319,14 +308,19 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         "><?=discordbutton?></a>
         </center>
     </div> 
-
+            -->
 
 
 <div class="link-preview">
-        <h2>Deutschsprachiger DMR Sked</h2>
+        <h2>Deutschsprachige Skeds</h2>
         <p><img src="images/dmrspur.jpeg" width="400px"></p>
         <br><br><br><br><br><br>
                     <div>
+                        Ein Sked (von englisch schedule, dt. Zeitplan) ist ein 
+                        geplanter Funkverkehr zwischen zwei oder mehreren Funkstationen.<br>
+                        Beim JOTA-JOTI gibt es zwei deutschsprachige Skeds.<br>
+                        Einen im digitalen Sprechfunk (DMR im Brandmeister Netz) und einen auf Kurzwelle.<br><br>
+                <h2> DMR SKED<h2>
                 <h3>TG 90710 um 16 Uhr Küchenzeit</h3>
                 
                 <p>Am Samstag den 18.Oktober findet der deutschsprachige DMR Sked statt.  
@@ -338,10 +332,55 @@ Bitte  bereitet eine kleine Vorstellung eurer Gruppe vor:
 <li>Wieviele Personen sind anwesend?</li>
 <li>Wieviele Personen hatten schon ein QSO?</li>
 <li>Habt ihr Geodetective gespielt?</li>
-</ul>
+</ul><br>
+Falls ihr kein DMR fähiges Funkgerät habt, dann könnt ihr trotzdem zuhören:<br><br>
+<center>
+            <a href="https://hose.brandmeister.network/?subscribe=90710" target="_blank" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a6f44;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        "><?=liveradiobutton?></a>
+        </center>
 </p> 
-                <br>
-            </p>
+    <br>
+    <h2> DL-Sked </h2>
+    <h3> 3690Mhz um 17 Uhr Küchenzeit</h3> 
+    <p>
+        Im Anschluss an den DMR Sked findet der traditionsreiche DL-Sked
+        auf Kurzwelle statt. Schon seit vielen Jahren treffen sich hier Pfadistationen
+        aus Deutschland und anderen Deutschsprachigen Ländern.<br>
+        Die beim JOTA-JOTI angemeldeten Stationen nehen automatisch Teil, es ist aber
+        kein Problem sich beim DL-Sked bei der Leitstation anzumelden. Am Ende wird
+        noch einmal gefragt ob Stationen vergessen wurden. Auch hier kann man sich noch
+        in die Liste eintragen lassen um dann von der Leitstation aufgerufen zu werden.
+        <br><br>
+        Ablauf:<br>
+        Alle angemeldeten Stationen werden nach und nach aufgerufen und können dann kurz
+        ihre Gruppe und ihre JOTA-JOTI aktivitäten vorstellen.<br>
+        Zwischen den Vorstellungen werden immer wieder Quizfragen gestellt.<br>
+        Die Lösung ist inner eine Telefonnummer. Wer dort zuerst anruft hat gewonnen.<br>
+        Legt euch am Besten Stift und Papier bereit um die Aufgaben und Lösungen zu notieren. 
+        Ein Internetzugang kann auch nicht schaden.<br><br>
+        Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habbt, dann könnt ihr trotzdem zuhören 
+        und auch beim DL-Sked Quiz mitmachen.<br><br><b>
+        Sucht euch auf <a href="https://instances.ubersdr.org/" target="_blank">ubersdr.org</a> einen SDR Empfänger in Deutschland 
+        und stellt ihn auf 3690Mhz ein:
+            </p><br>
+            <center>
+            <a href="https://instances.ubersdr.org/" target="_blank" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a6f44;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        ">Live Kurzwelle hören</a>
+        </center>
             </div>
         </a>
         

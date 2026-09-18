@@ -46,9 +46,8 @@ Hier zijn een paar voorbeelden van wat je kunt doen met de zelfgebouwde MIDI-Con
 define("miditext2", "Je kunt ook je eigen kleine spellen programmeren die je kunt besturen met je MIDI-Controller.
 Gebruik gewoon AI hiervoor. Bijvoorbeeld: 'Maak een klein browserspel in HTML en Javascript dat kan worden bestuurd met een MIDI-Controller. 
 Formuleer vervolgens je spelidee en probeer het uit.'");
-define("midianleitung", "Building Instructions:");
-define("midibutton", "https://biggestscoutevent.com/workshop/midi26EN.html");
-
+define("midibutton", "Building Instructions:");
+define("midilink", "workshop/midi26EN.html");
 
 #geodetective
 define("geotitle", "GeoDetective Spel");

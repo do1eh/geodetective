@@ -7,8 +7,11 @@ session_start();
    include('../locale/' . $_SESSION['language'] . '.php');
   
    if  (isset($username) and isset($password)){
-      
-$result = $conn->query("SELECT * FROM user WHERE username='".$username."'");
+
+$sql="SELECT * FROM user WHERE username='".$username."'";   
+
+$result = $conn->query($sql);
+
 $datensatz = $result->fetch_assoc();
 
 if(isset($register)) {

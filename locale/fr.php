@@ -42,9 +42,8 @@ Voici quelques exemples de ce que vous pouvez faire avec le contrôleur MIDI que
 define("miditext2", "Tu peux aussi programmer tes propres petits jeux que tu peux contrôler avec ton contrôleur MIDI.
 Utilise simplement l'IA pour cela. Par exemple: 'Crée un petit jeu navigateur en HTML et Javascript qui peut être contrôlé avec un contrôleur MIDI.'
 Formule ensuite ton idée de jeu et essaie-le.");
-define("midianleitung", "Instructions de construction:");
-define("midibutton", "https://biggestscoutevent.com/workshop/midi26EN.html");
-
+define("midibutton", "Instructions de construction:");
+define("midilink", "workshop/midi26EN.html");
 
 
 #geodetective

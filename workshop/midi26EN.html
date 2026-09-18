@@ -145,6 +145,17 @@
       margin: 0;
       overflow-x: auto;
     }
+                /* Standard für kleine Bildschirme (Handy) */
+.responsive-img {
+  width: 300px;
+  height: auto; /* Behält das Seitenverhältnis bei */
+}
+
+/* Für Bildschirme ab 768px Breite (PC/Tablet) */
+@media (min-width: 768px) {
+  .responsive-img {
+    width: 800px;
+  }}
     </style>
 </head>
 
@@ -155,7 +166,7 @@
 
         <p>
 
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/CHrvWiUOHPQ?si=j6aGX2q8tC_gMigr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/CHrvWiUOHPQ?si=j6aGX2q8tC_gMigr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
            <br><br>
             Materials list:<br>
@@ -179,6 +190,7 @@
                 <li>Wire stripper</li>
                 <li>Crimping tool for Dupont pins</li>
                 <li>Ruler</li>
+                <li>Multimeter</li>
             </ul>
 
 <H2>Quick Guide for Pros</H2>
@@ -203,7 +215,7 @@ The board can either be laser-cut or you can print the circuit diagram at full s
 and glue it onto the board.
 <br>
 <a href="MIDIController.pdf" target="_blank">Circuit diagram as PDF</a><br>
-<a href="MIDIcontroller.lbrn2" download>Circuit diagram as LightBurn template</a><br>
+<a href="MIDIcontroller.lbrn2" download>Circuit diagram as LightBurn template for Lasercutters</a><br>
 <a href="MIDIController.svg" download>Circuit diagram as SVG</a><br>
 </p>
 
@@ -237,18 +249,28 @@ Code:<br>
 
 USBMIDI_Interface midi;
 
-// CCAbsoluteEncoder führt die Werte von 0 bis 127 intern nach und sendet absolute MIDI-Werte.
-// Syntax: {{Pin_A, Pin_B}, CC_Nummer, Pulse_Pro_Schritt}
+// CCAbsoluteEncoder send the absolute MIDI-Values between 0 and127.
+// Syntax: {{Pin_A, Pin_B}, CC_Nummer, Pulses_per_step}
 
 CCAbsoluteEncoder encoders[] = {
-  {{2, 3},   10, 4}, // Encoder 1 -> CC 10
-  {{4, 5},   11, 4}, // Encoder 2 -> CC 11
-  {{6, 7},   12, 4}, // Encoder 3 -> CC 12
-  {{8, 9},   13, 4}, // Encoder 4 -> CC 13
-  {{10, 16}, 14, 4}, // Encoder 5 -> CC 14
-  {{14, 15}, 15, 4}, // Encoder 6 -> CC 15
-  {{A0, A1}, 16, 4}, // Encoder 7 -> CC 16
-  {{A2, A3}, 17, 4}, // Encoder 8 -> CC 17
+  {{3, 2},   10, 4}, // Encoder 1 -> CC 10
+  {{5, 4},   11, 4}, // Encoder 2 -> CC 11
+  {{10, 16}, 12, 4}, // Encoder 3 -> CC 12
+  {{15, 14}, 13, 4}, // Encoder 4 -> CC 13
+};
+
+// The Builtin switches (SW) of the  encoders 1 to 4 ---
+CCButton encoderSwitches[] = {
+  {6, {14, CHANNEL_1}}, // Switch 1 -> CC 14
+  {7, {15, CHANNEL_1}}, // Switch 2 -> CC 15
+  {A0, {16, CHANNEL_1}}, // Switch 3 -> CC 16
+  {A1, {17, CHANNEL_1}}, // Switch 4 -> CC 17
+};
+
+//Additional encoder as infinite rotary encoder for the VFO in UBER SDR
+CCRotaryEncoder infencoders[] = {
+  {{9, 8}, 18, 4}, // Encoder 5 -> CC 18
+  
 };
 
 void setup() {
@@ -257,7 +279,6 @@ void setup() {
 
 void loop() {
   Control_Surface.loop();
-}
 }</code></pre>
 </div>
 <H3>Step 3: Thumbtacks</H3>
@@ -279,7 +300,7 @@ Take the bell wire and cut the following lengths and strip both ends with the wi
     <li>4x 4.5cm, black</li>
     <li>1x 9cm, black</li>
 </ul>
-<img src="kabel.jpg" alt="Kabel" style="width:400px;max-width:600px"><br>
+<img src="kabel.jpg" alt="Kabel" class="responsive-img"><br>
 Crimp Dupont connectors onto both ends of the green and blue cables.
 All black cables get only one connector; the other end is soldered directly
 to the thumbtacks.
@@ -386,10 +407,40 @@ If not, check the cable connections.<br><br> Check that:
 Music:<br>
 <a href="https://errozero.co.uk/acid-machine/" target="_blank">Acid Maschine 2</a><br>
 <a href="https://www.audiotool.com/" target="_blank">AudioTool</a><br>
+<a href="https://www.beatport.com/" target="_blank">Beatport DJ Mixer</a><br>
 <br>
 Ham-Radio:<br>
 <a href="https://ubersdr.org/" target="_blank">Uber SDR</a><br>
 
+
+<h2>Extension for Radio Enthusiasts and those who want to do more with it</h2>
+
+The code above can evaluate more than just the four encoders as rotary knobs.
+Additionally, each rotary knob has another function: <br>
+You can press it to trigger another MIDI command.
+This allows you to turn things on and off, or switch between different modes.
+In UBER SDR you can use this to switch between different frequency bands.
+<br><br>
+To use this function, you only need 4 additional cables about 10cm long with 
+Dupont connectors
+installed. One end goes to each encoder
+at the "Sw" (Switch) pin, and the other end is is connected to the Arduino 
+pins 6, 7, A0 and A1
+<br><br>
+The four encoders only send fixed values between 0 and 127 when rotated. 
+If you want to adjust the frequency in UBER SDR, this is not very practical.
+You can only adjust a very small frequency range.
+What you need is an infinite rotary encoder, 
+which continues to rotate and adjusts the frequency continuously up or down.
+That's why there is another encoder defined in the code above, 
+which is connected to pins 8 (DT) and 9 (CLK) as well as GND. 
+This one can be assigned in UBER SDR for example to the function "encoder (100Hz steps)" 
+and then used as a frequency dial.
+<br><br>
+Another application would be the DJ app Beatport. There you can use the infinite rotary encoder
+to move the virtual turntable for scratching..<br><br>
+
+<img src="midivfo.gif" alt="vfo" class="responsive-img"><br>
 
 </div>
 </body>

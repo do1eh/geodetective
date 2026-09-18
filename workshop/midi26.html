@@ -145,6 +145,18 @@
       margin: 0;
       overflow-x: auto;
     }
+            /* Standard für kleine Bildschirme (Handy) */
+.responsive-img {
+  width: 300px;
+  height: auto; /* Behält das Seitenverhältnis bei */
+}
+
+/* Für Bildschirme ab 768px Breite (PC/Tablet) */
+@media (min-width: 768px) {
+  .responsive-img {
+    width: 800px;
+  }
+}
     </style>
 </head>
 
@@ -162,13 +174,13 @@
             <ul>
                 <li><a href="https://de.aliexpress.com/item/1005004833458201.html" target="_blank">1x Arduino micro</a></li>
                 <li><a href="https://de.aliexpress.com/item/32584992035.html" target="_blank">4x Drehimpulsgeber KY-040</a></li>
-                <li>4x Reiszweckem, blank</li>
+                <li>4x Reiszwecken, blank</li>
                 <li>Klingeldraht</li>
                 <li><a href="https://www.amazon.de/dp/B0GY44M8BY" target="_blank">Klebepads</a></li>
                 <li><a href="https://www.amazon.de/dp/B0CH7RKVFW" target="_blank">USB Kabel USB-A auf USB-C</a></li>
                 <li><a href="https://www.amazon.de/dp/B07QX51F3B" target="_blank">Dupont Stecker</a></li>
                 <li>Brettchen entweder gelasert oder</li>
-                <li>ausgedruckter Schaltplan</li>
+                <li>mit ausgedrucktem Schaltplan beklebt</li>
             </ul>
 
             Werkzeug:<br>
@@ -179,6 +191,7 @@
                 <li>Abisolierzange</li>
                 <li>Crimpzange für Dupont Stecker</li>
                 <li>Lineal</li>
+                <li>Multimeter</li>
             </ul>
 
 <H2>Kurzanleitung für Profis</H2>
@@ -204,7 +217,7 @@ Das Brettchen kann entweder gelasert werden, oder man druckt sich den Schaltplan
 aus, und klebt ihn auf.
 <br>
 <a href="MIDIController.pdf" target="_blank">Schaltplan als PDF</a></href><br> 
-<a href="MIDIcontroller.lbrn2" download>Schaltplan als Laservorlage Lightburn</a></href><br>
+<a href="MIDIcontroller.lbrn2" download>Schaltplan als Lasercuttervorlage für Lightburn</a></href><br>
 <a href="MIDIController.svg" download>Schaltplan als SVG</a></href><br>
 </p>
 
@@ -243,14 +256,24 @@ USBMIDI_Interface midi;
 // Syntax: {{Pin_A, Pin_B}, CC_Nummer, Pulse_Pro_Schritt}
 
 CCAbsoluteEncoder encoders[] = {
-  {{2, 3},   10, 4}, // Encoder 1 -> CC 10
-  {{4, 5},   11, 4}, // Encoder 2 -> CC 11
-  {{6, 7},   12, 4}, // Encoder 3 -> CC 12
-  {{8, 9},   13, 4}, // Encoder 4 -> CC 13
-  {{10, 16}, 14, 4}, // Encoder 5 -> CC 14
-  {{14, 15}, 15, 4}, // Encoder 6 -> CC 15
-  {{A0, A1}, 16, 4}, // Encoder 7 -> CC 16
-  {{A2, A3}, 17, 4}, // Encoder 8 -> CC 17
+  {{3, 2},   10, 4}, // Encoder 1 -> CC 10
+  {{5, 4},   11, 4}, // Encoder 2 -> CC 11
+  {{10, 16}, 12, 4}, // Encoder 3 -> CC 12
+  {{15, 14}, 13, 4}, // Encoder 4 -> CC 13
+};
+
+// Die Drucktaster (SW) der Encoder 1 bis 4 ---
+CCButton encoderSwitches[] = {
+  {6, {14, CHANNEL_1}}, // Switch 1 -> CC 14
+  {7, {15, CHANNEL_1}}, // Switch 2 -> CC 15
+  {A0, {16, CHANNEL_1}}, // Switch 3 -> CC 16
+  {A1, {17, CHANNEL_1}}, // Switch 4 -> CC 17
+};
+
+//Zusatzencoder als unendlicher Drehgeber für den VFO in UBER SDR
+CCRotaryEncoder infencoders[] = {
+  {{9, 8}, 18, 4}, // Encoder 5 -> CC 18
+  
 };
 
 void setup() {
@@ -259,12 +282,11 @@ void setup() {
 
 void loop() {
   Control_Surface.loop();
-}
 }</code></pre>
 </div>
 <H3>Schritt 3: Reiszwecken</H3>
 Drücke nun die vier Reiszwecken an an die vorgesehenen Stellen auf der Platine.
-Sollte das Brettchen zu dünn sein, schneide die heruasstehenden Spitzen auf der Rückseite
+Sollte das Brettchen zu dünn sein, schneide die herausstehenden Spitzen auf der Rückseite
 mit dem Seitenschneider ab, sodass die Reiszwecken nicht mehr herausstehen.<br><br>
 
 Verzinne dann alle viel Reiszwecken mit Lötzinn. Halte dazu den Lötkolben einige 
@@ -283,7 +305,7 @@ beide Ende mit der Abisolierzange ab:<br>
     <li>4x 4,5cm,schwarz</li>
     <li>1x 9cm,schwarz</li>
 </ul>
-<img src="kabel.jpg" alt="Kabel" style="width:400px;max-width:600px"><br>
+<img src="kabel.jpg" alt="Kabel" class="responsive-img"><br>
 Crimpe nun die Dupont Stecker an beide Kabelenden der grünen und blauen Kabel.
 Die alle schwarzen Kabel bekommen nur einen Stecker. Die andere Seite wird direkt 
 an die Reiszwecken gelötet. 
@@ -299,7 +321,7 @@ Baue nun vier Kabelbäume zusammen, die jeweils aus einem grünen, einem blauen 
 
 Klebe nun mit Hilfe der Klebepads die vier Drehimpulsgeber und den Arduino an die richtigen
 Stellen direkt auf die Platine.<br>
-Löte dann die vier offen schwarzen Kabel der KAbelbäume an die Reiszwecken.<br>
+Löte dann die vier offen schwarzen Kabel der Kabelbäume an die Reiszwecken.<br>
 Verbinde dann die Kabelbäume mit den entsprechenden Anschlüssen:<br>
 <table border="1">
     <tr>
@@ -364,7 +386,7 @@ Wenn nicht, überprüfe die die Kabelverbindungen.<br><br> Kontrolliere ob:
         <td>Lösung</td> 
     </tr>
     <tr>
-        <td>Di Werte wechseln nur zwischen 0 und 1</td>
+        <td>Die Werte wechseln nur zwischen 0 und 1</td>
         <td>Überprüfe die Kabelverbindungen Ein Kabel muss in CLK und eins in DT stecken</td>
     </tr>
     <tr>
@@ -392,11 +414,40 @@ Wenn nicht, überprüfe die die Kabelverbindungen.<br><br> Kontrolliere ob:
 Musik:<br>
 <a href="https://errozero.co.uk/acid-machine/" target="_blank">Acid Maschine 2</a><br>
 <a href="https://www.audiotool.com/" target="_blank">AudioTool</a><br>
+<a href="https://www.beatport.com/" target="_blank">Beatport DJ Mixer</a><br>
 <br>
 Ham-Radio:<br>
 <a href="https://ubersdr.org/" target="_blank">Uber SDR</a><br>
 
 
+<h2>Erweiterung für Funkamateure und Leute die noch mehr damit machen wollen</h2>
+
+Der oben stehende Code kann mehr als nur die vier Encoder als Dreknopf auswerten.
+Zusätzlich hat jeder Drehknopf eine weitere Funktion: <br>
+Man kann darauf drücken und damit einen weiteren MIDI-Befehl auslösen.
+Damit kann man z.B. Dinge ein und ausschalten, oder zwischen verschiedenen Modi umschalten.
+Bei UBER SDR kann man damit z.B. zwischen verschiedenen Frequenzbändern umschalten.
+<br><br>
+Um diese Funktion nutzen zu können, muss man nur 4 weitere Kabel ca. 10cm länge mit 
+Dupont Steckern
+ausstatten. Die eine Seite wird jeweils an einen Encoder
+an den Pin "Sw" (Switch) angeschlossen an die andere kommt ein einzelner Stecker, 
+der am Arduino an die Pins 6, 7, A0 und A1 angeschlossen wird
+<br><br>
+Die vier Encoder senden beim Drehen nur feste Werte zwischen 0 und 127. 
+Wenn man aber bei Uber SDR die Frequenz einstellen will, ist das nicht so praktisch.
+Mann kann immer nur einen winzigen Frequenzbereich einstellen.
+Was man braucht ist ein unendlicher Drehgeber, 
+der immer weiter dreht und damit die Frequenz immer weiter hoch oder runter stellt.
+Deswegen ist im Code oben noch ein weiterer Encoder vorgesehen, der an die Pins 8 (DT) 
+und 9 (CLK) sowie GND angeschlossen wird. 
+Dieser kann in Uber SDR z.B. der Funktion "encoder (100Hz steps)" 
+zugeordnet und dann als Frequenzrad verwendet werden.
+<br><br>
+Eine weitere Anwendung wäre die DJ App Beatport. Dort kann über den unendlichen Drehgeber
+der virtuelle Plattenteller zum scratchen bewegt werden.<br><br>
+
+<img src="midivfo.gif" alt="vfo" class="responsive-img"><br>
 
 </div>
 </body>

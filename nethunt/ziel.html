@@ -109,9 +109,43 @@
     footer {
       height: 30vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 20px;
       color: #64748b;
+      padding-bottom: 60px;
+    }
+
+    .halloffame-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #38bdf8, #f43f5e);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+      pointer-events: none;
+    }
+
+    .halloffame-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .halloffame-btn:hover {
+      box-shadow: 0 18px 40px rgba(244, 63, 94, 0.4);
     }
   </style>
 </head>
@@ -185,11 +219,13 @@
   </main>
 
   <footer>
+    <a href="halloffame.php" class="halloffame-btn" id="halloffameBtn">Zur Bestenliste</a>
     <p>© Ende der Reise</p>
   </footer>
 
   <script>
     const sections = document.querySelectorAll('.story-section');
+    const halloffameBtn = document.getElementById('halloffameBtn');
 
     function updateScrollAnimations() {
       const viewportHeight = window.innerHeight;
@@ -219,6 +255,12 @@
         text.style.transform = `translateX(${textX}vw)`;
         text.style.opacity = opacity;
       });
+
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      const showButton = scrollBottom >= docHeight - 150;
+
+      halloffameBtn.classList.toggle('visible', showButton);
     }
 
     window.addEventListener('scroll', () => {

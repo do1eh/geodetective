@@ -45,14 +45,14 @@ define("rating", "Deine Bewertung:");
 #midi
 
 define("midititle", "Bastelprojekt 2026: MIDI-Controller");
-define("miditext", "Dieses Jahr basteln wir einen MIDI-Controller. Die meisten Leute denken, 
+define("miditext", "Diese Jahr basteln wir einen MIDI-Controller. Die meisten Leute denken, 
 dass MIDI nur etwas für Musiker ist, aber das stimmt nicht. Mit einem MIDI-Controller kann man auch
 Spiele steuern, Lichter ansteuern oder Roboter bewegen. Es gibt viele Möglichkeiten.
 Hier ein paar Beispiele was man mit dem selbst gebauten MIDI-Controller machen kann:");
 define("miditext2", "Ihr könnt auch selbst kleine Spiele programmieren, die ihr mit eurem MIDI-Controller steuern könnt.
 Nutzt dafür z.B. KI und den Prompt: 'Erstelle ein kleines Browserpiel in HTML und Javascript, das mit einem MIDI-Controller gesteuert werden kann.'
 Dann formuliert eure Spielidee und probiert es aus.");
-define("midibutton", "Zur Bauanleitung");
+define("midibutton", "Bauanleitung");
 define("midilink", "workshop/midi26.html");
 
 #geodetective
