@@ -352,8 +352,8 @@ Falls ihr kein DMR fähiges Funkgerät habt, dann könnt ihr trotzdem zuhören:<
     <p>
         Im Anschluss an den DMR Sked findet der traditionsreiche DL-Sked
         auf Kurzwelle statt. Schon seit vielen Jahren treffen sich hier Pfadistationen
-        aus Deutschland und anderen Deutschsprachigen Ländern.<br>
-        Die beim JOTA-JOTI angemeldeten Stationen nehen automatisch Teil, es ist aber
+        aus Deutschland und anderen deutschsprachigen Ländern.<br>
+        Die beim JOTA-JOTI angemeldeten Stationen nehmen automatisch Teil, es ist aber
         kein Problem sich beim DL-Sked bei der Leitstation anzumelden. Am Ende wird
         noch einmal gefragt ob Stationen vergessen wurden. Auch hier kann man sich noch
         in die Liste eintragen lassen um dann von der Leitstation aufgerufen zu werden.
@@ -362,10 +362,10 @@ Falls ihr kein DMR fähiges Funkgerät habt, dann könnt ihr trotzdem zuhören:<
         Alle angemeldeten Stationen werden nach und nach aufgerufen und können dann kurz
         ihre Gruppe und ihre JOTA-JOTI aktivitäten vorstellen.<br>
         Zwischen den Vorstellungen werden immer wieder Quizfragen gestellt.<br>
-        Die Lösung ist inner eine Telefonnummer. Wer dort zuerst anruft hat gewonnen.<br>
+        Die Lösung ist immer eine Telefonnummer. Wer dort zuerst anruft hat gewonnen.<br>
         Legt euch am Besten Stift und Papier bereit um die Aufgaben und Lösungen zu notieren. 
         Ein Internetzugang kann auch nicht schaden.<br><br>
-        Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habbt, dann könnt ihr trotzdem zuhören 
+        Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem zuhören 
         und auch beim DL-Sked Quiz mitmachen.<br><br><b>
         Sucht euch auf <a href="https://instances.ubersdr.org/" target="_blank">ubersdr.org</a> einen SDR Empfänger in Deutschland 
         und stellt ihn auf 3690Mhz ein:
