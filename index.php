@@ -323,17 +323,30 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
                 <h2> DMR SKED<h2>
                 <h3>TG 90710 um 16 Uhr Küchenzeit</h3>
                 
-                <p>Am Samstag den 18.Oktober findet der deutschsprachige DMR Sked statt.  
+                <p><b>Am Samstag den 17.Oktober</b> findet der deutschsprachige DMR Sked statt.  
                     
 Bitte  bereitet eine kleine Vorstellung eurer Gruppe vor:
+
 <ul>
 <li>Wie heißt eure Gruppe?</li>
 <li>Wo kommt ihr her?</li>
 <li>Wieviele Personen sind anwesend?</li>
 <li>Wieviele Personen hatten schon ein QSO?</li>
 <li>Habt ihr Geodetective gespielt?</li>
+<li>Habt ihr Nethunt gespielt?</li>
 </ul><br>
-Falls ihr kein DMR fähiges Funkgerät habt, dann könnt ihr trotzdem zuhören:<br><br>
+<p><img src="images/dungeon.jpg" width="600px"><p>
+Beim DMR Sked wird es wieder ein Spiel zum mitmachen für alle geben.<br>
+Ihr werdet gemeinsam mit den anderen Rundenteilnehmern ein spannendes Abenteuer erleben.<br>
+Legt euch dafür Papier und Stift bereit. Ein Lineal könnte auch hilfreich sein. <br>
+Es geht darum einen Dungeon zu kartographieren.<br>
+Die Teilnehmer mit Funkgerät können entschieden wo es lang geht und müssen Monster besiegen.<br>
+Alle anderen, auch die, die ohne Funkgerät zuhören, zeichnen währendessen eine Karte der beschriebenen Räume.<br>
+Am Ende könnt ihr eure Karte per E-Mail an die Leitstation zu senden. <br>
+Die Leitstation wird die Bilder auswerten und die Gewinner bekannt geben.<br>   
+<br>
+Falls ihr kein DMR fähiges Funkgerät habt, dann könnt ihr hier zuhören und beim Spiel
+mitmachen:<br><br>
 <center>
             <a href="https://hose.brandmeister.network/?subscribe=90710" target="_blank" style="
             display: inline-block;
@@ -350,23 +363,28 @@ Falls ihr kein DMR fähiges Funkgerät habt, dann könnt ihr trotzdem zuhören:<
     <h2> DL-Sked </h2>
     <h3> 3690Mhz um 17 Uhr Küchenzeit</h3> 
     <p>
-        Im Anschluss an den DMR Sked findet der traditionsreiche DL-Sked
-        auf Kurzwelle statt. Schon seit vielen Jahren treffen sich hier Pfadistationen
-        aus Deutschland und anderen deutschsprachigen Ländern.<br>
-        Die beim JOTA-JOTI angemeldeten Stationen nehmen automatisch Teil, es ist aber
-        kein Problem sich beim DL-Sked bei der Leitstation anzumelden. Am Ende wird
-        noch einmal gefragt ob Stationen vergessen wurden. Auch hier kann man sich noch
-        in die Liste eintragen lassen um dann von der Leitstation aufgerufen zu werden.
-        <br><br>
-        Ablauf:<br>
-        Alle angemeldeten Stationen werden nach und nach aufgerufen und können dann kurz
-        ihre Gruppe und ihre JOTA-JOTI aktivitäten vorstellen.<br>
-        Zwischen den Vorstellungen werden immer wieder Quizfragen gestellt.<br>
-        Die Lösung ist immer eine Telefonnummer. Wer dort zuerst anruft hat gewonnen.<br>
-        Legt euch am Besten Stift und Papier bereit um die Aufgaben und Lösungen zu notieren. 
-        Ein Internetzugang kann auch nicht schaden.<br><br>
-        Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem zuhören 
-        und auch beim DL-Sked Quiz mitmachen.<br><br><b>
+
+Im Anschluss an den DMR Sked findet der traditionsreiche deutschsprachige Sked der JOTA Teilnehmenden auf Kurzwelle statt.<br>
+Schon seit vielen Jahren treffen sich hier Pfadistationen aus dem deutschsprachigen Raum.<br>
+Die beim JOTA-JOTI angemeldeten Stationen werden automatisch als Teilnehmer geführt, es ist jedoch auch keine Problem sind bei der Leitstation
+noch anzumelden. <br>
+
+Die Pfadfinder bei DP9S, so das Rufzeichen der Leitstation, werden 1-2 Stunden vor dem Startzeit schon auf der Frequenz sein,
+damit Ihr die Chance habt vorher zu testen, ob es klappt. Gerne dürft Ihr auch mit Pfadfindern am Mikro rufen.
+<br><br>
+Am Ende der Runde wird noch einmal gefragt, ob noch Stationen vergessen wurden. 
+Auch hier kann man sich noch melden und sich und die Gruppe vorstellen.
+<br><br>
+<b>Ablauf:</b><br>
+Alle angemeldeten Stationen werden nach und nach aufgerufen und können dann kurz ihre Gruppe und ihre JOTA-JOTI Aktivitäten vorstellen.
+Zwischen den Vorstellungen werden immer wieder Quizfragen gestellt.<br>
+Die Lösung war bisher immer eine Telefonnummer. Wer dort anruft hat gewonnen.<br>
+Legt euch am Besten Stift und Papier, eventuell ein Aufnahmegerät (Handy) bereit, um die Aufgaben und Lösungen zu notieren.<br> 
+Ein Internetzugang kann auch nicht schaden.<br>
+
+Die Leitstation sendet aus Amberg in der Nähe von Nürnberg. Im Umkreis von 700km sollte diese gut zuhören sein.
+<br><br>
+Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem zuhören und auch beim DL-Sked Quiz mitmachen.<br>
         Sucht euch auf <a href="https://instances.ubersdr.org/" target="_blank">ubersdr.org</a> einen SDR Empfänger in Deutschland 
         und stellt ihn auf 3690Mhz ein:
             </p><br>

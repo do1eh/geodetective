@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMR-Sked Dungeon beim JOTA-JOTI 2026</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 2px solid #555;
+        }
+        h2 { color: #ff4d4d; }
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .stats {
+            flex: 1;
+            font-size: 1.2rem;
+            padding: 10px;
+            background: #3a3a3a;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .hp-bar { color: #00ffcc; }
+        .enemy-hp-bar { color: #ff4d4d; }
+        .controls {
+            margin: 20px 0;
+            background: #333;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .select-group {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            align-items: center;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            background: #444;
+            color: white;
+            border: 1px solid #666;
+            border-radius: 4px;
+            width: 60%;
+        }
+        button {
+            background-color: #a30000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            box-shadow: 0 3px 0 #5a0000;
+        }
+        button:hover { background-color: #cc0000; }
+        button:active { transform: translateY(3px); box-shadow: none; }
+        
+        .btn-potion {
+            background-color: #008c45;
+            box-shadow: 0 3px 0 #005a2c;
+        }
+        .btn-potion:hover { background-color: #00b359; }
+
+        #log {
+            font-size: 1.1rem;
+            margin-top: 25px;
+            min-height: 80px;
+            padding: 15px;
+            background: #111;
+            border-radius: 5px;
+            border-left: 5px solid #ff4d4d;
+            text-align: left;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>⚔️ JOTA-JOTI 2026 DMR-Sked Dungeon ⚔️</h2>
+    
+    <div class="stats-container">
+        <div class="stats">Held: <span id="hpDisplay" class="hp-bar">20</span> / 20 LP</div>
+        <div class="stats"><span id="enemyNameDisplay">Schleim</span>: <span id="enemyHpDisplay" class="enemy-hp-bar">5</span> LP</div>
+    </div>
+
+    <div class="controls">
+        <div class="select-group">
+            <label for="enemySelect">Gegner: </label>
+            <select id="enemySelect" onchange="changeEnemy()">
+                <option value="Schleim">Schleim (5 LP)</option>
+                <option value="Ork">Ork (10 LP)</option>
+                <option value="Troll">Troll (15 LP)</option>
+                <option value="Drache">Drache (30 LP)</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="weapon">Waffe: </label>
+            <select id="weapon">
+                <option value="Schlag">Waffenlos (W6)</option>
+                <option value="Dolch">Dolch (W6 + 1 Bonus)</option>
+                <option value="Schwert">Schwert (W6 + 4 Bonus)</option>
+            </select>
+        </div>
+        
+        <div class="select-group">
+            <label for="shield">Schild: </label>
+            <select id="shield">
+                <option value="kein">Kein Schild (Kein Abzug)</option>
+                <option value="Schild">Schild (-3 gegnerischer Schaden)</option>
+            </select>
+        </div>
+    </div>
+
+    <button onclick="heroAttack()">Held greift an!</button>
+    <button onclick="enemyAttack()">Gegner schlägt zu!</button>
+    <button class="btn-potion" onclick="drinkPotion()">🧪 Heiltrank verwenden</button>
+    <button style="background-color: #444; box-shadow: 0 3px 0 #222;" onclick="resetGame()">Kampf zurücksetzen</button>
+
+    <div id="log">Der Kampf beginnt! Wähle deine Ausrüstung und greife an...</div>
+</div>
+
+<script>
+    const MAX_HERO_HP = 20;
+    let heroHP = MAX_HERO_HP;
+
+    // Maximale Lebenspunkte pro Gegnertyp
+    const enemyDatabase = {
+        "Schleim": 5,
+        "Ork": 10,
+        "Troll": 15,
+        "Drache": 30
+    };
+
+    // Aktueller Zustand der Lebenspunkte aller Gegner
+    let enemyStates = {
+        "Schleim": 5,
+        "Ork": 10,
+        "Troll": 15,
+        "Drache": 30
+    };
+
+    let currentEnemyName = "Schleim";
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); 
+            const utterance = new SpeechSynthesisUtterance(text.toLowerCase());
+            utterance.lang = 'de-DE';
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    function rollW6() {
+        return Math.floor(Math.random() * 6) + 1;
+    }
+
+    function changeEnemy() {
+        const selectBox = document.getElementById('enemySelect');
+        currentEnemyName = selectBox.value;
+        
+        document.getElementById('enemyNameDisplay').innerText = currentEnemyName;
+        updateDisplays();
+
+        const currentHp = enemyStates[currentEnemyName];
+        const maxHp = enemyDatabase[currentEnemyName];
+
+        let msg = "";
+        if (currentHp <= 0) {
+            msg = `Du stehst vor der Leiche des ${currentEnemyName}s. Er ist bereits besiegt!`;
+        } else if (currentHp < maxHp) {
+            msg = `Du wechselst zum ${currentEnemyName}. Er ist angeschlagen und hat noch ${currentHp} von ${maxHp} LP!`;
+        } else {
+            msg = `Ein unversehrter ${currentEnemyName} stellt sich dir mit ${maxHp} Lebenspunkten!`;
+        }
+
+        document.getElementById('log').innerText = msg;
+    }
+
+    function updateDisplays() {
+        const hpDisp = document.getElementById('hpDisplay');
+        const enemyDisp = document.getElementById('enemyHpDisplay');
+        const enemyHP = enemyStates[currentEnemyName];
+
+        hpDisp.innerText = heroHP <= 0 ? "0 (Gefallen)" : heroHP;
+        hpDisp.style.color = heroHP <= 0 ? "#ff0000" : "#00ffcc";
+
+        enemyDisp.innerText = enemyHP <= 0 ? "0 (Besiegt)" : enemyHP;
+        enemyDisp.style.color = enemyHP <= 0 ? "#888888" : "#ff4d4d";
+    }
+
+    function heroAttack() {
+        if (heroHP <= 0) {
+            document.getElementById('log').innerHTML = "Du bist gefallen!";
+            return;
+        }
+        
+        let currentEnemyHP = enemyStates[currentEnemyName];
+        if (currentEnemyHP <= 0) {
+            document.getElementById('log').innerHTML = "Dieser Gegner ist bereits besiegt!";
+            return;
+        }
+
+        const weapon = document.getElementById('weapon').value;
+        let bonus = 0;
+        if (weapon === "Dolch") bonus = 1;
+        if (weapon === "Schwert") bonus = 4;
+
+        const dice = rollW6();
+        const dmg = dice + bonus;
+
+        // Neuen LP-Stand für den aktuellen Gegner speichern
+        currentEnemyHP = Math.max(0, currentEnemyHP - dmg);
+        enemyStates[currentEnemyName] = currentEnemyHP;
+
+        updateDisplays();
+
+        let msg = (weapon === "Schlag") 
+            ? `Du hast mit einem waffenlosen Schlag ${dmg} Schadenspunkte erzielt. Der ${currentEnemyName} hat noch ${currentEnemyHP} Lebenspunkte.` 
+            : `Du hast mit dem ${weapon} ${dmg} Schadenspunkte erzielt. Der ${currentEnemyName} hat noch ${currentEnemyHP} Lebenspunkte.`;
+            
+        if (currentEnemyHP <= 0) {
+            msg += ` Du hast den ${currentEnemyName} siegreich bezwungen!`;
+        }
+
+        document.getElementById('log').innerHTML = `<strong>Held greift an:</strong><br>${msg}<br>Gegner-LP: ${currentEnemyHP}`;
+        speak(msg);
+    }
+
+    function enemyAttack() {
+        const currentEnemyHP = enemyStates[currentEnemyName];
+        if (heroHP <= 0 || currentEnemyHP <= 0) return;
+
+        const hasShield = (document.getElementById('shield').value === "Schild");
+        const block = hasShield ? 3 : 0;
+        
+        const rawDmg = rollW6();
+        const finalDmg = Math.max(0, rawDmg - block);
+
+        heroHP = Math.max(0, heroHP - finalDmg);
+        updateDisplays();
+
+        let msg = "";
+        if (hasShield) {
+            msg = (finalDmg === 0) ? `Dein Schild hat den Angriff komplett abgefangen. Du erleidest 0 Schadenspunkte.` : `Dein Schild hat 3 Schadenspunkte blockiert. Du erleidest ${finalDmg} Schadenspunkte.`;
+        } else {
+            msg = `Du erleidest ${finalDmg} Schadenspunkte.`;
+        }
+        msg += ` Du hast noch ${heroHP} Lebenspunkte übrig.`;
+        if (heroHP <= 0) msg += " Du bist im Kampf gefallen!";
+
+        document.getElementById('log').innerHTML = `<strong>Gegner greift an:</strong><br>${msg}`;
+        speak(msg);
+    }
+
+    function drinkPotion() {
+        if (heroHP <= 0) {
+            const deadMsg = "Du bist bereits gefallen und kannst keinen Heiltrank mehr trinken!";
+            document.getElementById('log').innerHTML = deadMsg;
+            speak(deadMsg);
+            return;
+        }
+        if (heroHP === MAX_HERO_HP) {
+            const fullMsg = "Deine Lebensenergie ist bereits auf Maximum!";
+            document.getElementById('log').innerHTML = fullMsg;
+            speak(fullMsg);
+            return;
+        }
+
+        heroHP = MAX_HERO_HP;
+        updateDisplays();
+
+        const msg = `Du trinkst einen Heiltrank. Deine Lebensenergie ist wieder komplett auf ${MAX_HERO_HP} LP wiederhergestellt!`;
+        document.getElementById('log').innerHTML = `<strong>Heiltrank verwendet:</strong><br>${msg}`;
+        speak(msg);
+    }
+
+    function resetGame() {
+        heroHP = MAX_HERO_HP;
+        
+        // Alle Gegner-LP wieder auf das Maximum zurücksetzen
+        for (let enemy in enemyDatabase) {
+            enemyStates[enemy] = enemyDatabase[enemy];
+        }
+
+        updateDisplays();
+        document.getElementById('log').innerText = "Der gesamte Kampf und alle Gegner wurden zurückgesetzt.";
+    }
+</script>
+</body>
+</html>

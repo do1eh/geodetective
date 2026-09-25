@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coordinate Defender - Mobile Fixed</title>
+    <style>
+        * { box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
+        
+        html, body { 
+            height: 100%; margin: 0; padding: 0; overflow: hidden; 
+            background-color: #1a1a1a; color: #00ff41; font-family: 'Courier New', monospace;
+        }
+
+        body { display: flex; flex-direction: column; align-items: center; }
+
+        /* Startbildschirm */
+        #start-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 100;
+            display: flex; align-items: center; justify-content: center; padding: 20px;
+        }
+        .instruction-card {
+            background: #222; border: 2px solid #00ff41; padding: 20px;
+            max-width: 550px; border-radius: 10px; text-align: center;
+        }
+        .full-legend {
+            text-align: left; margin: 15px 0; padding: 10px;
+            background: #111; border: 1px solid #444; border-radius: 5px; font-size: 0.9em;
+        }
+
+        /* OBERER BEREICH: Stats & Legende */
+        .top-ui { width: 100%; max-width: 500px; padding: 5px; flex-shrink: 0; }
+        .stats { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px; }
+        .ingame-legend {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            background: #111; padding: 4px; border: 1px solid #333; font-size: 0.65em;
+        }
+
+        /* MITTLERER BEREICH: Radar (nimmt den Restplatz) */
+        .canvas-container {
+            flex: 1; /* Nimmt alles an Platz, was übrig bleibt */
+            width: 100%; display: flex; align-items: center; justify-content: center;
+            min-height: 0; overflow: hidden; padding: 5px;
+        }
+        canvas { 
+            max-height: 100%; max-width: 100%; 
+            border: 1px solid #00ff41; background-color: #000;
+            aspect-ratio: 1 / 1; 
+        }
+
+        /* UNTERER BEREICH: Input & Numpad */
+        .bottom-ui {
+            width: 100%; max-width: 500px; padding: 5px; background: #222; flex-shrink: 0;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .input-row { display: flex; gap: 10px; margin-bottom: 5px; align-items: center; }
+        .input-box { 
+            background: #000; border: 1px solid #00ff41; color: #00ff41;
+            width: 60px; height: 35px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2em; font-weight: bold;
+        }
+        .input-box.active { border: 2px solid #fff; box-shadow: 0 0 8px #00ff41; }
+
+        .numpad {
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; width: 100%;
+        }
+        .num-btn {
+            background: #333; color: #00ff41; border: 1px solid #555;
+            padding: 12px 0; font-size: 1.1em; font-weight: bold; border-radius: 4px;
+            text-align: center; cursor: pointer;
+        }
+        .num-btn:active { background: #00ff41; color: #000; }
+        
+        .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .ring { border: 1px solid white; border-radius: 50%; width: 12px; height: 12px; display: inline-flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+
+    <div id="start-overlay">
+        <div class="instruction-card">
+            <h1 style="margin:0; color:#00ff41; font-size: 1.5em;">COORDINATE DEFENDER</h1>
+            <h3 style="margin:0; color:#00ff41; font-size: 1.5em;">-MISSION BRIEFING-</h3>
+            <p style="font-size:0.85em; margin: 10px 0;">Feindliche Einheiten greifen an.<br>
+                Manche nutzen eine <b>optische Tarnvorrichtung</b>. Die Radarsignale sind dann gespiegelt!
+            </p>
+            <div class="full-legend">
+                <div><span style="color:red">●</span> <b>Rot (Normal):</b><br> Gib (x, y) ein.</div>
+                <div><span style="color:#0088ff">◎</span> <b>Blau X-Achsenspiegelung:</b><br> Invertiere Y → (x, -y)</div>
+                <div><span style="color:#ffff00">◎</span> <b>Gelb Y-Achsenspiegelung:</b><br> Invertiere X → (-x, y)</div>
+                <div><span style="color:#ff00ff">◎</span> <b>Violett Punktspiegelung:</b><br> Invertiere beides → (-x, -y)</div>
+            </div>
+            <p style="font-size:0.8em; margin-bottom: 15px;">Vernichte alle Angreifer bevor <b>10</b> Feinde auf dem Radar zu sehen sind!</p>
+            <button class="num-btn" style="padding: 15px 40px; width: auto; background:#00ff41; color:#000;" onclick="startGame()">MISSION STARTEN</button>
+        </div>
+    </div>
+
+    <div class="top-ui">
+        <div class="stats">
+            <span>SCORE: <span id="score">0</span></span>
+            <span>RADAR: <span id="targetCount">0</span>/10</span>
+        </div>
+        <div class="ingame-legend">
+            <div><span class="dot" style="background:red"></span> keine Tarnung (x,y)</div>
+            <div><div class="ring" style="border-color:#0088ff"><span class="dot" style="background:#0088ff; width:4px; height:4px;"></span></div> X-Achse: (x,-y)</div>
+            <div><div class="ring" style="border-color:#ffff00"><span class="dot" style="background:#ffff00; width:4px; height:4px;"></span></div> Y-Achse: (-x,y)</div>
+            <div><div class="ring" style="border-color:#ff00ff"><span class="dot" style="background:#ff00ff; width:4px; height:4px;"></span></div> Punktspiegelung: (-x,-y)</div>
+        </div>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="radar" width="500" height="500"></canvas>
+    </div>
+
+    <div class="bottom-ui">
+        <div class="input-row">
+            <div id="boxX" class="input-box active"></div>
+            <div id="boxY" class="input-box"></div>
+            <button onclick="press('CLR')" style="background:#444; color:#fff; border:none; padding:8px 12px; border-radius:4px; font-weight:bold;">CLR</button>
+        </div>
+        <div class="numpad">
+            <div class="num-btn" onclick="press('1')">1</div>
+            <div class="num-btn" onclick="press('2')">2</div>
+            <div class="num-btn" onclick="press('3')">3</div>
+            <div class="num-btn" onclick="press('4')">4</div>
+            <div class="num-btn" onclick="press('5')">5</div>
+            <div class="num-btn" onclick="press('-')">-</div>
+            <div class="num-btn" onclick="press('6')">6</div>
+            <div class="num-btn" onclick="press('7')">7</div>
+            <div class="num-btn" onclick="press('8')">8</div>
+            <div class="num-btn" onclick="press('9')">9</div>
+            <div class="num-btn" onclick="press('0')">0</div>
+            <div class="num-btn" onclick="fire()" style="background:#00ff41; color:#000;">Feuer</div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('radar');
+        const ctx = canvas.getContext('2d');
+        const GRID_SIZE = 10;
+        const CELL_SIZE = 500 / (GRID_SIZE * 2);
+        
+        let enemies = [];
+        let score = 0;
+        let gameOver = false;
+        let gameStarted = false;
+        let spawnRate = 10000;
+        let lastShot = null;
+
+        let currentInput = "X";
+        let valX = "";
+        let valY = "";
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playTone(freq, type, duration, vol=0.05) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = type; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            g.gain.setValueAtTime(vol, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+            osc.connect(g); g.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playMelody(notes) {
+            notes.forEach((n, i) => {
+                setTimeout(() => playTone(n.f, n.t || 'sine', n.d || 0.3, n.v || 0.05), i * 150);
+            });
+        }
+
+        function startGame() {
+            
+			if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    // 2. Ein extrem kurzer, fast unhörbarer Ton, um die Hardware "wachzukicken"
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    gainNode.gain.value = 0.0001; // Fast lautlos
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    oscillator.start(0);
+    oscillator.stop(audioCtx.currentTime + 0.01);
+
+    // 3. Kurze Verzögerung (100ms), bevor die Melodie startet
+    // Das gibt dem Lautsprecher Zeit, physisch aktiv zu werden.
+    setTimeout(() => {
+        document.getElementById('start-overlay').style.display = 'none';
+        gameStarted = true;
+        
+        // Start-Melodie: Jetzt mit etwas Puffer
+        playMelody([
+            {f:261, d:0.2}, 
+            {f:329, d:0.2}, 
+            {f:392, d:0.2}, 
+            {f:523, d:0.6}
+        ]);
+        
+        spawnLoop();
+        update();
+    }, 100);
+        }
+
+        function press(key) {
+            if(!gameStarted) return;
+            if(key === 'CLR') {
+                valX = ""; valY = ""; currentInput = "X";
+            } else if(key === '-') {
+                if(currentInput === "X") { if(!valX.includes('-')) valX = '-' + valX; }
+                else { if(!valY.includes('-')) valY = '-' + valY; }
+            } else {
+                if(currentInput === "X") {
+                    valX += key;
+                    if(valX !== "" && valX !== "-") { 
+                        setTimeout(() => { currentInput = "Y"; updateInputDisplay(); }, 150);
+                    }
+                } else {
+                    valY += key;
+                    setTimeout(() => { fire(); }, 300);
+                }
+            }
+            updateInputDisplay();
+        }
+
+        function updateInputDisplay() {
+            document.getElementById('boxX').innerText = valX;
+            document.getElementById('boxY').innerText = valY;
+            document.getElementById('boxX').className = currentInput === "X" ? "input-box active" : "input-box";
+            document.getElementById('boxY').className = currentInput === "Y" ? "input-box active" : "input-box";
+        }
+
+        class Enemy {
+            constructor() {
+                this.trueX = Math.floor(Math.random() * 19) - 9;
+                this.trueY = Math.floor(Math.random() * 19) - 9;
+                if(this.trueX === 0) this.trueX = 1;
+                if(this.trueY === 0) this.trueY = 1;
+                this.type = Math.floor(Math.random() * 4);
+                switch(this.type) {
+                    case 0: this.dispX = this.trueX; this.dispY = this.trueY; this.color = "red"; break;
+                    case 1: this.dispX = this.trueX; this.dispY = -this.trueY; this.color = "#0088ff"; break;
+                    case 2: this.dispX = -this.trueX; this.dispY = this.trueY; this.color = "#ffff00"; break;
+                    case 3: this.dispX = -this.trueX; this.dispY = -this.trueY; this.color = "#ff00ff"; break;
+                }
+				playTone(200, 'sine', 0.1, 0.03);
+            }
+            draw() {
+                const sX = 250 + this.dispX * CELL_SIZE;
+                const sY = 250 - this.dispY * CELL_SIZE;
+                ctx.fillStyle = this.color;
+                ctx.beginPath(); ctx.arc(sX, sY, 8, 0, Math.PI * 2); ctx.fill();
+                if(this.type > 0) {
+                    ctx.strokeStyle = this.color; ctx.lineWidth = 2;
+                    ctx.beginPath(); ctx.arc(sX, sY, 15, 0, Math.PI * 2); ctx.stroke();
+                }
+            }
+        }
+
+        function drawGrid() {
+            ctx.strokeStyle = "#003311"; ctx.lineWidth = 1;
+            for(let i = 0; i <= GRID_SIZE * 2; i++) {
+                let p = i * CELL_SIZE;
+                ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, 500); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, p); ctx.lineTo(500, p); ctx.stroke();
+            }
+            ctx.strokeStyle = "#00ff41"; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(250, 0); ctx.lineTo(250, 500); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(0, 250); ctx.lineTo(500, 250); ctx.stroke();
+
+            ctx.fillStyle = "#00ff41"; ctx.font = "bold 14px Arial";
+            for(let i = -GRID_SIZE; i <= GRID_SIZE; i++) {
+                if(i === 0) continue;
+                ctx.fillText(i, 250 + i * CELL_SIZE - 5, 265);
+                ctx.fillText(i, 230, 250 - i * CELL_SIZE + 5);
+            }
+
+            if(lastShot && Date.now() - lastShot.time < 800) {
+                const age = (Date.now() - lastShot.time) / 800;
+                ctx.strokeStyle = lastShot.hit ? "#00ff41" : "#ff4444";
+                ctx.lineWidth = 3;
+                const s = 15 * (1 + age);
+                ctx.beginPath();
+                ctx.moveTo(lastShot.x-s, lastShot.y); ctx.lineTo(lastShot.x+s, lastShot.y);
+                ctx.moveTo(lastShot.x, lastShot.y-s); ctx.lineTo(lastShot.x, lastShot.y+s);
+                ctx.stroke();
+            }
+        }
+
+        function fire() {
+            const tx = parseInt(valX);
+            const ty = parseInt(valY);
+            if(isNaN(tx) || isNaN(ty)) return;
+
+            const hitIndex = enemies.findIndex(e => e.trueX === tx && e.trueY === ty);
+            if(hitIndex !== -1) {
+                const enemy = enemies[hitIndex];
+                score += enemy.type === 0 ? 10 : 50;
+                lastShot = { x: 250 + enemy.dispX * CELL_SIZE, y: 250 - enemy.dispY * CELL_SIZE, hit: true, time: Date.now() };
+                enemies.splice(hitIndex, 1);
+                document.getElementById('score').innerText = score;
+                playTone(440, 'triangle', 0.2, 0.1);
+            } else {
+                lastShot = { x: 250 + tx * CELL_SIZE, y: 250 - ty * CELL_SIZE, hit: false, time: Date.now() };
+                playTone(120, 'sawtooth', 0.3, 0.1);
+            }
+            valX = ""; valY = ""; currentInput = "X";
+            updateInputDisplay();
+        }
+
+        function update() {
+            if(!gameStarted || gameOver) return;
+            ctx.clearRect(0, 0, 500, 500);
+            drawGrid();
+            enemies.forEach(e => e.draw());
+            if(enemies.length > 10) {
+                gameOver = true;
+				playMelody([{f:392, t:'sawtooth'}, {f:349, t:'sawtooth'}, {f:329, t:'sawtooth'}, {f:261, t:'sawtooth', v:0.2, d:1.5}]);
+                setTimeout(() => { alert("BASIS ZERSTÖRT! Score: " + score); location.reload(); }, 1600);
+            }
+            document.getElementById('targetCount').innerText = enemies.length;
+            requestAnimationFrame(update);
+        }
+
+        function spawnLoop() {
+            if(gameStarted && !gameOver) {
+                enemies.push(new Enemy());
+                spawnRate = Math.max(1500, spawnRate * 0.95); 
+                setTimeout(spawnLoop, spawnRate);
+            }
+        }
+    </script>
+</body>
+</html>
