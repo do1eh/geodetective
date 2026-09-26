@@ -365,10 +365,12 @@ Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem
  <div class="link-preview">
         <h2><?=liveradiotitle?></h2>
         <p ><?=liveradiotext?></p>
-           
+         
         <div class="audio-wrapper">
             <center>
-            <a href="https://hose.brandmeister.network/?subscribe=90710" target="_blank" style="
+          <iframe src="https://hose.brandmeister.network/?subscribe=90710" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+        <br><br>  
+   <a href="https://hose.brandmeister.network/?subscribe=90710" target="_blank" style="
             display: inline-block;
             padding: 10px 20px;
             background-color: #2a6f44;
@@ -376,11 +378,20 @@ Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-        "><?=liveradiobutton?></a>
+        "><?=liveradiobutton?></a><br><br>
+<a href="https://dmrmap.app/#tg=90710&network=brandmeister&compact=true17498" target="_blank" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a6f44;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        ">Live DMR Map</a>
+           
         </center>
         <br><br> 
-            <iframe src="https://hose.brandmeister.network/?subscribe=90710" frameborder="0" style="width: 100%; height: 100px;"></iframe>
-        <br><br>
+     
         <h2 id="live-radio-heading"><?=calendartitle?></h2>
         <center>
             <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&ctz=Europe%2FBerlin&showPrint=0&showNav=0&showTabs=0&showDate=0&mode=AGENDA&src=NTM3NzRmMzA1Mjg3MjRjMDU3MjdkZmU1YzA2OGFhMzhhNGQ3YjMxMzI4ZTkwZGU3MDc0NzRiZmZjZDEyNjA3N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%239e69af" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
