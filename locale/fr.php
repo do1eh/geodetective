@@ -52,7 +52,7 @@ define("geotext","Participe au jeu GeoDetective et trouve les emplacements des p
         Tu pourras tester tes connaissances en géographie et tes compétences scoutes ! Utilise
         Internet et ta logique pour trouver les solutions.
         Le vrai jeu commence lors du JOTA-JOTI, mais tu peux déjà t'inscrire
-        et télécharger tes propres photos. Voir aussi les vidéos plus bas.");
+        et télécharger tes propres photos.");
 define("geobutton", "Jouer à GeoDetective maintenant");
 
 define("liveradiotitle", "Écoute les Radioscouts en direct");
@@ -74,9 +74,9 @@ define("discordbutton", "Rejoindre le serveur Discord");
 define("georulestitle", "Règles du jeu GeoDetective");
 define("georulestext", "Les règles du jeu GeoDetective sont simples : trouve l'emplacement de la photo et soumets ta proposition !<br><br>
 <ul>
-<li>Le jeu commence lors du JOTA-JOTI le 16 octobre 2026 à 21h00 et se termine le dimanche.</li>
+<li>Le jeu commence lors du JOTA-JOTI le 16 octobre 2026 à 21h00 et se termine le dimanche à 13h00.</li>
 <li>De 23h00 à 09h00, c'est la nuit, il n'est pas possible de soumettre de proposition.</li>
-<li>Toutes les 4 heures, de nouvelles images sont débloquées.</li>
+<li>Toutes les 2 heures, 2 nouvelles images sont débloquées.</li>
 <li>Chaque joueur peut faire une seule proposition par image. Celle-ci peut être modifiée tant que la manche en cours n'est pas terminée et que de nouvelles images ne sont pas encore débloquées.</li>
 <li>À l'expiration du délai, la solution et le classement pour cette image seront affichés.<br>
 Le joueur dont la proposition est la plus proche du lieu réel de la prise de vue gagne.</li>

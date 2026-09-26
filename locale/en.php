@@ -45,7 +45,7 @@ define("midilink", "workshop/midi26EN.html");
 define("geotitle", "GeoDetective Game");
 define("geotext", "Take part in the GeoDetective game and find the locations of photos submitted by other scouts.
         Test your knowledge of geography and scouting skills! Use the internet and your deduction skills to find the solutions.
-        The actual game starts at JOTA-JOTI, but you can already register and upload your own photos now. See the videos below for more information.");
+        The actual game starts at JOTA-JOTI, but you can already register and upload your own photos now.");
 
 define("geobutton", "Play GeoDetective now");
 
@@ -68,9 +68,9 @@ define("discordbutton", "Join Discord Server");
 define("georulestitle", "GeoDetective Game Rules");
 define("georulestext", "The rules for the GeoDetective game are simple: Find the location of the image and submit your guess!<br><br>
 <ul>
-<li>The game starts at JOTA-JOTI on October 16, 2026 at 8:00 pm and ends on Sunday.</li>
+<li>The game starts at JOTA-JOTI on October 16, 2026 at 9:00 pm and ends on Sunday at 1:00 pm.</li>
 <li>From 11:00 pm to 09:00 am is quiet time, no guesses can be submitted.</li>
-<li>Every 4 hours new images are unlocked.</li>
+<li>Every 2 hours 2 new images are unlocked.</li>
 <li>Each player can submit only one guess per image. This can be changed as long as the current game round is active and new images have not yet been unlocked.</li>
 <li>After the deadline, the solution and the highscore list for this image will be published.<br>
 The winner is the player whose guess is closest to the actual location.</li>

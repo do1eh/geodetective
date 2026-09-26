@@ -187,6 +187,11 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
             </p>
             </div>
         </a>
+                <div>
+                <h3><?=georulestitle?></h3>
+                <p><?=georulestext?></p> 
+            </p>
+            </div>
         <center>
               <a href="splashscreen.php" style="
             display: inline-block;
@@ -234,57 +239,9 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
 </p> 
 </div>
 
-
- <div class="link-preview">
-        <h2><?=liveradiotitle?></h2>
-        <p ><?=liveradiotext?></p>
-           
-        <div class="audio-wrapper">
-            <center>
-            <a href="https://hose.brandmeister.network/?subscribe=90710" target="_blank" style="
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2a6f44;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        "><?=liveradiobutton?></a>
-        </center>
-        <br><br> 
-            <iframe src="https://hose.brandmeister.network/?subscribe=90710" frameborder="0" style="width: 100%; height: 100px;"></iframe>
-        <br><br>
-        <h2 id="live-radio-heading"><?=calendartitle?></h2>
-        <center>
-            <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&ctz=Europe%2FBerlin&showPrint=0&showNav=0&showTabs=0&showDate=0&mode=AGENDA&src=NTM3NzRmMzA1Mjg3MjRjMDU3MjdkZmU1YzA2OGFhMzhhNGQ3YjMxMzI4ZTkwZGU3MDc0NzRiZmZjZDEyNjA3N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%239e69af" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
-        </center>    
-            </div>
-    </div>
-
             
 
-
-<div class="link-preview">
-        <h2>GeoDetective</h2>
-
-            <div>
-                <h3><?=georulestitle?></h3>
-                <p><?=georulestext?></p> 
-            </p>
-            </div>
-        </a>
-        <center>
-              <a href="splashscreen.php" style="
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2a6f44;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        "><?=geobutton?></a>
-        </center>
-    </div> 
+ 
 <!--
     <div class="link-preview">
         <h2>Discord</h2>
@@ -403,6 +360,35 @@ Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem
         </a>
         
             </div>
+
+
+ <div class="link-preview">
+        <h2><?=liveradiotitle?></h2>
+        <p ><?=liveradiotext?></p>
+           
+        <div class="audio-wrapper">
+            <center>
+            <a href="https://hose.brandmeister.network/?subscribe=90710" target="_blank" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2a6f44;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        "><?=liveradiobutton?></a>
+        </center>
+        <br><br> 
+            <iframe src="https://hose.brandmeister.network/?subscribe=90710" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+        <br><br>
+        <h2 id="live-radio-heading"><?=calendartitle?></h2>
+        <center>
+            <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&ctz=Europe%2FBerlin&showPrint=0&showNav=0&showTabs=0&showDate=0&mode=AGENDA&src=NTM3NzRmMzA1Mjg3MjRjMDU3MjdkZmU1YzA2OGFhMzhhNGQ3YjMxMzI4ZTkwZGU3MDc0NzRiZmZjZDEyNjA3N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%239e69af" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
+        </center>    
+            </div>
+    </div>
+
+
     </div>
     <hr>
 
@@ -410,5 +396,7 @@ Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem
 
    </div>
 
+
+   
 </body>
 </html>

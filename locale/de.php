@@ -61,7 +61,7 @@ define("geotext","Nimm am GeoDetective-Spiel teil und finde die Standorte der Fo
         Dabei kannst du dein Wissen über Geografie und Pfadfinderfähigkeiten testen! Nutze dabei
         das Internet und deine Kombinationsgabe zum Finden der Lösungen.
         Das eigentliche Spiel startet zum JOTA-JOTI, aber du kannst dich schon jetzt registrieren
-        und eigene Fotos hoch laden. Siehe auch die Videos weiter unten.");
+        und eigene Fotos hoch laden.");
 
 define("geobutton", "Jetzt GeoDetective spielen");        
 #Hoseline
@@ -84,11 +84,11 @@ define("discordbutton", "Discord Server beitreten");
 define("georulestitle", "GeoDetective Spielregeln");
 define("georulestext", "Die Regeln für das GeoDetective Spiel sind einfach: Finde den Standort des Bildes und gib deinen Tipp ab!<br><br>
 <ul>
-<li>Das Spiel beginnt zum JOTA-JOTI am 16. Oktober 2026 um 21:00 Uhr und endet am Sonntag.</li>
+<li>Das Spiel beginnt zum JOTA-JOTI am 16. Oktober 2026 um 21:00 Uhr und endet am Sonntag um 13:00 Uhr.</li>
 <li>Von 23:00 Uhr bis 09:00 Uhr herrscht Nachtruhe, es ist keine Tippabgabe möglich.</li>
-<li>Alle 4 Stunden werden neue Bilder freigeschaltet.</li>
+<li>Alle 2 Stunden werden 2 neue Bilder freigeschaltet.</li>
 <li>Jeder Spieler kann pro Bild nur einen Tipp abgeben. Dieser kann so lange geändert werden, bis die aktuelle Spielrunde endet und neue Bilder freigeschaltet werden.</li>
-<li>Nach Ablauf der Deadline wird die Lösung und die Highscoreliste für dieses Bildveröffentlicht.<br>
+<li>Nach Ablauf der Deadline wird die Lösung und die Highscoreliste für dieses Bild veröffentlicht.<br>
 Es gewinnt der Spieler, der mit seinem Tipp am nächsten am tatsächlichen Aufnahmeort liegt.</li>
 <li>Bei richtig geratenem JID-Code gibt es einen Extrapunkt!</li>
 <li>Unter der Highscorliste können Spieler Kommentare zum Bild und den Lösungen hinterlassen.<br>

@@ -53,7 +53,7 @@ define("geotext", "Partecipa al gioco GeoDetective e trova le posizioni delle fo
     Potrai mettere alla prova le tue conoscenze geografiche e le tue abilità scout! Usa
     Internet e il tuo intuito per trovare le soluzioni.
     Il gioco vero e proprio inizia durante JOTA-JOTI, ma puoi già registrarti
-    e caricare le tue foto. Guarda anche i video qui sotto.");
+    e caricare le tue foto.");
 
 define("geobutton", "Gioca ora a GeoDetective");
 #Hoseline
@@ -76,9 +76,9 @@ define("discordbutton", "Unisciti al server Discord");
 define("georulestitle", "Regole del gioco GeoDetective");
 define("georulestext", "Le regole del gioco GeoDetective sono semplici: trova la posizione della foto e inserisci il tuo suggerimento!<br><br>
 <ul>
-<li>Il gioco inizia durante JOTA-JOTI il 16 ottobre 2026 alle 21:00 e termina domenica.</li>
+<li>Il gioco inizia durante JOTA-JOTI il 16 ottobre 2026 alle 21:00 e termina domenica alle 13:00.</li>
 <li>Dalle 23:00 alle 09:00 c'è il silenzio notturno, non è possibile inviare suggerimenti.</li>
-<li>Ogni 4 ore vengono sbloccate nuove foto.</li>
+<li>Ogni 2 ore vengono sbloccate 2 nuove foto.</li>
 <li>Ogni giocatore può dare solo un suggerimento per foto. Può essere modificato fino alla fine del turno e al rilascio delle nuove foto.</li>
 <li>Dopo la scadenza verranno pubblicate la soluzione e la classifica per quella foto.<br>
 Vince il giocatore il cui suggerimento è più vicino al luogo reale dello scatto.</li>

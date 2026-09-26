@@ -54,7 +54,7 @@ define("geotitle", "GeoDetective Spel");
 define("geotext","Doe mee aan het GeoDetective-spel en vind de locaties van de foto's van andere scouts. 
         Test je kennis van aardrijkskunde en scoutingvaardigheden! Gebruik het internet en je combinatievermogen om de oplossingen te vinden.
         Het eigenlijke spel begint tijdens JOTA-JOTI, maar je kunt je nu al registreren
-        en eigen foto's uploaden. Zie ook de video's hieronder.");
+        en eigen foto's uploaden.");
 define("geobutton", "Speel GeoDetective nu");
 
 define("liveradiotitle", "Luister live naar de Radioscouts");
@@ -76,9 +76,9 @@ define("discordbutton", "Word lid van de Discord-server");
 define("georulestitle", "GeoDetective Spelregels");
 define("georulestext", "De regels voor het GeoDetective-spel zijn eenvoudig: Vind de locatie van de foto en geef je gok door!<br><br>
 <ul>
-<li>Het spel begint tijdens JOTA-JOTI op 16 oktober 2026 om 21:00 uur en eindigt op zondag.</li>
+<li>Het spel begint tijdens JOTA-JOTI op 16 oktober 2026 om 21:00 uur en eindigt op zondag om 13:00 uur.</li>
 <li>Tussen 23:00 uur en 09:00 uur is het nachtrust en kan er geen gok worden gedaan.</li>
-<li>Elke 4 uur worden er nieuwe foto's vrijgegeven.</li>
+<li>Elke 2 uur worden er 2 nieuwe foto's vrijgegeven.</li>
 <li>Elke speler kan per foto slechts één gok doen. Deze kan worden aangepast zolang de huidige speelronde loopt en er nog geen nieuwe foto's zijn vrijgegeven.</li>
 <li>Na het verstrijken van de deadline worden de oplossing en de ranglijst voor deze foto gepubliceerd.<br>
 De speler die met zijn gok het dichtst bij de werkelijke locatie zit, wint.</li>
