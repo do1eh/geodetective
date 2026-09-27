@@ -51,8 +51,7 @@ Entwicklung:<BR>
 <li>NL: Sander Krul<BR>
 Tester:<BR>
 <li>Thomas Pfaff / Pepe / HB9EVT<BR>
-Source: <a href="https://github.com/do1eh/geodetective">https://github.com/do1eh/geodetective</a><BR>
-Impressum / Datenschutz: Es gilt das Impressum und die Datenschutzbestimmungen der jeweiligen Landesverbände die das Spiel organisieren.
+Sourcecode: <a href="https://github.com/do1eh/geodetective">https://github.com/do1eh/geodetective</a><BR>
 </div>
 
 </center>

@@ -407,7 +407,6 @@ Wenn ihr kein Kurzwellenfunkgerät zur Verfügung habt, dann könnt ihr trotzdem
 
    </div>
 
-
-   
-</body>
-</html>
+<?php
+  include("templateunten.php");
+  ?>
