@@ -43,7 +43,7 @@
 <div id="credits">
 <B>Credits:</B><BR>
 Spielidee:<BR>
-<li>Woody und JOTI/JOTA Team der PBS<BR>
+<li>Woody und JOTI/JOTA Team der PBS 2024<BR>
 Entwicklung:<BR>
 <li>Ralf Lüsebrink / DO1EH<BR>
 <li>Benoît Panizzon / Woody / HB9EUE<BR>
