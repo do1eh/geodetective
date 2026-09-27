@@ -159,7 +159,7 @@ Pastor-Dörr-Ring 58<br>
 
 <b>Kontakt</b><br><br>
 
-Telefon: 0152 53344398<br>
+
 E-Mail: webmaster@biggestscoutevent.com<br><br>
 
 <b>Redaktionell verantwortlich</b><br><br>
@@ -210,7 +210,6 @@ Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br
 Ralf Nils Lüsebrink<br>
 Pastor-Dörr-Ring 58<br>
 40589 Düsseldorf<br>
-Telefon: 0152 53344398<br>
 E-Mail: webmaster@biggestscoutevent.com<br><br>
 
 Verantwortliche Stelle ist die natürliche oder juristische Person, 
