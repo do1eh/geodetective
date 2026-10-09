@@ -23,14 +23,16 @@ Cosa devi fare per partecipare?
 Cosa posso fare durante JOTA-JOTI?
 <ul>
 <li> Dai un'occhiata al <a href='https://www.jotajoti.info/' target='_blank'>sito JOTA-JOTI</a></li>
-<li> Chatta su <a href='https://www.scoutlink.net/' target='_blank'> Scoutlink</a></li>
+<li> Chatta su <a href='https://chat.jotajoti.info/' target='_blank'> jotajoti.info</a></li>
+<li> Trova altri partecipanti a JOTA-JOTI <a href='https://app.radioscouting.network/' target='_blank'>radioscouting.network</a></li>
 <li> Pensa a un progetto creativo</li>
 <li> Ascolta il DMR Sked (vedi sotto)</li>
 <li> Gioca ai nostri giochi online come GeoDetective e Nethunt (vedi sotto)</li>
-<li> Gioca a Minecraft su minecraft.scoutwired.org</li>
+<li> Gioca a Minecraft o Terraria su <a href='https://scoutwired.org/' target='_blank'>scoutwired.org</a></li>
 </ul>  ");  
 #nethunt
-define("nethuntbutton", "Gioca a Nethunt (dal 16.10.2026)");
+define("nethuntbutton", "Gioca a Nethunt");
+define("nethuntlink", "nethunt/nethuntENG.html");
 define("nethunttitle", "Caccia su Internet");
 define("nethunttext", "Novità di quest'anno è il gioco Nethunt. Si tratta di una caccia al tesoro che si gioca su internet.
 I giocatori devono risolvere vari compiti e trovare indizi per raggiungere l'obiettivo. In questo modo scoprirai

@@ -26,14 +26,16 @@ Was kann ich beim JOTA-JOTI machen?
 <ul>
 <li> Schaut auf die <a href='https://www.jotajoti.info/' target='_blank'>JOTA-JOTI Website</a></li>
 <li> Schaut auf die <a href='https://jota-joti.de/' target='_blank'> deutsche JOTA-JOTI Website</a></li>
-<li> Chattet auf <a href='https://www.scoutlink.net/' target='_blank'> Scoutlink</a></li>
+<li> Chattet auf <a href='https://chat.jotajoti.info/' target='_blank'>jotajoti.info</a></li>
+<li> Findet andere JOTA-JOTI Teilnehmer <a href='https://app.radioscouting.network/' target='_blank'>radioscouting.network</a></li>
 <li> Überlegt euch ein Bastelprojekt</li>
 <li> Hört euch den DMR Sked an (siehe unten)</li>
 <li> Spielt unserere onlinespiele wie GeoDetective und Nethunt (siehe unten)</li>
-<li> Spielt Minecraft auf minecraft.scoutwired.org</li>
+<li> Spielt Minecraft oder Terraria auf <a href='https://scoutwired.org/' target='_blank'>scoutwired.org</a></li>
 </ul>  ");  
 #nethunt
-define("nethuntbutton", "Zum Nethunt Spiel (ab 16.10.2026)");
+define("nethuntbutton", "Zum Nethunt Spiel");
+define("nethuntlink", "nethunt/nethunt.html");
 define("nethunttitle", "Scouting the internet");
 define("nethunttext", "Neu in diesem Jahr ist das Nethunt Spiel. Es handelt sich dabei um eine Schnitzeljagd 
 die über das Internet gespielt wird. Dabei müssen die Spieler verschiedene Aufgaben lösen und Hinweise finden 

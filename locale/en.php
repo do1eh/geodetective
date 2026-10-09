@@ -18,14 +18,16 @@ What do you have to do to participate?
 What can I do at JOTA-JOTI?
 <ul>
 <li>Visit the <a href='https://www.jotajoti.info/' target='_blank'>JOTA-JOTI website</a></li>
-<li>Chat on <a href='https://www.scoutlink.net/' target='_blank'>Scoutlink</a></li>
+<li>Chat on <a href='https://chat.jotajoti.info/' target='_blank'>jotajoti.info</a></li>
+<li>Find other JOTA-JOTI participants <a href='https://app.radioscouting.network/' target='_blank'>radioscouting.network</a></li>
 <li>Think of a craft project</li>
 <li>Listen to the DMR sked (see below)</li>
 <li>Play our online games like GeoDetective and Nethunt (see below)</li>
-<li>Play Minecraft on minecraft.scoutwired.org</li>
+<li>Play Minecraft or Terraria on <a href='https://scoutwired.org/' target='_blank'>scoutwired.org</a></li>
 </ul>  ");  
 #nethunt
-define("nethuntbutton", "To the Nethunt game (from 16.10.2026)");
+define("nethuntbutton", "To the Nethunt game");
+define("nethuntlink", "nethunt/nethuntENG.html");
 define("nethunttitle", "Scouting the internet");
 define("nethunttext", "New this year is the Nethunt game. It is a scavenger hunt played over the internet. Players must solve various tasks and find clues to reach the goal. In the process, you will get to know the depths of the internet, far from the WWW and social media. The game starts at JOTA-JOTI.");
 

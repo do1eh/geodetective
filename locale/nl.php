@@ -24,14 +24,16 @@ Wat moet je doen om mee te doen?
 Wat kan ik doen bij JOTA-JOTI?
 <ul>
 <li> Kijk op de <a href='https://www.jotajoti.info/' target='_blank'>JOTA-JOTI Website</a></li>
-<li> Chat op <a href='https://www.scoutlink.net/' target='_blank'> Scoutlink</a></li>
+<li> Chat op <a href='https://chat.jotajoti.info/' target='_blank'> jotajoti.info</a></li>
+<li> Zoek andere JOTA-JOTI deelnemers <a href='https://app.radioscouting.network/' target='_blank'>radioscouting.network</a></li>
 <li> Bedank een ambachtelijk project</li>
 <li> Luister naar de DMR Sked (zie hieronder)</li>
 <li> Speel onze onlinespelletjes zoals GeoDetective en Nethunt (zie hieronder)</li>
-<li> Speel Minecraft op minecraft.scoutwired.org</li>
+<li> Speel Minecraft  op <a href='https://scoutwired.org/' target='_blank'>scoutwired.org</a></li>
 </ul>  ");  
 #nethunt
-define("nethuntbutton", "Naar het Nethunt spel (vanaf 16.10.2026)");
+define("nethuntbutton", "Naar het Nethunt spel");
+define("nethuntlink", "nethunt/nethuntENG.html");
 define("nethunttitle", "Scouting the internet");
 define("nethunttext", "Nieuw dit jaar is het Nethunt spel. Het gaat om een speurtocht 
 die via het internet wordt gespeeld. De spelers moeten verschillende opdrachten oplossen en aanwijzingen vinden 

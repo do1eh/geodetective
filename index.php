@@ -163,7 +163,7 @@ $conn = mysqli_connect($server, $user, $pass,$dbase);
         <br>
         <p>
         <center>
-              <a href="#" style="
+              <a href="<?=nethuntlink?>" style="
             display: inline-block;
             padding: 10px 20px;
             background-color: #2a6f44;
